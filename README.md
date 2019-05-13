@@ -2,6 +2,8 @@
 
 ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/full.gif)
 
+![](https://dagronf.github.io/art/projects/DSFPropertyPanes/panel_simple.gif)
+
 ## Features
 
 * Basic inspector pane. Show and hide panes
@@ -11,7 +13,9 @@
 
 ## Why?
 
-![](https://dagronf.github.io/art/projects/DSFPropertyPanes/panel_simple.gif)
+I've fought with this on a number of projects. I finally decided to make a drop-in class that would do everything that I wanted.  This class is fully autolayout managed.
+
+I really like Apple 'Pages' implementation which allows having a header view which can be used to configure items even when the pane itself is hidden.  A good example of this is the 'Spacing' inspector pane, where when the pane is hidden the user can still change the line spacing at a lower granularity.
 
 ## Usage
 
