@@ -53,7 +53,7 @@ import Cocoa
 	private var scrollView: NSScrollView?
 	private let stackView = StackView()
 
-	init(frame frameRect: NSRect,
+	@objc public init(frame frameRect: NSRect,
 	     animated: Bool = true,
 	     usesScrollView: Bool = true,
 	     font: NSFont?) {
