@@ -27,7 +27,7 @@ class MainPropertyPanesViewController: NSViewController {
 		let n = DSFInspectorPanesView(frame: .zero,
 									  animated: true,
 									  embeddedInScrollView: false,
-									  font: NSFont.systemFont(ofSize: 12))
+									  titleFont: NSFont.systemFont(ofSize: 12))
 		n.add(title: "Nested Radio", view: dummy1.view)
 		n.add(title: "Nested Color", view: dummy2.view, headerAccessoryView: dummy2.headerView)
 		return n

@@ -2,7 +2,28 @@
 //  DSFInspectorPanesView.swift
 //
 //  Created by Darren Ford on 30/4/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//
+//  MIT License
+//
+//  Copyright (c) 2019 Darren Ford
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 //
 
 import Cocoa
@@ -10,10 +31,13 @@ import Cocoa
 @IBDesignable
 @objc public class DSFInspectorPanesView: NSView {
 	/// Should we animate hiding and showing?
-	@IBInspectable @objc private(set) var animated: Bool = true
+	@IBInspectable private(set) var animated: Bool = true
 
-	/// Should (when created) that the property panes should exist within a scroll view?
+	/// Should (when added) property panes be added to an embedded scrollable view?
 	@IBInspectable private(set) var embeddedInScrollView: Bool = true
+
+	/// Should there be separators between the inspector panes?
+	@IBInspectable private(set) var showSeparators: Bool = true
 
 	/// Edge insets from the view to inset the panes
 	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) {
@@ -24,7 +48,7 @@ import Cocoa
 	}
 
 	//! The font to use in the title for all property panes
-	@IBInspectable @objc public var titleFont: NSFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize) {
+	@IBInspectable public var titleFont: NSFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize) {
 		didSet {
 			self.arrangedInspectorPanes.forEach { $0.titleFont = self.titleFont }
 			self.needsLayout = true
@@ -32,7 +56,7 @@ import Cocoa
 	}
 
 	/// Vertical spacing between panes
-	@IBInspectable @objc public var spacing: CGFloat = 8 {
+	@IBInspectable public var spacing: CGFloat = 8 {
 		didSet {
 			self.stackView.spacing = self.spacing
 			self.stackView.needsLayout = true
@@ -40,9 +64,8 @@ import Cocoa
 	}
 
 	/// Return an array containing all the inspector panes
-	private var arrangedInspectorPanes: [DSFInspectorPaneView] {
-		let panes = self.stackView.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
-		return panes as? [DSFInspectorPaneView] ?? []
+	@objc public var panes: [DSFInspectorPaneProtocol] {
+		return self.arrangedInspectorPanes as [DSFInspectorPaneProtocol]
 	}
 
 	private var scrollView: NSScrollView?
@@ -51,10 +74,12 @@ import Cocoa
 	@objc public init(frame frameRect: NSRect,
 					  animated: Bool = true,
 					  embeddedInScrollView: Bool = true,
-					  font: NSFont?) {
+					  showSeparators: Bool = true,
+					  titleFont: NSFont? = nil) {
 		self.animated = animated
 		self.embeddedInScrollView = embeddedInScrollView
-		if let font = font {
+		self.showSeparators = showSeparators
+		if let font = titleFont {
 			self.titleFont = font
 		}
 		super.init(frame: frameRect)
@@ -72,7 +97,7 @@ import Cocoa
 		canHide: Bool = true,
 		expanded: Bool = true
 		) {
-		if self.arrangedInspectorPanes.count > 0 {
+		if self.showSeparators && self.arrangedInspectorPanes.count > 0 {
 			// If there is a previous pane in place, add in a separator
 			let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))
 			box.boxType = .separator
@@ -120,35 +145,6 @@ import Cocoa
 	/// Convenience method for showing or hiding all of the inspector panes at once
 	@objc public func expandAll(_ expanded: Bool, animated: Bool) {
 		self.arrangedInspectorPanes.forEach { $0.setExpanded(expanded, animated: animated) }
-	}
-}
-
-// MARK: - Subscripting and Iterating
-
-extension DSFInspectorPanesView: Collection {
-	public func index(after i: Int) -> Int {
-		return i + 1
-	}
-
-	public var startIndex: Int {
-		return 0
-	}
-
-	public var endIndex: Int {
-		return self.count()
-	}
-
-	public subscript(index: Int) -> DSFInspectorPaneProtocol? {
-		let items = self.arrangedInspectorPanes
-		guard index < items.count else {
-			return nil
-		}
-		return items[index]
-	}
-
-	public func count() -> Int {
-		let items = self.stackView.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
-		return items.count
 	}
 }
 
@@ -246,5 +242,11 @@ extension DSFInspectorPanesView {
 			self.stackView.setHuggingPriority(.required, for: .vertical)
 			self.superview?.setContentHuggingPriority(.required, for: .vertical)
 		}
+	}
+
+	/// Return the contained inspector panes
+	private var arrangedInspectorPanes: [DSFInspectorPaneView] {
+		let panes = self.stackView.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
+		return panes as? [DSFInspectorPaneView] ?? []
 	}
 }

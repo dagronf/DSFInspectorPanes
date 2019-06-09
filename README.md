@@ -1,15 +1,16 @@
 # Mimic the inspector panels in Apple's Pages
 
-![](https://dagronf.github.io/art/projects/DSFPropertyPanes/full.gif)
-
-![](https://dagronf.github.io/art/projects/DSFPropertyPanes/panel_simple.gif)
+![](https://dagronf.github.io/art/projects/DSFPropertyPanes/full.gif) ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/panel_simple.gif)
 
 ## Features
 
 * Basic inspector pane. Show and hide panes
+* Configurable from interface builder as inspectables
 * Optional supply a view as a header view
 * Optional automatic scroll view support
 * Optional animation
+* Show or hide individual panes
+* Expand or contract individual panes
 
 ## Why?
 
@@ -17,34 +18,38 @@ I've fought with this on a number of projects. I finally decided to make a drop-
 
 I really like Apple 'Pages' implementation which allows having a header view which can be used to configure items even when the pane itself is hidden.  A good example of this is the 'Spacing' inspector pane, where when the pane is hidden the user can still change the line spacing at a lower granularity.
 
-## Usage
+## Installation
 
-### Installation
+### Direct
 
-#### Direct
+Copy the swift files from the `DSFInspectorPanes` subfolder to your project
 
-* Copy `DSFInspectorPanesView.swift` to your project
-
-#### CocoaPods
+### CocoaPods
 
 Add the following to your `Podfiles` file
 
-* `pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'`
+```ruby
+pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
+```
 
-### API
+## API
+
+### Create
 
 1. Create an instance of `DSFInspectorPanesView` and add it to a view, or
 2. Use Interface Builder to add a custom view, and change the class to `DSFInspectorPanesView`
 
-The API is very simple
-
-#### Properties
+### Properties
 
 * `animated`: Animate the expanding/hiding of the panes
 * `usesScrollView`: Embed the panes view in a scroll view
+* `showSeparators`: Insert a separator between each pane
 * `titleFont`: Set the font to use for the title for the panes
+* `spacing`: Set the vertical spacing between each pane
 
-#### Methods
+### Methods
+
+#### Add
 
 Add a new inspector pane to the container
 
@@ -60,23 +65,54 @@ Add a new inspector pane to the container
 Example :-
 
 ```swift
-@IBOutlet weak var propertyPanes: DSFInspectorPanesView!
+var propertyPanes = DSFInspectorPanesView(frame: .zero,
+                                          animated: true,
+                                          embeddedInScrollView: false,
+                                          titleFont: NSFont.systemFont(ofSize: 13))
 
-@IBOutlet weak var freeTextView: NSView!
-@IBOutlet weak var freeTextHeaderView: NSView!
+var inspectorView = NSView()       // <--- your inspector pane view
+var inspectorHeaderView = NSView()  // <--- your inspector pane header view
 	
-func setupPanes {
-   propertyPanes.add(
-      title: "Description", 
-      view: self.freeTextView,
-      headerAccessoryView: freeTextHeaderView,
-      expanded: true)
+propertyPanes.add(
+   title: "My inspector Pane", 
+   view: inspectorView,
+   headerAccessoryView: inspectorHeaderView,
+   expanded: true)
 }
 ```
 
+### Pane access
+
+You can access the panes using the `panes` variable on the class which returns the panes as an array of `DSFInspectorPaneProtocol`
+
+#### Expand an existing pane
+
+```swift
+var propertyPanes = DSFInspectorPanesView()
+...
+func expandFirstPane(shouldExpand: Bool) {
+	propertyPanes.panes[1].expanded = shouldExpand
+}
+```
+
+#### Show or hide a pane
+
+```swift
+var propertyPanes = DSFInspectorPanesView()
+...
+func hideFirstPane(shouldHide: Bool) {
+	propertyPanes.panes[1].hide = shouldHide
+}
+```
+
+## Thanks
+
+### RSVerticallyCenteredTextFieldCell
+* Red Sweater Software, LLC for [RSVerticallyCenteredTextFieldCell](http://www.red-sweater.com/blog/148/what-a-difference-a-cell-makes) component  — [License](http://opensource.org/licenses/mit-license.php)
+
 
 ## License
-
+```
 MIT License
 
 Copyright (c) 2019 Darren Ford
@@ -98,3 +134,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
