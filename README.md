@@ -9,6 +9,7 @@
 * Optional supply a view as a header view
 * Optional automatic scroll view support
 * Optional animation
+* Optional separators or bounding boxes
 * Show or hide individual panes
 * Expand or contract individual panes
 

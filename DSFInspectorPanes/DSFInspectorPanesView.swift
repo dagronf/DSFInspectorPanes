@@ -39,11 +39,14 @@ import Cocoa
 	/// Should there be separators between the inspector panes?
 	@IBInspectable private(set) var showSeparators: Bool = true
 
+	/// Should we wrap each inspector pane in a rounded box?
+	@IBInspectable private(set) var showBoxes: Bool = false
+
 	/// Edge insets from the view to inset the panes
-	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) {
+	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 0, bottom: 8, right: 0) {
 		didSet {
-			self.stackView.edgeInsets = self.insets
-			self.stackView.needsLayout = true
+			self.primaryStack.edgeInsets = self.insets
+			self.primaryStack.needsLayout = true
 		}
 	}
 
@@ -58,8 +61,8 @@ import Cocoa
 	/// Vertical spacing between panes
 	@IBInspectable public var spacing: CGFloat = 8 {
 		didSet {
-			self.stackView.spacing = self.spacing
-			self.stackView.needsLayout = true
+			self.primaryStack.spacing = self.spacing
+			self.primaryStack.needsLayout = true
 		}
 	}
 
@@ -69,16 +72,18 @@ import Cocoa
 	}
 
 	private var scrollView: NSScrollView?
-	private let stackView = FlippedStackView()
+	private let primaryStack = FlippedStackView()
 
 	@objc public init(frame frameRect: NSRect,
 					  animated: Bool = true,
 					  embeddedInScrollView: Bool = true,
 					  showSeparators: Bool = true,
+					  showBoxes: Bool = false,
 					  titleFont: NSFont? = nil) {
 		self.animated = animated
 		self.embeddedInScrollView = embeddedInScrollView
 		self.showSeparators = showSeparators
+		self.showBoxes = showBoxes
 		if let font = titleFont {
 			self.titleFont = font
 		}
@@ -96,14 +101,16 @@ import Cocoa
 		headerAccessoryView: NSView? = nil,
 		canHide: Bool = true,
 		expanded: Bool = true
-		) {
-		if self.showSeparators && self.arrangedInspectorPanes.count > 0 {
+	) {
+		view.translatesAutoresizingMaskIntoConstraints = false
+
+		if self.showSeparators, self.arrangedInspectorPanes.count > 0 {
 			// If there is a previous pane in place, add in a separator
 			let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))
 			box.boxType = .separator
 			box.translatesAutoresizingMaskIntoConstraints = false
-			self.stackView.addArrangedSubview(box) // (box, in: .top)
-			self.stackView.addConstraints(
+			self.primaryStack.addArrangedSubview(box) // (box, in: .top)
+			self.primaryStack.addConstraints(
 				NSLayoutConstraint.constraints(
 					withVisualFormat: "H:|-12-[box]-12-|",
 					options: NSLayoutConstraint.FormatOptions(rawValue: 0),
@@ -114,16 +121,17 @@ import Cocoa
 			self.arrangedInspectorPanes.last?.associatedSeparator = box
 		}
 
-		let disclosureView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, animated: self.animated)
-		disclosureView.translatesAutoresizingMaskIntoConstraints = false
-		disclosureView.add(propertyView: view, headerAccessoryView: headerAccessoryView)
-		disclosureView.title = title
-		self.stackView.addArrangedSubview(disclosureView)
+		let inspectorPaneView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, showBox: self.showBoxes, animated: self.animated)
+		inspectorPaneView.translatesAutoresizingMaskIntoConstraints = false
+		inspectorPaneView.add(propertyView: view, headerAccessoryView: headerAccessoryView)
+		inspectorPaneView.headerTitle = title
+		self.primaryStack.addArrangedSubview(inspectorPaneView)
 
-		let vScrollWidth = 12
+		// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
+		let vScrollWidth = self.embeddedInScrollView ? 12 : 4
 		let metrics = ["vScrollWidth": vScrollWidth]
-		let variableBindings = ["disclosureView": disclosureView] as [String: Any]
-		stackView.addConstraints(NSLayoutConstraint.constraints(
+		let variableBindings = ["disclosureView": inspectorPaneView] as [String: Any]
+		primaryStack.addConstraints(NSLayoutConstraint.constraints(
 			withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
 			options: .alignAllLastBaseline,
 			metrics: metrics as [String: NSNumber],
@@ -131,14 +139,14 @@ import Cocoa
 		))
 
 		if canHide, !expanded {
-			disclosureView.openDisclosure(open: false, animated: false)
+			inspectorPaneView.openDisclosure(open: false, animated: false)
 		}
 
 		view.needsUpdateConstraints = true
 		view.needsLayout = true
-		self.stackView.needsLayout = true
-		disclosureView.needsUpdateConstraints = true
-		self.stackView.needsUpdateConstraints = true
+		self.primaryStack.needsLayout = true
+		inspectorPaneView.needsUpdateConstraints = true
+		self.primaryStack.needsUpdateConstraints = true
 		window?.recalculateKeyViewLoop()
 	}
 
@@ -191,20 +199,19 @@ extension DSFInspectorPanesView {
 			))
 		}
 
-		self.stackView.translatesAutoresizingMaskIntoConstraints = false
-		self.stackView.orientation = .vertical
-		self.stackView.alignment = .left
-		self.stackView.distribution = .fillProportionally
-		self.stackView.spacing = self.spacing
-		self.stackView.detachesHiddenViews = true
-		self.stackView.edgeInsets = self.insets
-		self.stackView.setContentHuggingPriority(.required, for: .vertical)
-		self.stackView.edgeInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-		self.stackView.setContentCompressionResistancePriority(.required, for: .vertical)
+		self.primaryStack.translatesAutoresizingMaskIntoConstraints = false
+		self.primaryStack.orientation = .vertical
+		self.primaryStack.alignment = .left
+		self.primaryStack.distribution = .fillProportionally
+		self.primaryStack.spacing = self.spacing
+		self.primaryStack.detachesHiddenViews = true
+		self.primaryStack.edgeInsets = self.insets
+		self.primaryStack.setContentHuggingPriority(.required, for: .vertical)
+		self.primaryStack.setContentCompressionResistancePriority(.required, for: .vertical)
 
 		if self.embeddedInScrollView, let sv = self.scrollView {
-			sv.documentView = self.stackView
-			let variableBindings2 = ["_documentView": self.stackView] as [String: Any]
+			sv.documentView = self.primaryStack
+			let variableBindings2 = ["_documentView": self.primaryStack] as [String: Any]
 			let hConstraints = NSLayoutConstraint.constraints(
 				withVisualFormat: "H:|[_documentView]|",
 				options: .alignAllLastBaseline,
@@ -221,8 +228,8 @@ extension DSFInspectorPanesView {
 			sv.contentView.addConstraints(hConstraints)
 			sv.contentView.addConstraints(vConstraints)
 		} else {
-			addSubview(self.stackView)
-			let variableBindings2 = ["_stack": self.stackView] as [String: Any]
+			addSubview(self.primaryStack)
+			let variableBindings2 = ["_stack": self.primaryStack] as [String: Any]
 			let hConstraints = NSLayoutConstraint.constraints(
 				withVisualFormat: "H:|[_stack]|",
 				options: .alignAllLastBaseline,
@@ -238,15 +245,15 @@ extension DSFInspectorPanesView {
 			addConstraints(hConstraints)
 			addConstraints(vConstraints)
 
-			self.stackView.setClippingResistancePriority(.required, for: .vertical)
-			self.stackView.setHuggingPriority(.required, for: .vertical)
+			self.primaryStack.setClippingResistancePriority(.required, for: .vertical)
+			self.primaryStack.setHuggingPriority(.required, for: .vertical)
 			self.superview?.setContentHuggingPriority(.required, for: .vertical)
 		}
 	}
 
 	/// Return the contained inspector panes
 	private var arrangedInspectorPanes: [DSFInspectorPaneView] {
-		let panes = self.stackView.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
+		let panes = self.primaryStack.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
 		return panes as? [DSFInspectorPaneView] ?? []
 	}
 }

@@ -87,7 +87,7 @@ internal class RSVerticallyCenteredTextFieldCell: NSTextFieldCell {
 		delegate: Any?,
 		start selStart: Int,
 		length selLength: Int
-		) {
+	) {
 		let arect = self.drawingRect(forBounds: rect)
 		self.mIsEditingOrSelecting = true
 		super.select(withFrame: arect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
@@ -100,10 +100,16 @@ internal class RSVerticallyCenteredTextFieldCell: NSTextFieldCell {
 		editor textObj: NSText,
 		delegate: Any?,
 		event: NSEvent?
-		) {
+	) {
 		let aRect = self.drawingRect(forBounds: rect)
 		self.mIsEditingOrSelecting = true
 		super.edit(withFrame: aRect, in: controlView, editor: textObj, delegate: delegate, event: event)
 		self.mIsEditingOrSelecting = false
+	}
+}
+
+internal extension NSEdgeInsets {
+	static var zero: NSEdgeInsets {
+		return NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 	}
 }

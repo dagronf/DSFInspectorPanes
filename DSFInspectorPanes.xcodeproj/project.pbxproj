@@ -24,9 +24,7 @@
 		239B4B6022ACA2AE004DA5D1 /* TextWithButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */; };
 		239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */; };
 		239B4B6622ACAE87004DA5D1 /* MainPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */; };
-		239B4B6722ACAE87004DA5D1 /* MainPropertyPanesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B6522ACAE87004DA5D1 /* MainPropertyPanesViewController.xib */; };
 		239B4B6A22ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */; };
-		239B4B6B22ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B6922ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib */; };
 		23B61DCD22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */; };
 		23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */; };
 		23B61DD122AC759F00098F3C /* DSFInspectorPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */; };
@@ -56,9 +54,7 @@
 		239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithButtonViewController.swift; sourceTree = "<group>"; };
 		239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextWithButtonViewController.xib; sourceTree = "<group>"; };
 		239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPropertyPanesViewController.swift; sourceTree = "<group>"; };
-		239B4B6522ACAE87004DA5D1 /* MainPropertyPanesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPropertyPanesViewController.xib; sourceTree = "<group>"; };
 		239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPropertyPanesViewController.swift; sourceTree = "<group>"; };
-		239B4B6922ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowPropertyPanesViewController.xib; sourceTree = "<group>"; };
 		23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFInspectorPanes.podspec; sourceTree = "<group>"; };
 		23ACF96C228A390400FF6594 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPaneProtocol.swift; sourceTree = "<group>"; };
@@ -159,9 +155,7 @@
 				239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */,
 				239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */,
 				239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */,
-				239B4B6522ACAE87004DA5D1 /* MainPropertyPanesViewController.xib */,
 				239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */,
-				239B4B6922ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib */,
 			);
 			path = "demo-controllers";
 			sourceTree = "<group>";
@@ -267,8 +261,6 @@
 			files = (
 				23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */,
 				239B4B5D22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib in Resources */,
-				239B4B6722ACAE87004DA5D1 /* MainPropertyPanesViewController.xib in Resources */,
-				239B4B6B22ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib in Resources */,
 				239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */,
 				23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */,
 				239B4B5922ACA13E004DA5D1 /* ColorViewController.xib in Resources */,

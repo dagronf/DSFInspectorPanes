@@ -17,7 +17,6 @@
             <connections>
                 <outlet property="WindowPropertyPanesController" destination="nRS-I3-W2s" id="taT-75-zr8"/>
                 <outlet property="mainPropertyPanesController" destination="rbl-sd-GWu" id="U4N-yg-kya"/>
-                <outlet property="propertyPaneWindow" destination="ayH-70-y6T" id="PeR-mA-x2T"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -720,8 +719,10 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spacing">
-                                        <real key="value" value="12"/>
+                                        <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
                         </subviews>
@@ -750,18 +751,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView identifier="Property Pane Without Scroller" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WFu-cU-ETL" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
-                        <rect key="frame" x="0.0" y="8" width="276" height="43"/>
+                        <rect key="frame" x="4" y="8" width="268" height="43"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WFu-cU-ETL" firstAttribute="top" secondItem="j5w-dx-aSp" secondAttribute="top" constant="8" id="Ije-AL-xuA"/>
-                    <constraint firstItem="WFu-cU-ETL" firstAttribute="leading" secondItem="j5w-dx-aSp" secondAttribute="leading" id="gal-B5-AdT"/>
+                    <constraint firstItem="WFu-cU-ETL" firstAttribute="leading" secondItem="j5w-dx-aSp" secondAttribute="leading" constant="4" id="gal-B5-AdT"/>
                     <constraint firstAttribute="bottom" secondItem="WFu-cU-ETL" secondAttribute="bottom" constant="8" id="o5s-re-7gw"/>
-                    <constraint firstAttribute="trailing" secondItem="WFu-cU-ETL" secondAttribute="trailing" id="x2d-yy-PVF"/>
+                    <constraint firstAttribute="trailing" secondItem="WFu-cU-ETL" secondAttribute="trailing" constant="4" id="x2d-yy-PVF"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="400" y="2"/>

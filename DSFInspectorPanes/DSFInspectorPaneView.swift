@@ -26,33 +26,41 @@
 //  SOFTWARE.
 //
 
+import Carbon.HIToolbox
 import Cocoa
 
-internal class DSFInspectorPaneView: NSView {
+internal class DSFInspectorPaneView: NSBox {
 	// Is the item animated?
-	let animated: Bool
-	
+	private let animated: Bool
+	// Should the inspector pane be embedded within a box?
+	private var showBox: Bool
+
 	// The primary stack, containing header and property pane
 	private var mainStack = NSStackView()
-	
+
 	// Header view
 	private var headerView = NSStackView()
 	// Disclosure button
 	private var disclosureButton: NSButton?
 	// Title for the pane
-	fileprivate var titleTextView: NSTextField?
+	private var titleTextView: NSTextField?
 	// The container holding the header accessory view
 	private let headerAccessoryViewContainer = NSView()
-	
+
 	// Property view container
 	internal let inspectorViewContainerView = NSView()
 	// The actual property view being displayed
 	private var inspectorView: NSView?
-	
+
+	// Can the pane be contracted/expanded
+	var canExpand: Bool {
+		return !(self.disclosureButton?.isHidden ?? true)
+	}
+
 	// If a separator was automatically added, the separator view
 	internal var associatedSeparator: NSBox?
-	
-	internal var titleFont: NSFont? {
+
+	internal var headerFont: NSFont? {
 		get {
 			return self.titleTextView?.font
 		}
@@ -61,37 +69,47 @@ internal class DSFInspectorPaneView: NSView {
 			self.needsLayout = true
 		}
 	}
-	
+
 	// Constraint from the pane to the bottom of the property view
 	// We want to remove and add this as the panel is opened/closed
 	var panelBottom: NSLayoutConstraint!
 	var heightConstraint: NSLayoutConstraint!
-	
+
 	override var isFlipped: Bool {
 		return true
 	}
-	
-	public var title: String = "<property>" {
+
+	public var headerTitle: String = "<property>" {
 		didSet {
-			self.titleTextView?.stringValue = self.title
+			self.titleTextView?.stringValue = self.headerTitle
+			self.setAccessibilityLabel("\(self.headerTitle) pane")
 		}
 	}
-	
-	internal init(titleFont: NSFont, canHide: Bool, animated: Bool) {
+
+	internal init(titleFont: NSFont, canHide: Bool, showBox: Bool, animated: Bool) {
 		self.animated = animated
+		self.showBox = showBox
 		super.init(frame: .zero)
 		translatesAutoresizingMaskIntoConstraints = false
-		self.setup(titleFont: titleFont, canHide: canHide, animated: animated)
+		self.setup(titleFont: titleFont, canHide: canHide)
 	}
-	
+
 	required init?(coder _: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	private func setup(titleFont: NSFont, canHide: Bool, animated _: Bool) {
+
+	private func setup(titleFont: NSFont, canHide: Bool) {
+		guard let content = self.contentView else {
+			return
+		}
+
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.titlePosition = .noTitle
+		self.borderType = self.showBox ? .lineBorder : .noBorder
+
 		self.headerAccessoryViewContainer.translatesAutoresizingMaskIntoConstraints = false
 		self.headerAccessoryViewContainer.setContentHuggingPriority(.required, for: .vertical)
-		
+
 		self.mainStack.translatesAutoresizingMaskIntoConstraints = false
 		self.mainStack.frame = frame
 		self.mainStack.orientation = .vertical
@@ -100,26 +118,27 @@ internal class DSFInspectorPaneView: NSView {
 		self.mainStack.spacing = 8
 		self.mainStack.detachesHiddenViews = true
 		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
-		self.mainStack.edgeInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-		addSubview(self.mainStack)
-		
-		self.mainStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-		self.mainStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
-		self.mainStack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-		self.mainStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-		
+		self.mainStack.edgeInsets = .zero
+
+		self.addSubview(self.mainStack)
+
+		self.mainStack.leadingAnchor.constraint(equalTo: content.leadingAnchor).isActive = true
+		self.mainStack.topAnchor.constraint(equalTo: content.topAnchor).isActive = true
+		self.mainStack.bottomAnchor.constraint(equalTo: content.bottomAnchor).isActive = true
+		self.mainStack.trailingAnchor.constraint(equalTo: content.trailingAnchor).isActive = true
+
 		self.mainStack.setHuggingPriority(.defaultLow, for: .horizontal)
 		self.mainStack.setHuggingPriority(.required, for: .vertical)
 		self.mainStack.setContentCompressionResistancePriority(.required, for: .vertical)
-		
+
 		self.mainStack.setClippingResistancePriority(.required, for: .vertical)
 		self.mainStack.setHuggingPriority(.required, for: .vertical)
-		
+
 		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
-		
+
 		setContentHuggingPriority(.required, for: .vertical)
 		setContentCompressionResistancePriority(.required, for: .vertical)
-		
+
 		//////
 		let disclosure = NSButton()
 		disclosure.translatesAutoresizingMaskIntoConstraints = false
@@ -132,12 +151,12 @@ internal class DSFInspectorPaneView: NSView {
 		disclosure.action = #selector(self.toggleDisclosure(sender:))
 		disclosure.isHidden = !canHide
 		disclosure.controlSize = .mini
-		
+
 		disclosure.wantsLayer = true
 		disclosure.layer!.backgroundColor = CGColor.clear
-		
+
 		self.disclosureButton = disclosure
-		
+
 		let title = CreateInspectorTitleField()
 		title.font = titleFont
 		title.stringValue = "Dummy Value"
@@ -149,28 +168,26 @@ internal class DSFInspectorPaneView: NSView {
 		title.isBordered = false
 		title.drawsBackground = false
 		title.translatesAutoresizingMaskIntoConstraints = false
-		
+
 		title.setContentCompressionResistancePriority(.required, for: .horizontal)
 		title.setContentCompressionResistancePriority(.required, for: .vertical)
 		title.setContentHuggingPriority(.defaultLow, for: .horizontal)
 		title.setContentHuggingPriority(.defaultLow, for: .vertical)
-		
+
 		self.titleTextView = title
-		
-		if canHide {
-			let gesture = NSClickGestureRecognizer()
-			gesture.buttonMask = 0x1 // left mouse
-			gesture.numberOfClicksRequired = 1
-			gesture.target = self
-			gesture.action = #selector(self.toggleDisclosure(sender:))
-			title.addGestureRecognizer(gesture)
-		}
-		
+
+		let gesture = NSClickGestureRecognizer()
+		gesture.buttonMask = 0x1 // left mouse
+		gesture.numberOfClicksRequired = 1
+		gesture.target = self
+		gesture.action = #selector(self.headerClick(sender:))
+		title.addGestureRecognizer(gesture)
+
 		// Dummy spacer to make sure the accessory view appears on the right
 		let spacer = NSView()
 		spacer.translatesAutoresizingMaskIntoConstraints = false
 		spacer.setContentHuggingPriority(.defaultLow, for: .horizontal)
-		
+
 		self.headerView.translatesAutoresizingMaskIntoConstraints = false
 		self.headerView.distribution = .fillProportionally
 		self.headerView.spacing = 4
@@ -188,33 +205,33 @@ internal class DSFInspectorPaneView: NSView {
 		self.headerAccessoryViewContainer.isHidden = true
 		self.mainStack.addArrangedSubview(self.headerView)
 		//////
-		
+
 		self.inspectorViewContainerView.translatesAutoresizingMaskIntoConstraints = false
 		self.inspectorViewContainerView.wantsLayer = true
-		
+
 		self.inspectorViewContainerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
 		self.inspectorViewContainerView.setContentHuggingPriority(.required, for: .vertical)
-		
+
 		self.mainStack.addArrangedSubview(self.inspectorViewContainerView)
-		
+
 		updateConstraintsForSubtreeIfNeeded()
 	}
-	
+
 	/// Set the view (and header accessory) for the container
 	internal func add(propertyView: NSView, headerAccessoryView: NSView? = nil) {
 		self.inspectorView = propertyView
-		
+
 		self.inspectorViewContainerView.subviews.forEach { $0.removeFromSuperview() }
-		
+
 		propertyView.wantsLayer = true
 		propertyView.translatesAutoresizingMaskIntoConstraints = false
 		propertyView.setContentHuggingPriority(.required, for: .vertical)
-		
+
 		self.disclosureButton!.state = .on
 		self.inspectorViewContainerView.addSubview(propertyView)
-		
+
 		let variableBindings = ["panelView": propertyView] as [String: Any]
-		
+
 		// add horizontal constraints
 		inspectorViewContainerView.addConstraints(NSLayoutConstraint.constraints(
 			withVisualFormat: "H:|[panelView]|",
@@ -222,7 +239,7 @@ internal class DSFInspectorPaneView: NSView {
 			metrics: nil,
 			views: variableBindings
 		))
-		
+
 		self.inspectorViewContainerView.addConstraint(
 			NSLayoutConstraint(
 				item: propertyView,
@@ -234,7 +251,7 @@ internal class DSFInspectorPaneView: NSView {
 				constant: 0
 			)
 		)
-		
+
 		self.panelBottom = NSLayoutConstraint(
 			item: propertyView,
 			attribute: .bottom,
@@ -244,13 +261,13 @@ internal class DSFInspectorPaneView: NSView {
 			multiplier: 1,
 			constant: 0
 		)
-		
+
 		self.inspectorViewContainerView.addConstraint(self.panelBottom)
 		self.inspectorViewContainerView.needsLayout = true
-		
+
 		self.inspectorViewContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
 		self.inspectorViewContainerView.setContentHuggingPriority(.required, for: .vertical)
-		
+
 		self.heightConstraint = NSLayoutConstraint(
 			item: self.inspectorViewContainerView,
 			attribute: .height,
@@ -260,13 +277,13 @@ internal class DSFInspectorPaneView: NSView {
 			multiplier: 1,
 			constant: bounds.minY - self.headerView.frame.minY
 		)
-		
+
 		self.headerAccessoryViewContainer.subviews.forEach { $0.removeFromSuperview() }
 		if let hav = headerAccessoryView {
 			hav.translatesAutoresizingMaskIntoConstraints = false
 			hav.setContentHuggingPriority(.required, for: .vertical)
 			hav.setContentCompressionResistancePriority(.required, for: .vertical)
-			
+
 			self.headerAccessoryViewContainer.addSubview(hav)
 			// add horizontal constraints
 			let variableBindings = ["panelView": hav] as [String: Any]
@@ -283,31 +300,21 @@ internal class DSFInspectorPaneView: NSView {
 				views: variableBindings
 			))
 		}
-		
+
 		setContentHuggingPriority(.required, for: .vertical)
-		
+
 		self.needsUpdateConstraints = true
 	}
-	
-	@objc func toggleDisclosure(sender: AnyObject) {
-		// called when the disclosure button is pressed
-		if let disclosure = sender as? NSButton {
-			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
-		} else if let disclosure = self.disclosureButton {
-			self.disclosureButton?.state = disclosure.state == .on ? .off : .on
-			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
-		}
-	}
-	
+
 	private func animSpeed() -> TimeInterval {
 		if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
 			return 2.0
 		}
 		return 0.1
 	}
-	
+
 	// MARK: - Open and close
-	
+
 	func openDisclosure(open: Bool, animated: Bool) {
 		if self.disclosureButton!.isHidden {
 			return
@@ -319,16 +326,16 @@ internal class DSFInspectorPaneView: NSView {
 			self.closePane(animated: animated)
 		}
 	}
-	
+
 	// MARK: Open Pane
-	
+
 	private func openPane(animated: Bool) {
 		self.inspectorViewContainerView.isHidden = false
-		
+
 		// Get the height of the (hidden) view
 		self.inspectorView?.layout()
 		let inspectorHeight = self.inspectorView!.fittingSize.height
-		
+
 		if animated {
 			NSAnimationContext.runAnimationGroup({ context in
 				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
@@ -343,7 +350,7 @@ internal class DSFInspectorPaneView: NSView {
 			self.openPanelComplete()
 		}
 	}
-	
+
 	private func openPanelComplete() {
 		self.inspectorViewContainerView.alphaValue = 1.0
 		self.inspectorViewContainerView.isHidden = false
@@ -355,13 +362,13 @@ internal class DSFInspectorPaneView: NSView {
 		self.needsUpdateConstraints = true
 		self.needsLayout = true
 	}
-	
+
 	// MARK: Close Pane
-	
+
 	private func closePane(animated: Bool) {
 		// close an open panel
 		self.heightConstraint.constant = self.inspectorView!.frame.height
-		
+
 		self.inspectorViewContainerView.addConstraint(self.heightConstraint)
 		self.inspectorViewContainerView.removeConstraint(self.panelBottom)
 		self.inspectorViewContainerView.needsLayout = true
@@ -380,7 +387,7 @@ internal class DSFInspectorPaneView: NSView {
 			self.closePanelComplete()
 		}
 	}
-	
+
 	private func closePanelComplete() {
 		self.inspectorViewContainerView.isHidden = true
 		self.headerAccessoryViewContainer.isHidden = false
@@ -391,6 +398,54 @@ internal class DSFInspectorPaneView: NSView {
 		self.needsLayout = true
 		self.needsUpdateConstraints = true
 		self.window?.recalculateKeyViewLoop()
+	}
+}
+
+// MARK: Interaction
+
+extension DSFInspectorPaneView {
+	override var acceptsFirstResponder: Bool {
+		return true
+	}
+
+	override func drawFocusRingMask() {
+		var rect = self.bounds
+		rect.origin.y += 1
+		rect.size.height -= 4
+		rect.origin.x += 2
+		rect.size.width -= 4
+		let path = NSBezierPath.init(roundedRect: rect, xRadius: 4, yRadius: 4)
+		path.fill()
+	}
+
+	override var focusRingMaskBounds: NSRect {
+		return self.bounds
+	}
+
+	override func keyDown(with event: NSEvent) {
+		if event.keyCode == kVK_Space {
+			self.toggleDisclosure(sender: self)
+		}
+		else {
+			super.keyDown(with: event)
+		}
+	}
+
+	@objc func headerClick(sender: AnyObject) {
+		if self.canExpand {
+			self.toggleDisclosure(sender: sender)
+		}
+		self.window?.makeFirstResponder(self)
+	}
+
+	@objc func toggleDisclosure(sender: AnyObject) {
+		// called when the disclosure button is pressed
+		if let disclosure = sender as? NSButton {
+			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
+		} else if let disclosure = self.disclosureButton {
+			self.disclosureButton?.state = disclosure.state == .on ? .off : .on
+			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
+		}
 	}
 }
 
@@ -405,11 +460,11 @@ extension DSFInspectorPaneView: DSFInspectorPaneProtocol {
 			self.title = newValue
 		}
 	}
-	
+
 	var inspector: NSView? {
 		return self.inspectorView
 	}
-	
+
 	var header: NSView? {
 		let headerContainer = self.headerAccessoryViewContainer
 		if headerContainer.subviews.count == 1 {
@@ -417,7 +472,7 @@ extension DSFInspectorPaneView: DSFInspectorPaneProtocol {
 		}
 		return nil
 	}
-	
+
 	var expanded: Bool {
 		get {
 			let state = self.disclosureButton?.state ?? .on
@@ -427,11 +482,11 @@ extension DSFInspectorPaneView: DSFInspectorPaneProtocol {
 			self.openDisclosure(open: newValue, animated: self.animated)
 		}
 	}
-	
+
 	func setExpanded(_ expanded: Bool, animated: Bool) {
 		self.openDisclosure(open: expanded, animated: animated)
 	}
-	
+
 	var hide: Bool {
 		get {
 			return self.isHidden
