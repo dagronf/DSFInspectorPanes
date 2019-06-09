@@ -13,6 +13,11 @@
 		23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23263F8F2278F63F00B4FEF0 /* Assets.xcassets */; };
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
 		23263F9A2278F65400B4FEF0 /* DSFInspectorPanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; };
+		23B61DCD22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */; };
+		23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */; };
+		23B61DD122AC759F00098F3C /* DSFInspectorPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */; };
+		23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD222AC7A8F00098F3C /* DummyViewController.swift */; };
+		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFInspectorPanes_Demo.entitlements; sourceTree = "<group>"; };
 		23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFInspectorPanes.podspec; sourceTree = "<group>"; };
 		23ACF96C228A390400FF6594 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPaneProtocol.swift; sourceTree = "<group>"; };
+		23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanes+utilities.swift"; sourceTree = "<group>"; };
+		23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPaneView.swift; sourceTree = "<group>"; };
+		23B61DD222AC7A8F00098F3C /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		23B61DD322AC7A8F00098F3C /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
 		23FB5E1422897DA700D1CD57 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */,
+				23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */,
+				23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */,
 				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
+				23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */,
 				23263F7E2278F60400B4FEF0 /* Info.plist */,
 			);
 			path = DSFInspectorPanes;
@@ -90,6 +103,8 @@
 				23263F912278F63F00B4FEF0 /* MainMenu.xib */,
 				23263F942278F63F00B4FEF0 /* Info.plist */,
 				23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */,
+				23B61DD222AC7A8F00098F3C /* DummyViewController.swift */,
+				23B61DD322AC7A8F00098F3C /* DummyViewController.xib */,
 			);
 			path = DSFInspectorPanes_Demo;
 			sourceTree = "<group>";
@@ -201,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */,
+				23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */,
 				23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B61DD122AC759F00098F3C /* DSFInspectorPaneView.swift in Sources */,
 				23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */,
+				23B61DCD22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift in Sources */,
+				23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */,
+				23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

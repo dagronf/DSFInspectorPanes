@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -727,6 +728,10 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="252" id="2lj-1F-ofh"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </customView>
                         </subviews>
                         <holdingPriorities>
@@ -1071,7 +1076,7 @@
             </popUpButtonCell>
             <point key="canvasLocation" x="249" y="1022"/>
         </popUpButton>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ayH-70-y6T" customClass="NSPanel">
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ayH-70-y6T" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1358" y="956" width="276" height="59"/>
@@ -1081,17 +1086,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView identifier="Property Pane Without Scroller" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WFu-cU-ETL" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
-                        <rect key="frame" x="0.0" y="0.0" width="276" height="59"/>
+                        <rect key="frame" x="0.0" y="8" width="276" height="43"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="usesScrollView" value="NO"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WFu-cU-ETL" firstAttribute="top" secondItem="j5w-dx-aSp" secondAttribute="top" id="Ije-AL-xuA"/>
+                    <constraint firstItem="WFu-cU-ETL" firstAttribute="top" secondItem="j5w-dx-aSp" secondAttribute="top" constant="8" id="Ije-AL-xuA"/>
                     <constraint firstItem="WFu-cU-ETL" firstAttribute="leading" secondItem="j5w-dx-aSp" secondAttribute="leading" id="gal-B5-AdT"/>
-                    <constraint firstAttribute="bottom" secondItem="WFu-cU-ETL" secondAttribute="bottom" id="o5s-re-7gw"/>
+                    <constraint firstAttribute="bottom" secondItem="WFu-cU-ETL" secondAttribute="bottom" constant="8" id="o5s-re-7gw"/>
                     <constraint firstAttribute="trailing" secondItem="WFu-cU-ETL" secondAttribute="trailing" id="x2d-yy-PVF"/>
                 </constraints>
             </view>
