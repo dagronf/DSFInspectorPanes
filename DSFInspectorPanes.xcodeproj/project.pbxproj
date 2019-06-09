@@ -13,6 +13,20 @@
 		23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23263F8F2278F63F00B4FEF0 /* Assets.xcassets */; };
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
 		23263F9A2278F65400B4FEF0 /* DSFInspectorPanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; };
+		239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */; };
+		239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */; };
+		239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */; };
+		239B4B5522ACA0C4004DA5D1 /* AlignmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5322ACA0C4004DA5D1 /* AlignmentViewController.xib */; };
+		239B4B5822ACA13E004DA5D1 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5622ACA13E004DA5D1 /* ColorViewController.swift */; };
+		239B4B5922ACA13E004DA5D1 /* ColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5722ACA13E004DA5D1 /* ColorViewController.xib */; };
+		239B4B5C22ACA1EB004DA5D1 /* DescriptionFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5A22ACA1EB004DA5D1 /* DescriptionFieldViewController.swift */; };
+		239B4B5D22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5B22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib */; };
+		239B4B6022ACA2AE004DA5D1 /* TextWithButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */; };
+		239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */; };
+		239B4B6622ACAE87004DA5D1 /* MainPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */; };
+		239B4B6722ACAE87004DA5D1 /* MainPropertyPanesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B6522ACAE87004DA5D1 /* MainPropertyPanesViewController.xib */; };
+		239B4B6A22ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */; };
+		239B4B6B22ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B6922ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib */; };
 		23B61DCD22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */; };
 		23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */; };
 		23B61DD122AC759F00098F3C /* DSFInspectorPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */; };
@@ -31,6 +45,20 @@
 		23263F922278F63F00B4FEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		23263F942278F63F00B4FEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFInspectorPanes_Demo.entitlements; sourceTree = "<group>"; };
+		239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingViewController.swift; sourceTree = "<group>"; };
+		239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacingViewController.xib; sourceTree = "<group>"; };
+		239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentViewController.swift; sourceTree = "<group>"; };
+		239B4B5322ACA0C4004DA5D1 /* AlignmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlignmentViewController.xib; sourceTree = "<group>"; };
+		239B4B5622ACA13E004DA5D1 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
+		239B4B5722ACA13E004DA5D1 /* ColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorViewController.xib; sourceTree = "<group>"; };
+		239B4B5A22ACA1EB004DA5D1 /* DescriptionFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFieldViewController.swift; sourceTree = "<group>"; };
+		239B4B5B22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionFieldViewController.xib; sourceTree = "<group>"; };
+		239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithButtonViewController.swift; sourceTree = "<group>"; };
+		239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextWithButtonViewController.xib; sourceTree = "<group>"; };
+		239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPropertyPanesViewController.swift; sourceTree = "<group>"; };
+		239B4B6522ACAE87004DA5D1 /* MainPropertyPanesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPropertyPanesViewController.xib; sourceTree = "<group>"; };
+		239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPropertyPanesViewController.swift; sourceTree = "<group>"; };
+		239B4B6922ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowPropertyPanesViewController.xib; sourceTree = "<group>"; };
 		23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFInspectorPanes.podspec; sourceTree = "<group>"; };
 		23ACF96C228A390400FF6594 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPaneProtocol.swift; sourceTree = "<group>"; };
@@ -86,9 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */,
+				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
 				23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */,
 				23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */,
-				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
 				23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */,
 				23263F7E2278F60400B4FEF0 /* Info.plist */,
 			);
@@ -98,6 +126,7 @@
 		23263F8C2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				239B4B4D22ACA012004DA5D1 /* demo-controllers */,
 				23263F8D2278F63E00B4FEF0 /* AppDelegate.swift */,
 				23263F8F2278F63F00B4FEF0 /* Assets.xcassets */,
 				23263F912278F63F00B4FEF0 /* MainMenu.xib */,
@@ -114,6 +143,27 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		239B4B4D22ACA012004DA5D1 /* demo-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */,
+				239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */,
+				239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */,
+				239B4B5322ACA0C4004DA5D1 /* AlignmentViewController.xib */,
+				239B4B5622ACA13E004DA5D1 /* ColorViewController.swift */,
+				239B4B5722ACA13E004DA5D1 /* ColorViewController.xib */,
+				239B4B5A22ACA1EB004DA5D1 /* DescriptionFieldViewController.swift */,
+				239B4B5B22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib */,
+				239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */,
+				239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */,
+				239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */,
+				239B4B6522ACAE87004DA5D1 /* MainPropertyPanesViewController.xib */,
+				239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */,
+				239B4B6922ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib */,
+			);
+			path = "demo-controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,7 +266,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */,
+				239B4B5D22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib in Resources */,
+				239B4B6722ACAE87004DA5D1 /* MainPropertyPanesViewController.xib in Resources */,
+				239B4B6B22ACBA03004DA5D1 /* WindowPropertyPanesViewController.xib in Resources */,
+				239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */,
 				23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */,
+				239B4B5922ACA13E004DA5D1 /* ColorViewController.xib in Resources */,
+				239B4B5522ACA0C4004DA5D1 /* AlignmentViewController.xib in Resources */,
+				239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */,
 				23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +296,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239B4B6622ACAE87004DA5D1 /* MainPropertyPanesViewController.swift in Sources */,
+				239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */,
+				239B4B6A22ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift in Sources */,
 				23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */,
+				239B4B6022ACA2AE004DA5D1 /* TextWithButtonViewController.swift in Sources */,
+				239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */,
+				239B4B5822ACA13E004DA5D1 /* ColorViewController.swift in Sources */,
+				239B4B5C22ACA1EB004DA5D1 /* DescriptionFieldViewController.swift in Sources */,
 				23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

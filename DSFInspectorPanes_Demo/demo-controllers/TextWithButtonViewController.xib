@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TextWithButtonViewController" customModule="DSFInspectorPanes_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="h9n-Dq-1K0" id="j0y-3E-Ewd"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="h9n-Dq-1K0">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="111"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ROy-k4-0WF">
+                    <rect key="frame" x="144" y="79" width="61" height="27"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J9Q-VI-QmF">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9aU-31-xra">
+                    <rect key="frame" x="0.0" y="85" width="37" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="QRc-v9-9Cx">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N96-1z-GSC">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="74"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ddd-gR-nWK">
+                        <rect key="frame" x="1" y="1" width="183" height="72"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="gLM-bK-HPL">
+                                <rect key="frame" x="0.0" y="0.0" width="183" height="72"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="183" height="72"/>
+                                <size key="maxSize" width="225" height="10000000"/>
+                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="Eve-gJ-9uw"/>
+                    </constraints>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Oqz-KV-iuC">
+                        <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="yuE-qB-A4c">
+                        <rect key="frame" x="184" y="1" width="15" height="72"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="N96-1z-GSC" firstAttribute="leading" secondItem="h9n-Dq-1K0" secondAttribute="leading" id="1b5-jx-fej"/>
+                <constraint firstAttribute="trailing" secondItem="N96-1z-GSC" secondAttribute="trailing" id="LcZ-Lx-ATb"/>
+                <constraint firstItem="9aU-31-xra" firstAttribute="leading" secondItem="h9n-Dq-1K0" secondAttribute="leading" constant="2" id="MMl-EA-oIL"/>
+                <constraint firstAttribute="bottom" secondItem="N96-1z-GSC" secondAttribute="bottom" id="P6R-D1-Nck"/>
+                <constraint firstAttribute="trailing" secondItem="ROy-k4-0WF" secondAttribute="trailing" id="gX2-nz-vy5"/>
+                <constraint firstItem="ROy-k4-0WF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9aU-31-xra" secondAttribute="trailing" constant="20" id="oVl-eI-kLO"/>
+                <constraint firstItem="ROy-k4-0WF" firstAttribute="top" secondItem="h9n-Dq-1K0" secondAttribute="top" constant="8" id="sZe-0J-DfS"/>
+                <constraint firstItem="9aU-31-xra" firstAttribute="top" secondItem="h9n-Dq-1K0" secondAttribute="top" constant="9" id="uSm-Tc-YYc"/>
+                <constraint firstItem="N96-1z-GSC" firstAttribute="top" secondItem="ROy-k4-0WF" secondAttribute="bottom" constant="11" id="zXq-7y-H3o"/>
+            </constraints>
+            <point key="canvasLocation" x="661" y="665"/>
+        </customView>
+    </objects>
+</document>

@@ -45,8 +45,6 @@ internal class DSFInspectorPaneView: NSView {
 	// Constraint from the pane to the bottom of the property view
 	// We want to remove and add this as the panel is opened/closed
 	var panelBottom: NSLayoutConstraint!
-
-	var panelHeight: CGFloat = 0
 	var heightConstraint: NSLayoutConstraint!
 
 	override var isFlipped: Bool {
@@ -96,6 +94,9 @@ internal class DSFInspectorPaneView: NSView {
 
 		self.mainStack.setClippingResistancePriority(.required, for: .vertical)
 		self.mainStack.setHuggingPriority(.required, for: .vertical)
+
+
+		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
 
 		setContentHuggingPriority(.required, for: .vertical)
 		setContentCompressionResistancePriority(.required, for: .vertical)
@@ -231,7 +232,6 @@ internal class DSFInspectorPaneView: NSView {
 		self.inspectorViewContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
 		self.inspectorViewContainerView.setContentHuggingPriority(.required, for: .vertical)
 
-		self.panelHeight = NSMinY(bounds) - NSMinY(self.headerView.frame)
 		self.heightConstraint = NSLayoutConstraint(
 			item: self.inspectorViewContainerView,
 			attribute: .height,
@@ -239,7 +239,7 @@ internal class DSFInspectorPaneView: NSView {
 			toItem: nil,
 			attribute: .notAnAttribute,
 			multiplier: 1,
-			constant: self.panelHeight
+			constant: bounds.minY - self.headerView.frame.minY
 		)
 
 		self.headerAccessoryViewContainer.subviews.forEach { $0.removeFromSuperview() }
@@ -305,13 +305,18 @@ internal class DSFInspectorPaneView: NSView {
 
 	private func openPane(animated: Bool) {
 		self.inspectorViewContainerView.isHidden = false
+
+		// Get the height of the (hidden) view
+		self.inspectorView?.layout()
+		let inspectorHeight = self.inspectorView!.fittingSize.height
+
 		if animated {
 			NSAnimationContext.runAnimationGroup({ context in
 				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
 				context.duration = animSpeed()
 				self.inspectorViewContainerView.animator().alphaValue = 1.0
 				self.headerAccessoryViewContainer.animator().alphaValue = 0.0
-				self.heightConstraint.animator().constant = self.panelHeight
+				self.heightConstraint.animator().constant = inspectorHeight
 			}, completionHandler: {
 				self.openPanelComplete()
 			})
@@ -336,8 +341,7 @@ internal class DSFInspectorPaneView: NSView {
 
 	private func closePane(animated: Bool) {
 		// close an open panel
-		self.panelHeight = self.inspectorView!.frame.height
-		self.heightConstraint.constant = self.panelHeight
+		self.heightConstraint.constant = self.inspectorView!.frame.height
 
 		self.inspectorViewContainerView.addConstraint(self.heightConstraint)
 		self.inspectorViewContainerView.removeConstraint(self.panelBottom)

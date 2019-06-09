@@ -9,9 +9,8 @@ import Cocoa
 
 @IBDesignable
 @objc public class DSFInspectorPanesView: NSView {
-
 	/// Should we animate hiding and showing?
-	@IBInspectable private(set) var animated: Bool = true
+	@IBInspectable @objc private(set) var animated: Bool = true
 
 	/// Should (when created) that the property panes should exist within a scroll view?
 	@IBInspectable private(set) var embeddedInScrollView: Bool = true
@@ -25,7 +24,7 @@ import Cocoa
 	}
 
 	//! The font to use in the title for all property panes
-	@objc public var titleFont: NSFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize) {
+	@IBInspectable @objc public var titleFont: NSFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize) {
 		didSet {
 			self.arrangedInspectorPanes.forEach { $0.titleFont = self.titleFont }
 			self.needsLayout = true
@@ -33,7 +32,7 @@ import Cocoa
 	}
 
 	/// Vertical spacing between panes
-	@objc public var spacing: CGFloat = 8 {
+	@IBInspectable @objc public var spacing: CGFloat = 8 {
 		didSet {
 			self.stackView.spacing = self.spacing
 			self.stackView.needsLayout = true
@@ -50,9 +49,9 @@ import Cocoa
 	private let stackView = FlippedStackView()
 
 	@objc public init(frame frameRect: NSRect,
-	     animated: Bool = true,
-	     embeddedInScrollView: Bool = true,
-	     font: NSFont?) {
+					  animated: Bool = true,
+					  embeddedInScrollView: Bool = true,
+					  font: NSFont?) {
 		self.animated = animated
 		self.embeddedInScrollView = embeddedInScrollView
 		if let font = font {
@@ -62,10 +61,100 @@ import Cocoa
 		self.setup()
 	}
 
-	required init?(coder decoder: NSCoder) {
+	@objc required init?(coder decoder: NSCoder) {
 		super.init(coder: decoder)
 	}
 
+	@objc public func add(
+		title: String,
+		view: NSView,
+		headerAccessoryView: NSView? = nil,
+		canHide: Bool = true,
+		expanded: Bool = true
+		) {
+		if self.arrangedInspectorPanes.count > 0 {
+			// If there is a previous pane in place, add in a separator
+			let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))
+			box.boxType = .separator
+			box.translatesAutoresizingMaskIntoConstraints = false
+			self.stackView.addArrangedSubview(box) // (box, in: .top)
+			self.stackView.addConstraints(
+				NSLayoutConstraint.constraints(
+					withVisualFormat: "H:|-12-[box]-12-|",
+					options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+					metrics: nil,
+					views: ["box": box]
+				)
+			)
+			self.arrangedInspectorPanes.last?.associatedSeparator = box
+		}
+
+		let disclosureView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, animated: self.animated)
+		disclosureView.translatesAutoresizingMaskIntoConstraints = false
+		disclosureView.add(propertyView: view, headerAccessoryView: headerAccessoryView)
+		disclosureView.title = title
+		self.stackView.addArrangedSubview(disclosureView)
+
+		let vScrollWidth = 12
+		let metrics = ["vScrollWidth": vScrollWidth]
+		let variableBindings = ["disclosureView": disclosureView] as [String: Any]
+		stackView.addConstraints(NSLayoutConstraint.constraints(
+			withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
+			options: .alignAllLastBaseline,
+			metrics: metrics as [String: NSNumber],
+			views: variableBindings
+		))
+
+		if canHide, !expanded {
+			disclosureView.openDisclosure(open: false, animated: false)
+		}
+
+		view.needsUpdateConstraints = true
+		view.needsLayout = true
+		self.stackView.needsLayout = true
+		disclosureView.needsUpdateConstraints = true
+		self.stackView.needsUpdateConstraints = true
+		window?.recalculateKeyViewLoop()
+	}
+
+	/// Convenience method for showing or hiding all of the inspector panes at once
+	@objc public func expandAll(_ expanded: Bool, animated: Bool) {
+		self.arrangedInspectorPanes.forEach { $0.setExpanded(expanded, animated: animated) }
+	}
+}
+
+// MARK: - Subscripting and Iterating
+
+extension DSFInspectorPanesView: Collection {
+	public func index(after i: Int) -> Int {
+		return i + 1
+	}
+
+	public var startIndex: Int {
+		return 0
+	}
+
+	public var endIndex: Int {
+		return self.count()
+	}
+
+	public subscript(index: Int) -> DSFInspectorPaneProtocol? {
+		let items = self.arrangedInspectorPanes
+		guard index < items.count else {
+			return nil
+		}
+		return items[index]
+	}
+
+	public func count() -> Int {
+		let items = self.stackView.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
+		return items.count
+	}
+}
+
+// MARK: - Configuration
+
+extension DSFInspectorPanesView {
 	public override func awakeFromNib() {
 		// Only called with initWithCoder is called. Setup here because the inspectables aren't
 		// available until awakeFromNib is called
@@ -157,89 +246,5 @@ import Cocoa
 			self.stackView.setHuggingPriority(.required, for: .vertical)
 			self.superview?.setContentHuggingPriority(.required, for: .vertical)
 		}
-	}
-
-	@objc public func add(
-		title: String,
-		view: NSView,
-		headerAccessoryView: NSView? = nil,
-		canHide: Bool = true,
-		expanded: Bool = true
-	) {
-		let disclosureView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, animated: self.animated)
-		disclosureView.translatesAutoresizingMaskIntoConstraints = false
-		disclosureView.add(propertyView: view, headerAccessoryView: headerAccessoryView)
-		disclosureView.title = title
-		self.stackView.addArrangedSubview(disclosureView)
-
-		let vScrollWidth = 12
-		let metrics = ["vScrollWidth": vScrollWidth]
-		let variableBindings = ["disclosureView": disclosureView] as [String: Any]
-		stackView.addConstraints(NSLayoutConstraint.constraints(
-			withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
-			options: .alignAllLastBaseline,
-			metrics: metrics as [String: NSNumber],
-			views: variableBindings
-		))
-
-		let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))
-		box.boxType = .separator
-		box.translatesAutoresizingMaskIntoConstraints = false
-		self.stackView.addArrangedSubview(box) // (box, in: .top)
-		self.stackView.addConstraints(
-			NSLayoutConstraint.constraints(
-				withVisualFormat: "H:|-12-[box]-12-|",
-				options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-				metrics: nil,
-				views: ["box": box])
-		)
-
-		disclosureView.associatedSeparator = box
-
-		if canHide && !expanded {
-			disclosureView.openDisclosure(open: false, animated: false)
-		}
-
-		view.needsUpdateConstraints = true
-		view.needsLayout = true
-		disclosureView.needsUpdateConstraints = true
-		self.stackView.needsUpdateConstraints = true
-		window?.recalculateKeyViewLoop()
-	}
-
-	/// Convenience method for showing or hiding all of the inspector panes at once
-	public func expandAll(_ expanded: Bool, animated: Bool? = nil) {
-		arrangedInspectorPanes.forEach { $0.setExpanded(expanded, animated: animated ?? self.animated) }
-	}
-}
-
-// MARK: - Subscripting and Iterating
-
-extension DSFInspectorPanesView: Collection {
-	public func index(after i: Int) -> Int {
-		return i + 1
-	}
-
-	public var startIndex: Int {
-		return 0
-	}
-
-	public var endIndex: Int {
-		return self.count()
-	}
-
-	public subscript(index: Int) -> DSFInspectorPaneProtocol? {
-		get {
-			let items = self.arrangedInspectorPanes
-			guard index < items.count else {
-				return nil
-			}
-			return items[index]
-		}
-	}
-
-	public func count() -> Int {
-		let items = self.stackView.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
-		return items.count
 	}
 }

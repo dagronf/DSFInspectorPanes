@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AlignmentViewController" customModule="DSFInspectorPanes_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="9qx-he-Fma" id="AUQ-71-RBW"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView horizontalHuggingPriority="100" horizontalCompressionResistancePriority="100" id="9qx-he-Fma">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <segmentedControl horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dz2-84-k5g">
+                    <rect key="frame" x="-2" y="57" width="264" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="Td4-dU-nd4">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Left"/>
+                            <segment label="Center" selected="YES" tag="1"/>
+                            <segment label="Right"/>
+                            <segment label="Fill"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+                <segmentedControl horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sYY-gX-NAk">
+                    <rect key="frame" x="-2" y="28" width="264" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="bYk-m8-227">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Decrease Indent"/>
+                            <segment label="Increase Indent" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+                <segmentedControl horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-3g-hG8">
+                    <rect key="frame" x="-2" y="-1" width="264" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="pPe-Dq-QGf">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Top"/>
+                            <segment label="Middle" selected="YES" tag="1"/>
+                            <segment label="Right"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Lxr-3g-hG8" secondAttribute="bottom" constant="1" id="0Vy-Hq-6LN"/>
+                <constraint firstItem="dz2-84-k5g" firstAttribute="leading" secondItem="9qx-he-Fma" secondAttribute="leading" id="3My-cG-woZ"/>
+                <constraint firstAttribute="trailing" secondItem="dz2-84-k5g" secondAttribute="trailing" id="3ZL-ha-aAj"/>
+                <constraint firstItem="Lxr-3g-hG8" firstAttribute="leading" secondItem="9qx-he-Fma" secondAttribute="leading" id="4Zc-xI-y3z"/>
+                <constraint firstAttribute="trailing" secondItem="sYY-gX-NAk" secondAttribute="trailing" id="DBD-de-dig"/>
+                <constraint firstAttribute="trailing" secondItem="Lxr-3g-hG8" secondAttribute="trailing" id="GeY-v1-IEv"/>
+                <constraint firstItem="dz2-84-k5g" firstAttribute="top" secondItem="9qx-he-Fma" secondAttribute="top" constant="1" id="URn-bF-fp1"/>
+                <constraint firstItem="sYY-gX-NAk" firstAttribute="leading" secondItem="9qx-he-Fma" secondAttribute="leading" id="dQt-DM-InL"/>
+                <constraint firstItem="sYY-gX-NAk" firstAttribute="top" secondItem="dz2-84-k5g" secondAttribute="bottom" constant="8" id="hrp-lb-pDl"/>
+                <constraint firstItem="Lxr-3g-hG8" firstAttribute="top" secondItem="sYY-gX-NAk" secondAttribute="bottom" constant="8" id="thm-vU-vem"/>
+            </constraints>
+            <point key="canvasLocation" x="81" y="80"/>
+        </customView>
+    </objects>
+</document>
