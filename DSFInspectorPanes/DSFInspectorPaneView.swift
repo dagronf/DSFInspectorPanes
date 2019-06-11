@@ -115,19 +115,19 @@ internal class DSFInspectorPaneView: DSFInspectorBox {
 		}
 	}
 
-	internal init(titleFont: NSFont, canHide: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool) {
+	internal init(titleFont: NSFont, canHide: Bool, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool) {
 		self.animated = animated
 		super.init(frame: .zero)
 		self.inspectorType = inspectorType
 		translatesAutoresizingMaskIntoConstraints = false
-		self.setup(titleFont: titleFont, canHide: canHide)
+		self.setup(titleFont: titleFont, canHide: canHide, canReorder: canReorder)
 	}
 
 	required init?(coder _: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	private func setup(titleFont: NSFont, canHide: Bool) {
+	private func setup(titleFont: NSFont, canHide: Bool, canReorder: Bool) {
 		guard let content = self.contentView else {
 			return
 		}
@@ -228,6 +228,11 @@ internal class DSFInspectorPaneView: DSFInspectorBox {
 		self.headerView.setHuggingPriority(.required, for: .vertical)
 		self.headerView.setContentHuggingPriority(.required, for: .vertical)
 		self.headerView.addArrangedSubview(self.headerAccessoryViewContainer)
+
+		if canReorder {
+			self.headerView.addArrangedSubview(self.dragImageView)
+		}
+
 		self.headerAccessoryViewContainer.isHidden = true
 		self.mainStack.addArrangedSubview(self.headerView)
 		//////
@@ -242,6 +247,21 @@ internal class DSFInspectorPaneView: DSFInspectorBox {
 
 		updateConstraintsForSubtreeIfNeeded()
 	}
+
+	private lazy var dragImageView: NSImageView = {
+		let image = NSImage(named: NSImage.Name("NSListViewTemplate"))!
+		image.isTemplate = true
+		let imageview = NSImageView(frame: .zero)
+		imageview.translatesAutoresizingMaskIntoConstraints = true
+		imageview.image = image
+		imageview.imageAlignment = .alignCenter
+		imageview.imageScaling = .scaleNone
+		let c = NSLayoutConstraint(item: imageview, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+		c.priority = .required
+		imageview.addConstraint(c)
+		imageview.toolTip = NSLocalizedString("Drag to re-order panes", comment: "")
+		return imageview
+	}()
 
 	/// Set the view (and header accessory) for the container
 	internal func add(propertyView: NSView, headerAccessoryView: NSView? = nil) {
@@ -465,7 +485,8 @@ extension DSFInspectorPaneView {
 	}
 
 	@objc func headerClick(sender: AnyObject) {
-		if self.canExpand {
+		if self.canExpand && self.window?.firstResponder === self {
+			// Only toggle the inspector IF the inspector is currently the first responder
 			self.toggleDisclosure(sender: sender)
 		}
 		self.window?.makeFirstResponder(self)

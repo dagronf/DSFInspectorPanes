@@ -13,6 +13,7 @@
 		23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23263F8F2278F63F00B4FEF0 /* Assets.xcassets */; };
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
 		23263F9A2278F65400B4FEF0 /* DSFInspectorPanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; };
+		236A157F22AFD1EF007FCB8F /* DSFInspectorPanes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */; };
 		239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */; };
 		239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */; };
@@ -38,6 +39,19 @@
 		23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD222AC7A8F00098F3C /* DummyViewController.swift */; };
 		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		236A157E22AFD1E2007FCB8F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				236A157F22AFD1EF007FCB8F /* DSFInspectorPanes.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSFInspectorPanes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +258,7 @@
 				23263F872278F63E00B4FEF0 /* Sources */,
 				23263F882278F63E00B4FEF0 /* Frameworks */,
 				23263F892278F63E00B4FEF0 /* Resources */,
+				236A157E22AFD1E2007FCB8F /* CopyFiles */,
 			);
 			buildRules = (
 			);

@@ -128,7 +128,7 @@ import Cocoa
 	) -> DSFInspectorPaneProtocol {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
-		let inspectorPaneView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, inspectorType: inspectorType, animated: self.animated)
+		let inspectorPaneView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, canReorder: self.canDragRearrange, inspectorType: inspectorType, animated: self.animated)
 		inspectorPaneView.changeDelegate = self
 		inspectorPaneView.separatorVisible = self.arrangedInspectorPanes.count != 0
 		inspectorPaneView.inspectorType = self.inspectorType
@@ -159,6 +159,14 @@ import Cocoa
 		self.primaryStack.needsUpdateConstraints = true
 		window?.recalculateKeyViewLoop()
 		return inspectorPaneView
+	}
+
+	/// Remove the inspector pane at the specified index
+	@objc public func remove(at index: Int) {
+		assert(index < self.primaryStack.arrangedSubviews.count)
+
+		let view = self.primaryStack.arrangedSubviews[index]
+		self.primaryStack.removeArrangedSubview(view)
 	}
 
 	/// Convenience method for showing or hiding all of the inspector panes at once
