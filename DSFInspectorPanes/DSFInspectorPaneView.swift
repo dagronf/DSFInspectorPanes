@@ -173,21 +173,17 @@ internal class DSFInspectorPaneView: NSBox {
 		title.setContentCompressionResistancePriority(.required, for: .vertical)
 		title.setContentHuggingPriority(.defaultLow, for: .horizontal)
 		title.setContentHuggingPriority(.defaultLow, for: .vertical)
+		title.addGestureRecognizer(self.expandContractGestureRecognizer())
 
 		self.titleTextView = title
-
-		let gesture = NSClickGestureRecognizer()
-		gesture.buttonMask = 0x1 // left mouse
-		gesture.numberOfClicksRequired = 1
-		gesture.target = self
-		gesture.action = #selector(self.headerClick(sender:))
-		title.addGestureRecognizer(gesture)
 
 		// Dummy spacer to make sure the accessory view appears on the right
 		let spacer = NSView()
 		spacer.translatesAutoresizingMaskIntoConstraints = false
 		spacer.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		spacer.addGestureRecognizer(self.expandContractGestureRecognizer())
 
+		self.headerView.wantsLayer = true
 		self.headerView.translatesAutoresizingMaskIntoConstraints = false
 		self.headerView.distribution = .fillProportionally
 		self.headerView.spacing = 4
@@ -305,6 +301,11 @@ internal class DSFInspectorPaneView: NSBox {
 
 		self.needsUpdateConstraints = true
 	}
+}
+
+// MARK: - Open and close
+
+extension DSFInspectorPaneView {
 
 	private func animSpeed() -> TimeInterval {
 		if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
@@ -312,8 +313,6 @@ internal class DSFInspectorPaneView: NSBox {
 		}
 		return 0.1
 	}
-
-	// MARK: - Open and close
 
 	func openDisclosure(open: Bool, animated: Bool) {
 		if self.disclosureButton!.isHidden {
@@ -352,6 +351,7 @@ internal class DSFInspectorPaneView: NSBox {
 	}
 
 	private func openPanelComplete() {
+		self.setAccessibilityExpanded(true)
 		self.inspectorViewContainerView.alphaValue = 1.0
 		self.inspectorViewContainerView.isHidden = false
 		self.inspectorViewContainerView.removeConstraint(self.heightConstraint)
@@ -389,6 +389,7 @@ internal class DSFInspectorPaneView: NSBox {
 	}
 
 	private func closePanelComplete() {
+		self.setAccessibilityExpanded(false)
 		self.inspectorViewContainerView.isHidden = true
 		self.headerAccessoryViewContainer.isHidden = false
 		self.inspectorViewContainerView.alphaValue = 0.0
@@ -446,6 +447,15 @@ extension DSFInspectorPaneView {
 			self.disclosureButton?.state = disclosure.state == .on ? .off : .on
 			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
 		}
+	}
+
+	private func expandContractGestureRecognizer() -> NSGestureRecognizer {
+		let gesture = NSClickGestureRecognizer()
+		gesture.buttonMask = 0x1 // left mouse
+		gesture.numberOfClicksRequired = 1
+		gesture.target = self
+		gesture.action = #selector(self.headerClick(sender:))
+		return gesture
 	}
 }
 
