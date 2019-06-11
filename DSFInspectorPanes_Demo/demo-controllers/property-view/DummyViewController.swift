@@ -16,5 +16,8 @@ class DummyViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
-    
+
+	@IBAction func selectRadio(_ sender: Any) {
+	}
+	
 }

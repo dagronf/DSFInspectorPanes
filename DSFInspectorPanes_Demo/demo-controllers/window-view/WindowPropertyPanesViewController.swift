@@ -14,19 +14,19 @@ class WindowPropertyPanesViewController: NSViewController {
 	let textButton = TextWithButtonViewController()
 	let spacing = SpacingViewController()
 
-
 	// Separate window views
 	let windowPane1 = DummyViewController()
 	let windowDummy1 = DummyViewController()
-	let windowDummy2 = ColorViewController()
+	let windowDummy2 = DummyViewController() //AlignmentViewController()
+
 	lazy var windowNestedPanes: DSFInspectorPanesView = {
 		let v = DSFInspectorPanesView(frame: .zero,
 									  animated: true,
 									  embeddedInScrollView: false,
 									  showSeparators: false,
 									  showBoxes: true)
-		v.add(title: "Nested Radios", view: windowDummy1.view)
-		v.add(title: "Nested Color Pane", view: windowDummy2.view)
+		v.add(title: "Nested Radios", view: windowDummy1.view, canHide: true)
+		v.add(title: "Nested Color Pane", view: windowDummy2.view, canHide: false)
 		return v
 	}()
 
@@ -44,5 +44,6 @@ class WindowPropertyPanesViewController: NSViewController {
 				  view: textButton.view,
 				  expanded: false)
 		panes.add(title: "Nested", view: windowNestedPanes)
+		panes.add(title: "Spacing", view: spacing.view, headerAccessoryView: spacing.headerView)
 	}
 }

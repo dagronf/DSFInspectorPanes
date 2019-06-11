@@ -118,6 +118,7 @@ internal class DSFInspectorPaneView: NSBox {
 		self.mainStack.spacing = 8
 		self.mainStack.detachesHiddenViews = true
 		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
+		self.mainStack.setHuggingPriority(.required, for: .vertical)
 		self.mainStack.edgeInsets = .zero
 
 		self.addSubview(self.mainStack)
@@ -172,7 +173,7 @@ internal class DSFInspectorPaneView: NSBox {
 		title.setContentCompressionResistancePriority(.required, for: .horizontal)
 		title.setContentCompressionResistancePriority(.required, for: .vertical)
 		title.setContentHuggingPriority(.defaultLow, for: .horizontal)
-		title.setContentHuggingPriority(.defaultLow, for: .vertical)
+		title.setContentHuggingPriority(.defaultHigh, for: .vertical)
 		title.addGestureRecognizer(self.expandContractGestureRecognizer())
 
 		self.titleTextView = title
@@ -196,7 +197,8 @@ internal class DSFInspectorPaneView: NSBox {
 		}
 		self.headerView.addArrangedSubview(title)
 		self.headerView.addArrangedSubview(spacer)
-		self.headerView.setHuggingPriority(.defaultHigh, for: .vertical)
+		self.headerView.setHuggingPriority(.required, for: .vertical)
+		self.headerView.setContentHuggingPriority(.required, for: .vertical)
 		self.headerView.addArrangedSubview(self.headerAccessoryViewContainer)
 		self.headerAccessoryViewContainer.isHidden = true
 		self.mainStack.addArrangedSubview(self.headerView)

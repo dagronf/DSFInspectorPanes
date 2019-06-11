@@ -43,10 +43,11 @@ pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
 ### Properties
 
 * `animated`: Animate the expanding/hiding of the panes
-* `usesScrollView`: Embed the panes view in a scroll view
-* `showSeparators`: Insert a separator between each pane
+* `embeddedInScrollView`: Embed the panes view in a scroll view (optional)
+* `showSeparators`: Insert a separator between each pane (optional)
 * `titleFont`: Set the font to use for the title for the panes
 * `spacing`: Set the vertical spacing between each pane
+* `showBoxes`: Show a box around each inspector pane (optional)
 
 ### Methods
 

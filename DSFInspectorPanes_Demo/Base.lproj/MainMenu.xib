@@ -685,35 +685,37 @@
         <window title="Inspector Panes Demo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="722" height="431"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="722" height="431"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncy-NJ-ZJo">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <rect key="frame" x="0.0" y="0.0" width="722" height="431"/>
                         <subviews>
                             <customView id="yHq-38-CYH">
-                                <rect key="frame" x="0.0" y="0.0" width="251" height="360"/>
+                                <rect key="frame" x="0.0" y="0.0" width="493" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tNY-kD-LaX">
-                                        <rect key="frame" x="91" y="172" width="70" height="17"/>
-                                        <textFieldCell key="cell" alignment="center" title="Main View" id="4f7-14-A6O">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="sFt-4Q-cw3" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
+                                        <rect key="frame" x="0.0" y="0.0" width="493" height="431"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="tNY-kD-LaX" firstAttribute="centerX" secondItem="yHq-38-CYH" secondAttribute="centerX" id="u1w-cy-2dI"/>
-                                    <constraint firstItem="tNY-kD-LaX" firstAttribute="centerY" secondItem="yHq-38-CYH" secondAttribute="centerY" id="xsC-7p-NCO"/>
+                                    <constraint firstAttribute="bottom" secondItem="sFt-4Q-cw3" secondAttribute="bottom" id="CpN-WI-YXP"/>
+                                    <constraint firstAttribute="trailing" secondItem="sFt-4Q-cw3" secondAttribute="trailing" id="hIT-I1-zDV"/>
+                                    <constraint firstItem="sFt-4Q-cw3" firstAttribute="leading" secondItem="yHq-38-CYH" secondAttribute="leading" id="hX0-UB-32P"/>
+                                    <constraint firstItem="sFt-4Q-cw3" firstAttribute="top" secondItem="yHq-38-CYH" secondAttribute="top" id="ohL-c3-3j4"/>
                                 </constraints>
                             </customView>
                             <customView fixedFrame="YES" id="lbf-Ls-KN0" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
-                                <rect key="frame" x="252" y="0.0" width="228" height="360"/>
+                                <rect key="frame" x="494" y="0.0" width="228" height="431"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
@@ -739,7 +741,7 @@
                     <constraint firstItem="ncy-NJ-ZJo" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="wdL-c0-t5k"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="400" y="363"/>
+            <point key="canvasLocation" x="279" y="398.5"/>
         </window>
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ayH-70-y6T" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES"/>
@@ -777,6 +779,11 @@
         <viewController id="nRS-I3-W2s" userLabel="Window Property Panes Controller" customClass="WindowPropertyPanesViewController" customModule="DSFInspectorPanes_Demo" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="WFu-cU-ETL" id="geT-go-ZiY"/>
+            </connections>
+        </viewController>
+        <viewController id="RoW-ig-Ex7" userLabel="Main View Controller" customClass="MainViewController" customModule="DSFInspectorPanes_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="sFt-4Q-cw3" id="RUy-CL-rDk"/>
             </connections>
         </viewController>
     </objects>

@@ -25,6 +25,13 @@
 		239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */; };
 		239B4B6622ACAE87004DA5D1 /* MainPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */; };
 		239B4B6A22ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */; };
+		23A31BEC22AF7EE100B70488 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BEA22AF7EE100B70488 /* MainViewController.swift */; };
+		23A31BF122AF815C00B70488 /* ShortDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BEF22AF815C00B70488 /* ShortDescriptionViewController.swift */; };
+		23A31BF222AF815C00B70488 /* ShortDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF022AF815C00B70488 /* ShortDescriptionViewController.xib */; };
+		23A31BF522AF816E00B70488 /* LongDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BF322AF816E00B70488 /* LongDescriptionViewController.swift */; };
+		23A31BF622AF816E00B70488 /* LongDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */; };
+		23A31BF922AF84B600B70488 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BF722AF84B600B70488 /* ImageViewController.swift */; };
+		23A31BFA22AF84B600B70488 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF822AF84B600B70488 /* ImageViewController.xib */; };
 		23B61DCD22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */; };
 		23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */; };
 		23B61DD122AC759F00098F3C /* DSFInspectorPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD022AC759F00098F3C /* DSFInspectorPaneView.swift */; };
@@ -55,6 +62,13 @@
 		239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextWithButtonViewController.xib; sourceTree = "<group>"; };
 		239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPropertyPanesViewController.swift; sourceTree = "<group>"; };
 		239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPropertyPanesViewController.swift; sourceTree = "<group>"; };
+		23A31BEA22AF7EE100B70488 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		23A31BEF22AF815C00B70488 /* ShortDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDescriptionViewController.swift; sourceTree = "<group>"; };
+		23A31BF022AF815C00B70488 /* ShortDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShortDescriptionViewController.xib; sourceTree = "<group>"; };
+		23A31BF322AF816E00B70488 /* LongDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongDescriptionViewController.swift; sourceTree = "<group>"; };
+		23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongDescriptionViewController.xib; sourceTree = "<group>"; };
+		23A31BF722AF84B600B70488 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		23A31BF822AF84B600B70488 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFInspectorPanes.podspec; sourceTree = "<group>"; };
 		23ACF96C228A390400FF6594 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		23B61DCC22AC73AD00098F3C /* DSFInspectorPaneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPaneProtocol.swift; sourceTree = "<group>"; };
@@ -128,8 +142,6 @@
 				23263F912278F63F00B4FEF0 /* MainMenu.xib */,
 				23263F942278F63F00B4FEF0 /* Info.plist */,
 				23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */,
-				23B61DD222AC7A8F00098F3C /* DummyViewController.swift */,
-				23B61DD322AC7A8F00098F3C /* DummyViewController.xib */,
 			);
 			path = DSFInspectorPanes_Demo;
 			sourceTree = "<group>";
@@ -144,6 +156,30 @@
 		239B4B4D22ACA012004DA5D1 /* demo-controllers */ = {
 			isa = PBXGroup;
 			children = (
+				23A31BFD22AF94BD00B70488 /* window-view */,
+				23A31BFC22AF946200B70488 /* property-view */,
+				23A31BEE22AF814600B70488 /* main-view */,
+			);
+			path = "demo-controllers";
+			sourceTree = "<group>";
+		};
+		23A31BEE22AF814600B70488 /* main-view */ = {
+			isa = PBXGroup;
+			children = (
+				23A31BEF22AF815C00B70488 /* ShortDescriptionViewController.swift */,
+				23A31BF022AF815C00B70488 /* ShortDescriptionViewController.xib */,
+				23A31BF322AF816E00B70488 /* LongDescriptionViewController.swift */,
+				23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */,
+				23A31BF722AF84B600B70488 /* ImageViewController.swift */,
+				23A31BF822AF84B600B70488 /* ImageViewController.xib */,
+				23A31BEA22AF7EE100B70488 /* MainViewController.swift */,
+			);
+			path = "main-view";
+			sourceTree = "<group>";
+		};
+		23A31BFC22AF946200B70488 /* property-view */ = {
+			isa = PBXGroup;
+			children = (
 				239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */,
 				239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */,
 				239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */,
@@ -155,9 +191,18 @@
 				239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */,
 				239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */,
 				239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */,
+				23B61DD222AC7A8F00098F3C /* DummyViewController.swift */,
+				23B61DD322AC7A8F00098F3C /* DummyViewController.xib */,
+			);
+			path = "property-view";
+			sourceTree = "<group>";
+		};
+		23A31BFD22AF94BD00B70488 /* window-view */ = {
+			isa = PBXGroup;
+			children = (
 				239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */,
 			);
-			path = "demo-controllers";
+			path = "window-view";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,11 +306,14 @@
 			files = (
 				23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */,
 				239B4B5D22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib in Resources */,
+				23A31BF622AF816E00B70488 /* LongDescriptionViewController.xib in Resources */,
 				239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */,
 				23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */,
 				239B4B5922ACA13E004DA5D1 /* ColorViewController.xib in Resources */,
 				239B4B5522ACA0C4004DA5D1 /* AlignmentViewController.xib in Resources */,
 				239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */,
+				23A31BF222AF815C00B70488 /* ShortDescriptionViewController.xib in Resources */,
+				23A31BFA22AF84B600B70488 /* ImageViewController.xib in Resources */,
 				23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,9 +342,13 @@
 				23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */,
 				239B4B6022ACA2AE004DA5D1 /* TextWithButtonViewController.swift in Sources */,
 				239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */,
+				23A31BF922AF84B600B70488 /* ImageViewController.swift in Sources */,
+				23A31BF122AF815C00B70488 /* ShortDescriptionViewController.swift in Sources */,
 				239B4B5822ACA13E004DA5D1 /* ColorViewController.swift in Sources */,
 				239B4B5C22ACA1EB004DA5D1 /* DescriptionFieldViewController.swift in Sources */,
+				23A31BF522AF816E00B70488 /* LongDescriptionViewController.swift in Sources */,
 				23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */,
+				23A31BEC22AF7EE100B70488 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
