@@ -30,17 +30,22 @@ import Cocoa
 
 @objc public protocol DSFInspectorPanesViewProtocol {
 	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPaneProtocol])
-	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, paneDidChange pane: DSFInspectorPaneProtocol)
+	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPaneProtocol)
 }
 
 @IBDesignable
 @objc public class DSFInspectorPanesView: NSView {
 
+	/// Delegate to receive messages
 	@objc public var inspectorPaneDelegate: DSFInspectorPanesViewProtocol?
 
+	/// The 'look' of the inspector panes
 	@objc internal enum InspectorType: UInt {
+		/// Draw a rounded rectangle around each pane
 		case box
+		/// Draw a separator between each pane
 		case separator
+		/// No drawing
 		case none
 	}
 
@@ -117,9 +122,14 @@ import Cocoa
 	@objc required init?(coder decoder: NSCoder) {
 		super.init(coder: decoder)
 	}
+}
+
+// MARK: - Adding, moving, reordering
+
+@objc public extension DSFInspectorPanesView {
 
 	@discardableResult
-	@objc public func add(
+	@objc func add(
 		title: String,
 		view: NSView,
 		headerAccessoryView: NSView? = nil,
@@ -162,37 +172,42 @@ import Cocoa
 	}
 
 	/// Remove the inspector pane at the specified index
-	@objc public func remove(at index: Int) {
+	@objc func remove(at index: Int) {
 		assert(index < self.primaryStack.arrangedSubviews.count)
 
 		let view = self.primaryStack.arrangedSubviews[index]
 		self.primaryStack.removeArrangedSubview(view)
 	}
 
+	@objc func move(index: Int, to newIndex: Int) {
+		assert(index < self.primaryStack.arrangedSubviews.count)
+		assert(newIndex < self.primaryStack.arrangedSubviews.count)
+
+		var primary = self.arrangedInspectorPanes
+		primary.forEach { self.primaryStack.removeView($0) }
+		primary.move(from: index, to: newIndex)
+		primary.forEach { self.primaryStack.addArrangedSubview($0) }
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
+	}
+
+	@objc func swap(index: Int, with newIndex: Int) {
+		assert(index < self.primaryStack.arrangedSubviews.count)
+		assert(newIndex < self.primaryStack.arrangedSubviews.count)
+
+		var primary = self.arrangedInspectorPanes
+		primary.forEach { self.primaryStack.removeView($0) }
+		primary.swapAt(index, newIndex)
+		primary.forEach { self.primaryStack.addArrangedSubview($0) }
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
+	}
+
 	/// Convenience method for showing or hiding all of the inspector panes at once
-	@objc public func expandAll(_ expanded: Bool, animated: Bool) {
+	@objc func expandAll(_ expanded: Bool, animated: Bool) {
 		self.arrangedInspectorPanes.forEach { $0.setExpanded(expanded, animated: animated) }
 	}
 }
 
-extension DSFInspectorPanesView: DSFInspectorPaneViewDelegate {
-	func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView) {
-		self.inspectorPaneDelegate?.inspectorPanes?(self, paneDidChange: didChangeVisibility)
-	}
-}
-
-// MARK: - Configuration
-
-extension DSFInspectorPanesView: DraggingStackViewProtocol {
-	func stackViewDidReorder() {
-		for inspector in self.arrangedInspectorPanes.filter({ $0.inspectorType == .separator}).enumerated() {
-			inspector.element.separatorVisible = inspector.offset != 0
-			inspector.element.needsDisplay = true
-		}
-		self.window?.recalculateKeyViewLoop()
-		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.panes)
-	}
-}
+// MARK: Initialization and setup
 
 extension DSFInspectorPanesView {
 	public override func awakeFromNib() {
@@ -304,5 +319,24 @@ extension DSFInspectorPanesView {
 	/// Return the contained inspector panes
 	private var arrangedInspectorPanes: [DSFInspectorPaneView] {
 		return self.primaryStack.arrangedSubviews as? [DSFInspectorPaneView] ?? []
+	}
+}
+
+// MARK: - Delegate callback handling
+
+extension DSFInspectorPanesView: DraggingStackViewProtocol {
+	func stackViewDidReorder() {
+		for inspector in self.arrangedInspectorPanes.filter({ $0.inspectorType == .separator}).enumerated() {
+			inspector.element.separatorVisible = inspector.offset != 0
+			inspector.element.needsDisplay = true
+		}
+		self.window?.recalculateKeyViewLoop()
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.panes)
+	}
+}
+
+extension DSFInspectorPanesView: DSFInspectorPaneViewDelegate {
+	func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView) {
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didExpandOrContract: didChangeVisibility)
 	}
 }

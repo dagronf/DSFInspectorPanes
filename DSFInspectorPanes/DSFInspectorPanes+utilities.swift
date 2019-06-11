@@ -41,11 +41,6 @@ internal class FlippedStackView: DraggingStackView {
 	}
 }
 
-//class DraggingStackView: NSStackView {
-//
-//}
-
-
 internal func CreateInspectorTitleField() -> NSTextField {
 	let title = NSTextField()
 	title.cell = RSVerticallyCenteredTextFieldCell()
@@ -119,11 +114,19 @@ internal extension NSEdgeInsets {
 	}
 }
 
-internal protocol DraggingStackViewProtocol {
-	func stackViewDidReorder()
+internal extension Array {
+	mutating func move(from oldIndex: Index, to newIndex: Index) {
+		if oldIndex == newIndex { return }
+		if abs(newIndex - oldIndex) == 1 { return self.swapAt(oldIndex, newIndex) }
+		self.insert(self.remove(at: oldIndex), at: newIndex)
+	}
 }
 
 // MARK: - Draggable Stack View
+
+internal protocol DraggingStackViewProtocol {
+	func stackViewDidReorder()
+}
 
 /// Draggable Stack View class
 ///

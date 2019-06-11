@@ -29,6 +29,10 @@
 import Carbon.HIToolbox
 import Cocoa
 
+@objc internal protocol DSFInspectorPaneViewDelegate {
+	@objc optional func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView)
+}
+
 /// Custom box class to handle the different inspector pane drawing types (box, separator)
 internal class DSFInspectorBox: NSBox {
 	var inspectorType: DSFInspectorPanesView.InspectorType = .none
@@ -52,10 +56,6 @@ internal class DSFInspectorBox: NSBox {
 			// Draw nothing
 		}
 	}
-}
-
-@objc internal protocol DSFInspectorPaneViewDelegate {
-	@objc optional func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView)
 }
 
 internal class DSFInspectorPaneView: DSFInspectorBox {
