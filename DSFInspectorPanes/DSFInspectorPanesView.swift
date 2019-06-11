@@ -26,6 +26,7 @@
 //  SOFTWARE.
 //
 
+import Carbon.HIToolbox
 import Cocoa
 
 @objc public protocol DSFInspectorPanesViewProtocol {
@@ -186,7 +187,19 @@ import Cocoa
 		var primary = self.arrangedInspectorPanes
 		primary.forEach { self.primaryStack.removeView($0) }
 		primary.move(from: index, to: newIndex)
-		primary.forEach { self.primaryStack.addArrangedSubview($0) }
+		primary.forEach {
+			self.primaryStack.addArrangedSubview($0)
+			// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
+			let vScrollWidth = self.embeddedInScrollView ? 12 : 4
+			let metrics = ["vScrollWidth": vScrollWidth]
+			let variableBindings = ["disclosureView": $0] as [String: Any]
+			primaryStack.addConstraints(NSLayoutConstraint.constraints(
+				withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
+				options: .alignAllLastBaseline,
+				metrics: metrics as [String: NSNumber],
+				views: variableBindings
+			))
+		}
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
 	}
 
@@ -197,7 +210,19 @@ import Cocoa
 		var primary = self.arrangedInspectorPanes
 		primary.forEach { self.primaryStack.removeView($0) }
 		primary.swapAt(index, newIndex)
-		primary.forEach { self.primaryStack.addArrangedSubview($0) }
+		primary.forEach {
+			self.primaryStack.addArrangedSubview($0)
+			// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
+			let vScrollWidth = self.embeddedInScrollView ? 12 : 4
+			let metrics = ["vScrollWidth": vScrollWidth]
+			let variableBindings = ["disclosureView": $0] as [String: Any]
+			primaryStack.addConstraints(NSLayoutConstraint.constraints(
+				withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
+				options: .alignAllLastBaseline,
+				metrics: metrics as [String: NSNumber],
+				views: variableBindings
+			))
+		}
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
 	}
 
@@ -207,7 +232,46 @@ import Cocoa
 	}
 }
 
-// MARK: Initialization and setup
+// MARK: Keyboard handling
+
+@objc public extension DSFInspectorPanesView {
+	override func keyDown(with event: NSEvent) {
+		super.keyDown(with: event)
+
+		if !self.canDragRearrange {
+			return
+		}
+
+		if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
+			let focussed = self.window?.firstResponder
+			let match = self.arrangedInspectorPanes
+				.enumerated()
+				.filter { focussed == $0.element }
+				.first
+
+			guard let found = match else {
+				return
+			}
+
+			if event.keyCode == kVK_UpArrow {
+				if found.offset != 0 {
+					self.swap(index: found.offset, with: found.offset - 1)
+					self.window?.makeFirstResponder(found.element)
+					self.window?.recalculateKeyViewLoop()
+				}
+			}
+			else if event.keyCode == kVK_DownArrow {
+				if found.offset != self.arrangedInspectorPanes.count - 1 {
+					self.swap(index: found.offset, with: found.offset + 1)
+					self.window?.makeFirstResponder(found.element)
+					self.window?.recalculateKeyViewLoop()
+				}
+			}
+		}
+	}
+}
+
+// MARK: - Initialization and setup
 
 extension DSFInspectorPanesView {
 	public override func awakeFromNib() {
