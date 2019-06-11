@@ -29,6 +29,8 @@ import Cocoa
 
 /// Publicly accessable inspector pane information
 @objc public protocol DSFInspectorPaneProtocol {
+	/// A unique identifier for the inspector panel
+	@objc var identifier: NSUserInterfaceItemIdentifier? { get set }
 	/// The inspector panes title
 	@objc var titleText: String { get set }
 	/// The actual inspector pane

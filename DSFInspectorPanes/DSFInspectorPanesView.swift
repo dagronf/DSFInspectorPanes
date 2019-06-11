@@ -28,8 +28,22 @@
 
 import Cocoa
 
+@objc public protocol DSFInspectorPanesViewProtocol {
+	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPaneProtocol])
+	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, paneDidChange pane: DSFInspectorPaneProtocol)
+}
+
 @IBDesignable
 @objc public class DSFInspectorPanesView: NSView {
+
+	@objc public var inspectorPaneDelegate: DSFInspectorPanesViewProtocol?
+
+	@objc internal enum InspectorType: UInt {
+		case box
+		case separator
+		case none
+	}
+
 	/// Should we animate hiding and showing?
 	@IBInspectable private(set) var animated: Bool = true
 
@@ -41,6 +55,12 @@ import Cocoa
 
 	/// Should we wrap each inspector pane in a rounded box?
 	@IBInspectable private(set) var showBoxes: Bool = false
+
+	/// Can we rearrange the order by dragging the inspector pane?
+	@IBInspectable private(set) var canDragRearrange: Bool = false
+
+	/// The way the inspector is separated
+	private(set) var inspectorType: InspectorType = .none
 
 	/// Edge insets from the view to inset the panes
 	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 0, bottom: 8, right: 0) {
@@ -79,11 +99,14 @@ import Cocoa
 					  embeddedInScrollView: Bool = true,
 					  showSeparators: Bool = true,
 					  showBoxes: Bool = false,
-					  titleFont: NSFont? = nil) {
+					  titleFont: NSFont? = nil,
+					  canDragRearrange: Bool = false) {
 		self.animated = animated
 		self.embeddedInScrollView = embeddedInScrollView
 		self.showSeparators = showSeparators
 		self.showBoxes = showBoxes
+		self.canDragRearrange = canDragRearrange
+
 		if let font = titleFont {
 			self.titleFont = font
 		}
@@ -95,36 +118,23 @@ import Cocoa
 		super.init(coder: decoder)
 	}
 
+	@discardableResult
 	@objc public func add(
 		title: String,
 		view: NSView,
 		headerAccessoryView: NSView? = nil,
 		canHide: Bool = true,
 		expanded: Bool = true
-	) {
+	) -> DSFInspectorPaneProtocol {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
-		if self.showSeparators, self.arrangedInspectorPanes.count > 0 {
-			// If there is a previous pane in place, add in a separator
-			let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))
-			box.boxType = .separator
-			box.translatesAutoresizingMaskIntoConstraints = false
-			self.primaryStack.addArrangedSubview(box) // (box, in: .top)
-			self.primaryStack.addConstraints(
-				NSLayoutConstraint.constraints(
-					withVisualFormat: "H:|-12-[box]-12-|",
-					options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-					metrics: nil,
-					views: ["box": box]
-				)
-			)
-			self.arrangedInspectorPanes.last?.associatedSeparator = box
-		}
-
-		let inspectorPaneView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, showBox: self.showBoxes, animated: self.animated)
+		let inspectorPaneView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, inspectorType: inspectorType, animated: self.animated)
+		inspectorPaneView.changeDelegate = self
+		inspectorPaneView.separatorVisible = self.arrangedInspectorPanes.count != 0
+		inspectorPaneView.inspectorType = self.inspectorType
 		inspectorPaneView.translatesAutoresizingMaskIntoConstraints = false
 		inspectorPaneView.add(propertyView: view, headerAccessoryView: headerAccessoryView)
-		inspectorPaneView.headerTitle = title
+		inspectorPaneView.title = title
 		self.primaryStack.addArrangedSubview(inspectorPaneView)
 
 		// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
@@ -148,6 +158,7 @@ import Cocoa
 		inspectorPaneView.needsUpdateConstraints = true
 		self.primaryStack.needsUpdateConstraints = true
 		window?.recalculateKeyViewLoop()
+		return inspectorPaneView
 	}
 
 	/// Convenience method for showing or hiding all of the inspector panes at once
@@ -156,7 +167,24 @@ import Cocoa
 	}
 }
 
+extension DSFInspectorPanesView: DSFInspectorPaneViewDelegate {
+	func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView) {
+		self.inspectorPaneDelegate?.inspectorPanes?(self, paneDidChange: didChangeVisibility)
+	}
+}
+
 // MARK: - Configuration
+
+extension DSFInspectorPanesView: DraggingStackViewProtocol {
+	func stackViewDidReorder() {
+		for inspector in self.arrangedInspectorPanes.filter({ $0.inspectorType == .separator}).enumerated() {
+			inspector.element.separatorVisible = inspector.offset != 0
+			inspector.element.needsDisplay = true
+		}
+		self.window?.recalculateKeyViewLoop()
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.panes)
+	}
+}
 
 extension DSFInspectorPanesView {
 	public override func awakeFromNib() {
@@ -170,6 +198,20 @@ extension DSFInspectorPanesView {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.setContentCompressionResistancePriority(.required, for: .vertical)
 		self.setContentHuggingPriority(.required, for: .vertical)
+
+		// Hook ourselves up to receive drag events from the draggable stack
+		self.primaryStack.canReorder = self.canDragRearrange
+		self.primaryStack.dragDelegate = self
+
+		if showSeparators == true {
+			self.inspectorType = .separator
+		}
+		else if showBoxes == true {
+			self.inspectorType = .box
+		}
+		else {
+			self.inspectorType = .none
+		}
 
 		if self.embeddedInScrollView {
 			let sv = NSScrollView(frame: bounds)
@@ -253,7 +295,6 @@ extension DSFInspectorPanesView {
 
 	/// Return the contained inspector panes
 	private var arrangedInspectorPanes: [DSFInspectorPaneView] {
-		let panes = self.primaryStack.arrangedSubviews.filter { $0 is DSFInspectorPaneView }
-		return panes as? [DSFInspectorPaneView] ?? []
+		return self.primaryStack.arrangedSubviews as? [DSFInspectorPaneView] ?? []
 	}
 }

@@ -29,11 +29,38 @@
 import Carbon.HIToolbox
 import Cocoa
 
-internal class DSFInspectorPaneView: NSBox {
+/// Custom box class to handle the different inspector pane drawing types (box, separator)
+internal class DSFInspectorBox: NSBox {
+	var inspectorType: DSFInspectorPanesView.InspectorType = .none
+	var separatorVisible: Bool = true
+
+	override func draw(_ dirtyRect: NSRect) {
+		if inspectorType == .separator {
+			if separatorVisible {
+				let line = NSBezierPath()
+				line.move(to: CGPoint(x: 4, y: 0))
+				line.line(to: CGPoint(x: self.bounds.width - 4, y: 0))
+				NSColor.quaternaryLabelColor.setStroke()
+				line.lineWidth = 2.0
+				line.stroke()
+			}
+		}
+		else if inspectorType == .box {
+			super.draw(dirtyRect)
+		}
+		else {
+			// Draw nothing
+		}
+	}
+}
+
+@objc internal protocol DSFInspectorPaneViewDelegate {
+	@objc optional func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView)
+}
+
+internal class DSFInspectorPaneView: DSFInspectorBox {
 	// Is the item animated?
 	private let animated: Bool
-	// Should the inspector pane be embedded within a box?
-	private var showBox: Bool
 
 	// The primary stack, containing header and property pane
 	private var mainStack = NSStackView()
@@ -52,13 +79,15 @@ internal class DSFInspectorPaneView: NSBox {
 	// The actual property view being displayed
 	private var inspectorView: NSView?
 
+	var changeDelegate: DSFInspectorPaneViewDelegate?
+
 	// Can the pane be contracted/expanded
 	var canExpand: Bool {
 		return !(self.disclosureButton?.isHidden ?? true)
 	}
 
 	// If a separator was automatically added, the separator view
-	internal var associatedSeparator: NSBox?
+	// internal var associatedSeparator: NSBox?
 
 	internal var headerFont: NSFont? {
 		get {
@@ -79,17 +108,17 @@ internal class DSFInspectorPaneView: NSBox {
 		return true
 	}
 
-	public var headerTitle: String = "<property>" {
+	override var title: String {
 		didSet {
-			self.titleTextView?.stringValue = self.headerTitle
-			self.setAccessibilityLabel("\(self.headerTitle) pane")
+			self.titleTextView?.stringValue = self.title
+			self.setAccessibilityLabel("\(self.title) pane")
 		}
 	}
 
-	internal init(titleFont: NSFont, canHide: Bool, showBox: Bool, animated: Bool) {
+	internal init(titleFont: NSFont, canHide: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool) {
 		self.animated = animated
-		self.showBox = showBox
 		super.init(frame: .zero)
+		self.inspectorType = inspectorType
 		translatesAutoresizingMaskIntoConstraints = false
 		self.setup(titleFont: titleFont, canHide: canHide)
 	}
@@ -105,7 +134,6 @@ internal class DSFInspectorPaneView: NSBox {
 
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.titlePosition = .noTitle
-		self.borderType = self.showBox ? .lineBorder : .noBorder
 
 		self.headerAccessoryViewContainer.translatesAutoresizingMaskIntoConstraints = false
 		self.headerAccessoryViewContainer.setContentHuggingPriority(.required, for: .vertical)
@@ -363,6 +391,7 @@ extension DSFInspectorPaneView {
 		self.superview?.needsLayout = true
 		self.needsUpdateConstraints = true
 		self.needsLayout = true
+		self.changeDelegate?.inspectorView?(self, didChangeVisibility: self)
 	}
 
 	// MARK: Close Pane
@@ -401,6 +430,7 @@ extension DSFInspectorPaneView {
 		self.needsLayout = true
 		self.needsUpdateConstraints = true
 		self.window?.recalculateKeyViewLoop()
+		self.changeDelegate?.inspectorView?(self, didChangeVisibility: self)
 	}
 }
 
@@ -488,7 +518,7 @@ extension DSFInspectorPaneView: DSFInspectorPaneProtocol {
 	var expanded: Bool {
 		get {
 			let state = self.disclosureButton?.state ?? .on
-			return state == .off
+			return state == .on
 		}
 		set {
 			self.openDisclosure(open: newValue, animated: self.animated)
@@ -505,7 +535,7 @@ extension DSFInspectorPaneView: DSFInspectorPaneProtocol {
 		}
 		set {
 			self.isHidden = newValue
-			self.associatedSeparator?.isHidden = newValue
+			//self.associatedSeparator?.isHidden = newValue
 		}
 	}
 }

@@ -704,6 +704,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="canDragRearrange" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
                                 </subviews>
@@ -758,7 +759,8 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="NO"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="NO"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="canDragRearrange" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </customView>
                 </subviews>

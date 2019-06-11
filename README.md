@@ -10,6 +10,7 @@
 * Optional automatic scroll view support
 * Optional animation
 * Optional separators or bounding boxes
+* Optional reordering of panes
 * Show or hide individual panes
 * Expand or contract individual panes
 
@@ -42,12 +43,13 @@ pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
 
 ### Properties
 
-* `animated`: Animate the expanding/hiding of the panes
-* `embeddedInScrollView`: Embed the panes view in a scroll view (optional)
-* `showSeparators`: Insert a separator between each pane (optional)
-* `titleFont`: Set the font to use for the title for the panes
-* `spacing`: Set the vertical spacing between each pane
-* `showBoxes`: Show a box around each inspector pane (optional)
+* `animated` : Animate the expanding/hiding of the panes
+* `embeddedInScrollView` : Embed the panes view in a scroll view (optional)
+* `showSeparators` : Insert a separator between each pane (optional)
+* `titleFont` : Set the font to use for the title for the panes
+* `spacing` : Set the vertical spacing between each pane
+* `showBoxes` : Show a box around each inspector pane (optional)
+* `canDragRearrange` : Allow the user to change the ordering of the panes via drag/drop
 
 ### Methods
 
@@ -109,8 +111,11 @@ func hideFirstPane(shouldHide: Bool) {
 
 ## Thanks
 
-### RSVerticallyCenteredTextFieldCell
+### RSVerticallyCenteredTextFieldCell - Red Sweater Software
 * Red Sweater Software, LLC for [RSVerticallyCenteredTextFieldCell](http://www.red-sweater.com/blog/148/what-a-difference-a-cell-makes) component  — [License](http://opensource.org/licenses/mit-license.php)
+
+### DraggableStackView - Mark Onyschuk
+* Mark Onyschuk on [GitHub](https://github.com/monyschuk) -- [Draggable Stack View](https://gist.github.com/monyschuk/cbca3582b6b996ab54c32e2d7eceaf25)
 
 
 ## License

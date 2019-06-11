@@ -31,5 +31,21 @@ class MainViewController: NSViewController {
 		panes.add(title: "Long Description",
 				  view: longDescription.view)
 		panes.add(title: "Image", view: imageItem.view, headerAccessoryView: imageItem.headerView, canHide: true, expanded: false)
+
+		// Listen to inspector changes
+		panes.inspectorPaneDelegate = self
+	}
+}
+
+extension MainViewController: DSFInspectorPanesViewProtocol {
+	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPaneProtocol]) {
+		// do something
+		print("Panes did reorder: ")
+		print("-  \(orderedPanes.map { $0.titleText })")
+	}
+
+	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, paneDidChange pane: DSFInspectorPaneProtocol) {
+		// Do something
+		print("Pane: \(pane.titleText), \(pane.expanded)")
 	}
 }
