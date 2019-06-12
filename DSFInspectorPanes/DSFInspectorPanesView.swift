@@ -139,7 +139,7 @@ import Cocoa
 	) -> DSFInspectorPaneProtocol {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
-		let inspectorPaneView = DSFInspectorPaneView(titleFont: self.titleFont, canHide: canHide, canReorder: self.canDragRearrange, inspectorType: inspectorType, animated: self.animated)
+		let inspectorPaneView = DSFInspectorPanesView.Pane(titleFont: self.titleFont, canHide: canHide, canReorder: self.canDragRearrange, inspectorType: inspectorType, animated: self.animated)
 		inspectorPaneView.changeDelegate = self
 		inspectorPaneView.separatorVisible = self.arrangedInspectorPanes.count != 0
 		inspectorPaneView.inspectorType = self.inspectorType
@@ -188,17 +188,7 @@ import Cocoa
 		primary.forEach { self.primaryStack.removeView($0) }
 		primary.move(from: index, to: newIndex)
 		primary.forEach {
-			self.primaryStack.addArrangedSubview($0)
-			// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
-			let vScrollWidth = self.embeddedInScrollView ? 12 : 4
-			let metrics = ["vScrollWidth": vScrollWidth]
-			let variableBindings = ["disclosureView": $0] as [String: Any]
-			primaryStack.addConstraints(NSLayoutConstraint.constraints(
-				withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
-				options: .alignAllLastBaseline,
-				metrics: metrics as [String: NSNumber],
-				views: variableBindings
-			))
+			self.reAdd(pane: $0)
 		}
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
 	}
@@ -211,19 +201,23 @@ import Cocoa
 		primary.forEach { self.primaryStack.removeView($0) }
 		primary.swapAt(index, newIndex)
 		primary.forEach {
-			self.primaryStack.addArrangedSubview($0)
-			// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
-			let vScrollWidth = self.embeddedInScrollView ? 12 : 4
-			let metrics = ["vScrollWidth": vScrollWidth]
-			let variableBindings = ["disclosureView": $0] as [String: Any]
-			primaryStack.addConstraints(NSLayoutConstraint.constraints(
-				withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
-				options: .alignAllLastBaseline,
-				metrics: metrics as [String: NSNumber],
-				views: variableBindings
-			))
+			self.reAdd(pane: $0)
 		}
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
+	}
+
+	private func reAdd(pane: DSFInspectorPanesView.Pane) {
+		self.primaryStack.addArrangedSubview(pane)
+		// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
+		let vScrollWidth = self.embeddedInScrollView ? 12 : 4
+		let metrics = ["vScrollWidth": vScrollWidth]
+		let variableBindings = ["disclosureView": pane] as [String: Any]
+		primaryStack.addConstraints(NSLayoutConstraint.constraints(
+			withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
+			options: .alignAllLastBaseline,
+			metrics: metrics as [String: NSNumber],
+			views: variableBindings
+		))
 	}
 
 	/// Convenience method for showing or hiding all of the inspector panes at once
@@ -381,8 +375,8 @@ extension DSFInspectorPanesView {
 	}
 
 	/// Return the contained inspector panes
-	private var arrangedInspectorPanes: [DSFInspectorPaneView] {
-		return self.primaryStack.arrangedSubviews as? [DSFInspectorPaneView] ?? []
+	private var arrangedInspectorPanes: [DSFInspectorPanesView.Pane] {
+		return self.primaryStack.arrangedSubviews as? [DSFInspectorPanesView.Pane] ?? []
 	}
 }
 
@@ -400,7 +394,7 @@ extension DSFInspectorPanesView: DraggingStackViewProtocol {
 }
 
 extension DSFInspectorPanesView: DSFInspectorPaneViewDelegate {
-	func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView) {
-		self.inspectorPaneDelegate?.inspectorPanes?(self, didExpandOrContract: didChangeVisibility)
+	func inspectorPaneDidChangeVisibility(_ pane: DSFInspectorPanesView.Pane) {
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didExpandOrContract: pane)
 	}
 }

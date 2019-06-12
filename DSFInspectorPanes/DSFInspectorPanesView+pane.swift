@@ -29,8 +29,8 @@
 import Carbon.HIToolbox
 import Cocoa
 
-@objc internal protocol DSFInspectorPaneViewDelegate {
-	@objc optional func inspectorView(_ inspectorView: DSFInspectorPaneView, didChangeVisibility: DSFInspectorPaneView)
+internal protocol DSFInspectorPaneViewDelegate {
+	func inspectorPaneDidChangeVisibility(_ pane: DSFInspectorPanesView.Pane)
 }
 
 /// Custom box class to handle the different inspector pane drawing types (box, separator)
@@ -58,7 +58,8 @@ internal class DSFInspectorBox: NSBox {
 	}
 }
 
-internal class DSFInspectorPaneView: DSFInspectorBox {
+extension DSFInspectorPanesView {
+internal class Pane: DSFInspectorBox {
 	// Is the item animated?
 	private let animated: Bool
 
@@ -352,10 +353,11 @@ internal class DSFInspectorPaneView: DSFInspectorBox {
 		self.needsUpdateConstraints = true
 	}
 }
+}
 
 // MARK: - Open and close
 
-extension DSFInspectorPaneView {
+extension DSFInspectorPanesView.Pane {
 
 	private func animSpeed() -> TimeInterval {
 		if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
@@ -411,7 +413,7 @@ extension DSFInspectorPaneView {
 		self.superview?.needsLayout = true
 		self.needsUpdateConstraints = true
 		self.needsLayout = true
-		self.changeDelegate?.inspectorView?(self, didChangeVisibility: self)
+		self.changeDelegate?.inspectorPaneDidChangeVisibility(self)
 	}
 
 	// MARK: Close Pane
@@ -450,13 +452,13 @@ extension DSFInspectorPaneView {
 		self.needsLayout = true
 		self.needsUpdateConstraints = true
 		self.window?.recalculateKeyViewLoop()
-		self.changeDelegate?.inspectorView?(self, didChangeVisibility: self)
+		self.changeDelegate?.inspectorPaneDidChangeVisibility(self)
 	}
 }
 
 // MARK: Interaction
 
-extension DSFInspectorPaneView {
+extension DSFInspectorPanesView.Pane {
 	override var acceptsFirstResponder: Bool {
 		return true
 	}
@@ -514,7 +516,7 @@ extension DSFInspectorPaneView {
 
 // MARK: - Conformance to public protocol
 
-extension DSFInspectorPaneView: DSFInspectorPaneProtocol {
+extension DSFInspectorPanesView.Pane: DSFInspectorPaneProtocol {
 	var titleText: String {
 		get {
 			return self.title
