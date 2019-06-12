@@ -172,6 +172,15 @@ import Cocoa
 		return inspectorPaneView
 	}
 
+	/// Returns the index of the specified pane object
+	@objc func index(of item: DSFInspectorPaneProtocol) -> Int {
+		guard let pane = item as? DSFInspectorPanesView.Pane,
+			let index = self.arrangedInspectorPanes.firstIndex(of: pane) else {
+			return -1
+		}
+		return index
+	}
+
 	/// Remove the inspector pane at the specified index
 	@objc func remove(at index: Int) {
 		assert(index < self.primaryStack.arrangedSubviews.count)
