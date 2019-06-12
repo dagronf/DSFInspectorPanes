@@ -516,7 +516,7 @@ extension DSFInspectorPanesView.Pane {
 
 // MARK: - Conformance to public protocol
 
-extension DSFInspectorPanesView.Pane: DSFInspectorPaneProtocol {
+extension DSFInspectorPanesView.Pane: DSFInspectorPane {
 	var titleText: String {
 		get {
 			return self.title

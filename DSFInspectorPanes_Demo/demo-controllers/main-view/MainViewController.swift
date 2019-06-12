@@ -38,13 +38,13 @@ class MainViewController: NSViewController {
 }
 
 extension MainViewController: DSFInspectorPanesViewProtocol {
-	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPaneProtocol]) {
+	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPane]) {
 		// do something
 		print("Panes did reorder: ")
 		print("-  \(orderedPanes.map { $0.titleText })")
 	}
 
-	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPaneProtocol) {
+	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPane) {
 		// Do something
 		print("Pane: \(pane.titleText), \(pane.expanded)")
 	}

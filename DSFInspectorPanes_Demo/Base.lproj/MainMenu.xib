@@ -628,6 +628,25 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
+                            <menuItem title="Move Up" keyEquivalent="" id="H9A-fP-aT2">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="movePaneUp:" target="-1" id="jNu-Xg-hkf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Move Down" keyEquivalent="" id="efm-pp-CEZ">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="movePaneDown:" target="-1" id="wMK-UR-iR8"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Visible" id="8Ju-oY-Xl6">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="togglePane:" target="-1" id="JG9-RE-Snr"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Er1-Zp-SOg"/>
                             <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>

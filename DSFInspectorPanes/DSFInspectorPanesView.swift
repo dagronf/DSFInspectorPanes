@@ -30,8 +30,8 @@ import Carbon.HIToolbox
 import Cocoa
 
 @objc public protocol DSFInspectorPanesViewProtocol {
-	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPaneProtocol])
-	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPaneProtocol)
+	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPane])
+	@objc optional func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPane)
 }
 
 @IBDesignable
@@ -93,8 +93,8 @@ import Cocoa
 	}
 
 	/// Return an array containing all the inspector panes
-	@objc public var panes: [DSFInspectorPaneProtocol] {
-		return self.arrangedInspectorPanes as [DSFInspectorPaneProtocol]
+	@objc public var panes: [DSFInspectorPane] {
+		return self.arrangedInspectorPanes as [DSFInspectorPane]
 	}
 
 	private var scrollView: NSScrollView?
@@ -136,7 +136,7 @@ import Cocoa
 		headerAccessoryView: NSView? = nil,
 		canHide: Bool = true,
 		expanded: Bool = true
-	) -> DSFInspectorPaneProtocol {
+	) -> DSFInspectorPane {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
 		let inspectorPaneView = DSFInspectorPanesView.Pane(titleFont: self.titleFont, canHide: canHide, canReorder: self.canDragRearrange, inspectorType: inspectorType, animated: self.animated)
@@ -173,7 +173,7 @@ import Cocoa
 	}
 
 	/// Returns the index of the specified pane object
-	@objc func index(of item: DSFInspectorPaneProtocol) -> Int {
+	@objc func index(of item: DSFInspectorPane) -> Int {
 		guard let pane = item as? DSFInspectorPanesView.Pane,
 			let index = self.arrangedInspectorPanes.firstIndex(of: pane) else {
 			return -1
@@ -235,42 +235,105 @@ import Cocoa
 	}
 }
 
-// MARK: Keyboard handling
+// MARK: Menu handling, key bindings
 
-@objc public extension DSFInspectorPanesView {
-	override func keyDown(with event: NSEvent) {
-		super.keyDown(with: event)
+extension DSFInspectorPanesView: NSUserInterfaceValidations {
 
-		if !self.canDragRearrange {
+	private func focussedPane() -> (index: Int, pane: DSFInspectorPanesView.Pane)? {
+		guard let focussed = self.window?.firstResponder as? DSFInspectorPanesView.Pane else {
+			return nil
+		}
+		let index = self.index(of: focussed)
+		guard index >= 0 else {
+			return nil
+		}
+		return (index, focussed)
+	}
+
+	public func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
+		if item.action == #selector(movePaneUp(_:)) {
+			return canMoveUp(item)
+		}
+		else if item.action == #selector(movePaneDown(_:)) {
+			return canMoveDown(item)
+		}
+		else if item.action == #selector(togglePane(_:)) {
+			return canToggle(item)
+		}
+		return false
+	}
+
+	// MARK: Toggle a panes visibility
+
+	private func canToggle(_ sender: Any?) -> Bool {
+
+		let focussed = focussedPane()
+		if let menuItem = sender as? NSMenuItem {
+			guard let hasFocus = focussed else {
+				menuItem.state = .off
+				return false
+			}
+			menuItem.state = hasFocus.pane.expanded ? .on : .off
+		}
+
+		if let focussed = focussedPane() {
+			return focussed.pane.canExpand
+		}
+		return false
+	}
+
+	@objc public func togglePane(_ sender: Any?) {
+		guard let focussed = focussedPane() else {
+			return
+		}
+		focussed.pane.toggleDisclosure(sender: self)
+	}
+
+
+	// MARK: Move Up
+
+	private func canMoveUp(_ sender: Any?) -> Bool {
+		if !self.canDragRearrange { return false }
+		guard let focussed = focussedPane() else { return false }
+		return focussed.index > 0
+	}
+
+	@objc public func movePaneUp(_ sender: Any?) {
+		guard self.canDragRearrange else {
 			return
 		}
 
-		if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
-			let focussed = self.window?.firstResponder
-			let match = self.arrangedInspectorPanes
-				.enumerated()
-				.filter { focussed == $0.element }
-				.first
-
-			guard let found = match else {
-				return
-			}
-
-			if event.keyCode == kVK_UpArrow {
-				if found.offset != 0 {
-					self.swap(index: found.offset, with: found.offset - 1)
-					self.window?.makeFirstResponder(found.element)
-					self.window?.recalculateKeyViewLoop()
-				}
-			}
-			else if event.keyCode == kVK_DownArrow {
-				if found.offset != self.arrangedInspectorPanes.count - 1 {
-					self.swap(index: found.offset, with: found.offset + 1)
-					self.window?.makeFirstResponder(found.element)
-					self.window?.recalculateKeyViewLoop()
-				}
-			}
+		guard let focussed = self.focussedPane(),
+			focussed.index > 0 else {
+			return
 		}
+
+		self.swap(index: focussed.index, with: focussed.index - 1)
+		self.window?.makeFirstResponder(focussed.pane)
+		self.window?.recalculateKeyViewLoop()
+	}
+
+	// MARK: Move Down
+
+	private func canMoveDown(_ sender: Any?) -> Bool {
+		if !self.canDragRearrange { return false }
+		guard let focussed = focussedPane() else { return false }
+		return focussed.index < (self.panes.count - 1)
+	}
+
+	@objc public func movePaneDown(_ sender: Any?) {
+		guard self.canDragRearrange else {
+			return
+		}
+
+		guard let focussed = self.focussedPane(),
+			focussed.index < (self.panes.count - 1) else {
+				return
+		}
+
+		self.swap(index: focussed.index, with: focussed.index + 1)
+		self.window?.makeFirstResponder(focussed.pane)
+		self.window?.recalculateKeyViewLoop()
 	}
 }
 
@@ -278,8 +341,6 @@ import Cocoa
 
 extension DSFInspectorPanesView {
 	public override func awakeFromNib() {
-		// Only called with initWithCoder is called. Setup here because the inspectables aren't
-		// available until awakeFromNib is called
 		super.awakeFromNib()
 		self.setup()
 	}

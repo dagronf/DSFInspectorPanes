@@ -1,5 +1,5 @@
 //
-//  DSFInspectorPaneProtocol.swift
+//  DSFInspectorPane.swift
 //
 //  Created by Darren Ford on 9/6/19.
 //
@@ -28,7 +28,7 @@
 import Cocoa
 
 /// Publicly accessable inspector pane information
-@objc public protocol DSFInspectorPaneProtocol {
+@objc public protocol DSFInspectorPane {
 	/// A unique identifier for the inspector panel
 	@objc var identifier: NSUserInterfaceItemIdentifier? { get set }
 	/// The inspector panes title
