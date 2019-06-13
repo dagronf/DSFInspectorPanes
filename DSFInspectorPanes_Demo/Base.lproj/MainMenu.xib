@@ -718,7 +718,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sFt-4Q-cw3" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
-                                        <rect key="frame" x="0.0" y="0.0" width="493" height="431"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="493" height="400"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
@@ -726,12 +726,21 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="canDragRearrange" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lBC-tP-k4z">
+                                        <rect key="frame" x="432" y="407" width="54" height="16"/>
+                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d2p-Iv-JJ6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="miniSystem"/>
+                                        </buttonCell>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="sFt-4Q-cw3" secondAttribute="bottom" id="CpN-WI-YXP"/>
+                                    <constraint firstItem="sFt-4Q-cw3" firstAttribute="top" secondItem="lBC-tP-k4z" secondAttribute="bottom" constant="8" id="HMe-QP-lXK"/>
+                                    <constraint firstAttribute="trailing" secondItem="lBC-tP-k4z" secondAttribute="trailing" constant="8" id="dKf-5O-mlb"/>
                                     <constraint firstAttribute="trailing" secondItem="sFt-4Q-cw3" secondAttribute="trailing" id="hIT-I1-zDV"/>
                                     <constraint firstItem="sFt-4Q-cw3" firstAttribute="leading" secondItem="yHq-38-CYH" secondAttribute="leading" id="hX0-UB-32P"/>
-                                    <constraint firstItem="sFt-4Q-cw3" firstAttribute="top" secondItem="yHq-38-CYH" secondAttribute="top" id="ohL-c3-3j4"/>
+                                    <constraint firstItem="lBC-tP-k4z" firstAttribute="top" secondItem="yHq-38-CYH" secondAttribute="top" constant="8" id="hd3-ps-vcB"/>
                                 </constraints>
                             </customView>
                             <customView fixedFrame="YES" id="lbf-Ls-KN0" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
@@ -761,7 +770,7 @@
                     <constraint firstItem="ncy-NJ-ZJo" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="wdL-c0-t5k"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="279" y="398.5"/>
+            <point key="canvasLocation" x="267" y="496.5"/>
         </window>
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ayH-70-y6T" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES"/>

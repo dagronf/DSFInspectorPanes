@@ -162,11 +162,11 @@
 		23263F7C2278F60400B4FEF0 /* DSFInspectorPanes */ = {
 			isa = PBXGroup;
 			children = (
-				237C15AF22B1A35400605097 /* private */,
-				23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */,
-				23B61DCC22AC73AD00098F3C /* DSFInspectorPane.swift */,
-				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
 				23263F7E2278F60400B4FEF0 /* Info.plist */,
+				23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */,
+				237C15AF22B1A35400605097 /* private */,
+				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
+				23B61DCC22AC73AD00098F3C /* DSFInspectorPane.swift */,
 			);
 			path = DSFInspectorPanes;
 			sourceTree = "<group>";

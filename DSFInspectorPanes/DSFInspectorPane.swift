@@ -37,8 +37,8 @@ import Cocoa
 	@objc var inspector: NSView? { get }
 	/// If specified, the inspector's header view
 	@objc var header: NSView? { get }
-	/// Expand or contract the inspector view
-	@objc var expanded: Bool { get set }
+	/// Is the panel expanded?
+	@objc var expanded: Bool { get }
 	/// Is the inspector panel hidden from view?
 	@objc var hide: Bool { get set }
 
