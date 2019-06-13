@@ -220,6 +220,7 @@ internal class Pane: DSFInspectorBox {
 		let spacer = NSView()
 		spacer.translatesAutoresizingMaskIntoConstraints = false
 		spacer.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		spacer.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		spacer.addGestureRecognizer(self.expandContractGestureRecognizer())
 
 		self.headerView.wantsLayer = true
@@ -461,26 +462,8 @@ extension DSFInspectorPanesView.Pane {
 		self.needsLayout = true
 		self.needsUpdateConstraints = true
 		self.window?.recalculateKeyViewLoop()
-
-//		if #available(macOS 10.12.2, *) {
-//			updateTouchbarTitleForVisibility()
-//		}
-
 		self.changeDelegate?.inspectorPaneDidChangeVisibility(self)
 	}
-
-//	@available (macOS 10.12.2, *)
-//	func updateTouchbarTitleForVisibility() {
-//		if let b = self.touchbarToggleItem.view as? NSButton {
-//			if self.expanded {
-//				b.title = "Close"
-//			}
-//			else {
-//				b.title = "Open"
-//			}
-//		}
-//	}
-
 }
 
 // MARK: Interaction
@@ -489,14 +472,6 @@ extension DSFInspectorPanesView.Pane {
 	override var acceptsFirstResponder: Bool {
 		return true
 	}
-
-//	override func becomeFirstResponder() -> Bool {
-//		let r = super.becomeFirstResponder()
-//		if r == true, #available(macOS 10.12.2, *) {
-//			self.updateTouchbarTitleForVisibility()
-//		}
-//		return r
-//	}
 
 	override func drawFocusRingMask() {
 		var rect = self.bounds
@@ -530,15 +505,8 @@ extension DSFInspectorPanesView.Pane {
 	}
 
 	@objc func toggleDisclosure(sender: AnyObject) {
-		// called when the disclosure button is pressed
 		if let disclosure = sender as? NSButton {
-//			if sender.tag == touchbarCloseTag {
-//				self.disclosureButton?.state = self.expanded == true ? .off : .on
-//				self.openDisclosure(open: self.expanded, animated: self.animated)
-//			}
-//			else {
-				self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
-//			}
+			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
 		} else if let disclosure = self.disclosureButton {
 			self.disclosureButton?.state = disclosure.state == .on ? .off : .on
 			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
@@ -602,34 +570,3 @@ extension DSFInspectorPanesView.Pane: DSFInspectorPane {
 		}
 	}
 }
-
-//@available (macOS 10.12.2, *)
-//extension DSFInspectorPanesView.Pane: NSTouchBarDelegate {
-//
-//	public override func makeTouchBar() -> NSTouchBar? {
-//		let mainBar = NSTouchBar()
-//
-//		mainBar.delegate = self
-//		//mainBar.customizationIdentifier = .imageViewer
-//		mainBar.defaultItemIdentifiers = [
-//			DSFInspectorPanesView.Pane.toggleIdentifier,
-//			.otherItemsProxy
-//		]
-//		//mainBar.customizationAllowedItemIdentifiers = [.strokeSlider, .strokePopover, .photoPicker, .strokeColorPicker, .clearButton, .sharingPicker, .flexibleSpace]
-//		//mainBar.principalItemIdentifier = .photoPicker
-//		return mainBar
-//	}
-//
-//
-//
-//	public func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
-//		if self.canExpand == false {
-//			return nil
-//		}
-//		if identifier == DSFInspectorPanesView.Pane.toggleIdentifier {
-//			self.updateTouchbarTitleForVisibility()
-//			return touchbarToggleItem
-//		}
-//		return nil
-//	}
-//}
