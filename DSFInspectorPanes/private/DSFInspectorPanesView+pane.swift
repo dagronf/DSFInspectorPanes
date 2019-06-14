@@ -81,6 +81,11 @@ internal class Pane: DSFInspectorBox {
 	// The actual property view being displayed
 	private var inspectorView: NSView?
 
+	// Internal expanded state variable.
+	//
+	// Cannot be a public setter/getter as we have multiple ways of setting it (animated, non-animated)
+	fileprivate var _expanded: Bool
+
 	var changeDelegate: DSFInspectorPaneViewDelegate?
 
 	// Can the pane be contracted/expanded
@@ -125,8 +130,9 @@ internal class Pane: DSFInspectorBox {
 		}
 	}
 
-	internal init(titleFont: NSFont, canHide: Bool, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool) {
+	internal init(titleFont: NSFont, canHide: Bool, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool, initiallyExpanded: Bool) {
 		self.animated = animated
+		self._expanded = initiallyExpanded
 		super.init(frame: .zero)
 		self.inspectorType = inspectorType
 		translatesAutoresizingMaskIntoConstraints = false
@@ -377,9 +383,10 @@ extension DSFInspectorPanesView.Pane {
 	}
 
 	func openDisclosure(open: Bool, animated: Bool) {
-		if self.disclosureButton!.isHidden {
+		if !self.canExpand {
 			return
 		}
+
 		self.disclosureButton!.state = open ? .on : .off
 		if open == true {
 			self.openPane(animated: animated)
@@ -505,11 +512,15 @@ extension DSFInspectorPanesView.Pane {
 	}
 
 	@objc func toggleDisclosure(sender: AnyObject) {
-		if let disclosure = sender as? NSButton {
-			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
-		} else if let disclosure = self.disclosureButton {
-			self.disclosureButton?.state = disclosure.state == .on ? .off : .on
-			self.openDisclosure(open: disclosure.state == .on, animated: self.animated)
+		guard let discButton = self.disclosureButton else {
+			return
+		}
+
+		if sender === self.disclosureButton {
+			self.setExpanded(discButton.state == .on)
+		}
+		else if let discButton = self.disclosureButton {
+			self.setExpanded(discButton.state == .on ? false : true)
 		}
 	}
 
@@ -547,26 +558,27 @@ extension DSFInspectorPanesView.Pane: DSFInspectorPane {
 		return nil
 	}
 
-	var expanded: Bool {
-		get {
-			let state = self.disclosureButton?.state ?? .on
-			return state == .on
-		}
-		set {
-			self.openDisclosure(open: newValue, animated: self.animated)
-		}
-	}
-
-	func setExpanded(_ expanded: Bool, animated: Bool) {
-		self.openDisclosure(open: expanded, animated: animated)
-	}
-
 	var hide: Bool {
 		get {
 			return self.isHidden
 		}
 		set {
 			self.isHidden = newValue
+		}
+	}
+
+	var expanded: Bool {
+		return _expanded
+	}
+
+	func setExpanded(_ state: Bool) {
+		self.setExpanded(state, animated: self.animated)
+	}
+	func setExpanded(_ state: Bool, animated: Bool) {
+		if self._expanded != state {
+			self._expanded = state
+			self.disclosureButton?.state = state ? .on : .off
+			self.openDisclosure(open: state, animated: animated)
 		}
 	}
 }

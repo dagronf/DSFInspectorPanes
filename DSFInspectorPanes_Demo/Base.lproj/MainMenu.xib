@@ -717,8 +717,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="493" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
+                                    <button verticalHuggingPriority="750" tag="100" translatesAutoresizingMaskIntoConstraints="NO" id="lBC-tP-k4z">
+                                        <rect key="frame" x="411" y="404" width="74" height="19"/>
+                                        <buttonCell key="cell" type="recessed" title="Toggle All" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d2p-Iv-JJ6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleVisibility:" target="RoW-ig-Ex7" id="usc-7b-LcZ"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="101" verticalHuggingPriority="750" tag="101" translatesAutoresizingMaskIntoConstraints="NO" id="qNk-Tl-9Ui" userLabel="Open All">
+                                        <rect key="frame" x="338" y="404" width="65" height="19"/>
+                                        <buttonCell key="cell" type="recessed" title="Open All" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vJ4-DI-l3C">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleVisibility:" target="RoW-ig-Ex7" id="HVe-vc-bDJ"/>
+                                        </connections>
+                                    </button>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sFt-4Q-cw3" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
-                                        <rect key="frame" x="0.0" y="0.0" width="493" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="493" height="397"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
@@ -726,21 +746,28 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="canDragRearrange" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lBC-tP-k4z">
-                                        <rect key="frame" x="432" y="407" width="54" height="16"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d2p-Iv-JJ6">
+                                    <button verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="BGE-2j-7nh" userLabel="Close All">
+                                        <rect key="frame" x="263" y="404" width="67" height="19"/>
+                                        <buttonCell key="cell" type="recessed" title="Close All" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0u7-hv-6V5">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="miniSystem"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="toggleVisibility:" target="RoW-ig-Ex7" id="3bI-FT-pck"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="lBC-tP-k4z" firstAttribute="leading" secondItem="qNk-Tl-9Ui" secondAttribute="trailing" constant="8" symbolic="YES" id="3ma-Ev-lAr"/>
                                     <constraint firstAttribute="bottom" secondItem="sFt-4Q-cw3" secondAttribute="bottom" id="CpN-WI-YXP"/>
+                                    <constraint firstItem="qNk-Tl-9Ui" firstAttribute="centerY" secondItem="lBC-tP-k4z" secondAttribute="centerY" id="HJ0-nr-CkZ"/>
                                     <constraint firstItem="sFt-4Q-cw3" firstAttribute="top" secondItem="lBC-tP-k4z" secondAttribute="bottom" constant="8" id="HMe-QP-lXK"/>
                                     <constraint firstAttribute="trailing" secondItem="lBC-tP-k4z" secondAttribute="trailing" constant="8" id="dKf-5O-mlb"/>
                                     <constraint firstAttribute="trailing" secondItem="sFt-4Q-cw3" secondAttribute="trailing" id="hIT-I1-zDV"/>
                                     <constraint firstItem="sFt-4Q-cw3" firstAttribute="leading" secondItem="yHq-38-CYH" secondAttribute="leading" id="hX0-UB-32P"/>
                                     <constraint firstItem="lBC-tP-k4z" firstAttribute="top" secondItem="yHq-38-CYH" secondAttribute="top" constant="8" id="hd3-ps-vcB"/>
+                                    <constraint firstItem="BGE-2j-7nh" firstAttribute="centerY" secondItem="qNk-Tl-9Ui" secondAttribute="centerY" id="oLu-LJ-7K6"/>
+                                    <constraint firstItem="qNk-Tl-9Ui" firstAttribute="leading" secondItem="BGE-2j-7nh" secondAttribute="trailing" constant="8" id="tX4-En-Kde"/>
                                 </constraints>
                             </customView>
                             <customView fixedFrame="YES" id="lbf-Ls-KN0" customClass="DSFInspectorPanesView" customModule="DSFInspectorPanes">
@@ -770,7 +797,7 @@
                     <constraint firstItem="ncy-NJ-ZJo" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="wdL-c0-t5k"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="267" y="496.5"/>
+            <point key="canvasLocation" x="-203" y="489"/>
         </window>
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ayH-70-y6T" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES"/>

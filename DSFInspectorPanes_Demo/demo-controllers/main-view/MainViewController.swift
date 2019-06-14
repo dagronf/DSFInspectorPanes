@@ -35,6 +35,21 @@ class MainViewController: NSViewController {
 		// Listen to inspector changes
 		panes.inspectorPaneDelegate = self
 	}
+
+	@IBAction func toggleVisibility(_ sender: NSButton) {
+		switch sender.tag {
+		case 100:
+			self.panes.panes.forEach { $0.setExpanded( !$0.expanded, animated: true) }
+		case 101:
+			self.panes.panes.forEach { $0.setExpanded( true, animated: true) }
+		case 102:
+			self.panes.panes.forEach { $0.setExpanded( false, animated: true) }
+		default:
+			break;
+		}
+	}
+	
+
 }
 
 extension MainViewController: DSFInspectorPanesViewProtocol {

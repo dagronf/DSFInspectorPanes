@@ -272,7 +272,14 @@ extension DSFInspectorPanesView {
 		) -> DSFInspectorPane {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
-		let inspectorPaneView = DSFInspectorPanesView.Pane(titleFont: self.titleFont, canHide: canHide, canReorder: self.canDragRearrange, inspectorType: self.inspectorType, animated: self.animated)
+		let inspectorPaneView = DSFInspectorPanesView.Pane(
+			titleFont: self.titleFont,
+			canHide: canHide,
+			canReorder: self.canDragRearrange,
+			inspectorType: self.inspectorType,
+			animated: self.animated,
+			initiallyExpanded: expanded)
+
 		inspectorPaneView.translatesAutoresizingMaskIntoConstraints = false
 		inspectorPaneView.changeDelegate = self
 		inspectorPaneView.separatorVisible = self.arrangedInspectorPanes.count != 0
@@ -492,7 +499,6 @@ extension DSFInspectorPanesView: NSTouchBarDelegate {
 			DSFInspectorPanesView.popoverIdentifier,
 			.otherItemsProxy
 		]
-		mainBar.principalItemIdentifier = DSFInspectorPanesView.popoverIdentifier
 		return mainBar
 	}
 
@@ -536,14 +542,11 @@ extension DSFInspectorPanesView: DraggingStackViewProtocol {
 		}
 		self.window?.recalculateKeyViewLoop()
 
-		guard let focused = self.focussedPane() else {
-			return
-		}
-
 		if #available(macOS 10.12.2, *) {
-			updateTouchbarTitleForVisibility(for: focused.pane, at: focused.index)
+			if let focused = self.focussedPane() {
+				updateTouchbarTitleForVisibility(for: focused.pane, at: focused.index)
+			}
 		}
-
 
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.panes)
 	}

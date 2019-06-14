@@ -46,6 +46,12 @@ import Cocoa
 	///
 	/// - Parameters:
 	///   - expanded: true to expand, false to contract
+	@objc func setExpanded(_ state: Bool)
+
+	/// Change the visibility overriding the inspector's built-in animation settings
+	///
+	/// - Parameters:
+	///   - expanded: true to expand, false to contract
 	///   - animated: should the change be animated?
 	@objc func setExpanded(_ expanded: Bool, animated: Bool)
 }
