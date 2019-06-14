@@ -216,7 +216,7 @@ internal class Pane: DSFInspectorBox {
 
 		title.setContentCompressionResistancePriority(.required, for: .horizontal)
 		title.setContentCompressionResistancePriority(.required, for: .vertical)
-		title.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		title.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 		title.setContentHuggingPriority(.defaultHigh, for: .vertical)
 		title.addGestureRecognizer(self.expandContractGestureRecognizer())
 
@@ -252,6 +252,7 @@ internal class Pane: DSFInspectorBox {
 
 		self.headerAccessoryViewContainer.isHidden = true
 		self.mainStack.addArrangedSubview(self.headerView)
+
 		//////
 
 		self.inspectorViewContainerView.translatesAutoresizingMaskIntoConstraints = false

@@ -23,10 +23,10 @@ class WindowPropertyPanesViewController: NSViewController {
 		let v = DSFInspectorPanesView(frame: .zero,
 									  animated: true,
 									  embeddedInScrollView: false,
-									  showSeparators: true,
-									  showBoxes: false,
+									  showSeparators: false,
+									  showBoxes: true,
 									  canDragRearrange: true)
-		v.add(title: "Nested Radios", view: windowDummy1.view, canHide: true)
+		v.add(title: "Nested Radios", view: windowDummy1.view, canHide: false)
 		v.add(title: "Nested Color Pane", view: windowDummy2.view, canHide: false)
 		return v
 	}()

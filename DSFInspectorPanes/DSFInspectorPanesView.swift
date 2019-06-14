@@ -488,6 +488,48 @@ extension DSFInspectorPanesView: DSFInspectorPanesAction {
 	}
 }
 
+// MARK: - Delegate callback handling
+
+extension DSFInspectorPanesView: DraggingStackViewProtocol {
+	func stackViewDidReorder() {
+		for inspector in self.arrangedInspectorPanes.filter({ $0.inspectorType == .separator }).enumerated() {
+			inspector.element.separatorVisible = inspector.offset != 0
+			inspector.element.needsDisplay = true
+		}
+		self.window?.recalculateKeyViewLoop()
+
+		if #available(macOS 10.12.2, *) {
+			if let focused = self.focussedPane() {
+				updateTouchbarTitleForVisibility(for: focused.pane, at: focused.index)
+			}
+		}
+
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.panes)
+	}
+}
+
+extension DSFInspectorPanesView: DSFInspectorPaneViewDelegate {
+
+	func inspectorPaneDidFocus(_ pane: DSFInspectorPanesView.Pane) {
+		if #available(macOS 10.12.2, *) {
+			guard let focused = self.focussedPane() else {
+				return
+			}
+			self.updateTouchbarTitleForVisibility(for: pane, at: focused.index)
+		}
+	}
+
+	func inspectorPaneDidChangeVisibility(_ pane: DSFInspectorPanesView.Pane) {
+		if #available(macOS 10.12.2, *) {
+			updateTouchbarTitleForVisibility(for: pane)
+		}
+
+		self.inspectorPaneDelegate?.inspectorPanes?(self, didExpandOrContract: pane)
+	}
+}
+
+// MARK: - Touch bar handling
+
 @available (macOS 10.12.2, *)
 extension DSFInspectorPanesView: NSTouchBarDelegate {
 
@@ -528,47 +570,6 @@ extension DSFInspectorPanesView: NSTouchBarDelegate {
 			return popoverItem
 		}
 		return nil
-	}
-}
-
-
-// MARK: - Delegate callback handling
-
-extension DSFInspectorPanesView: DraggingStackViewProtocol {
-	func stackViewDidReorder() {
-		for inspector in self.arrangedInspectorPanes.filter({ $0.inspectorType == .separator }).enumerated() {
-			inspector.element.separatorVisible = inspector.offset != 0
-			inspector.element.needsDisplay = true
-		}
-		self.window?.recalculateKeyViewLoop()
-
-		if #available(macOS 10.12.2, *) {
-			if let focused = self.focussedPane() {
-				updateTouchbarTitleForVisibility(for: focused.pane, at: focused.index)
-			}
-		}
-
-		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.panes)
-	}
-}
-
-extension DSFInspectorPanesView: DSFInspectorPaneViewDelegate {
-
-	func inspectorPaneDidFocus(_ pane: DSFInspectorPanesView.Pane) {
-		if #available(macOS 10.12.2, *) {
-			guard let focused = self.focussedPane() else {
-				return
-			}
-			self.updateTouchbarTitleForVisibility(for: pane, at: focused.index)
-		}
-	}
-
-	func inspectorPaneDidChangeVisibility(_ pane: DSFInspectorPanesView.Pane) {
-		if #available(macOS 10.12.2, *) {
-			updateTouchbarTitleForVisibility(for: pane)
-		}
-
-		self.inspectorPaneDelegate?.inspectorPanes?(self, didExpandOrContract: pane)
 	}
 }
 
@@ -625,7 +626,9 @@ class DSFInspectorPanesPopoverTouchBar: NSTouchBar, NSTouchBarDelegate {
 	public var isExpanded: Bool = true {
 		didSet {
 			if let button = touchbarToggleItem.view as? NSButton {
-				button.title = self.isExpanded ? "Close" : "Open"
+				button.title = self.isExpanded
+					? NSLocalizedString("Close", comment: "Close an open inspector pane")
+					: NSLocalizedString("Open", comment: "Open a closed inspector pane")
 				button.image = self.isExpanded
 					? NSImage(named: NSImage.Name("NSTouchBarExitFullScreenTemplate"))
 					: NSImage(named: NSImage.Name("NSTouchBarEnterFullScreenTemplate"))
@@ -635,7 +638,7 @@ class DSFInspectorPanesPopoverTouchBar: NSTouchBar, NSTouchBarDelegate {
 
 	lazy var touchbarMoveDownItem: NSCustomTouchBarItem = {
 		let touchbaritem = NSCustomTouchBarItem(identifier: DSFInspectorPanesPopoverTouchBar.moveDownIdentifier)
-		let button = NSButton(title: "Move Down",
+		let button = NSButton(title: NSLocalizedString("Move Down", comment: "Move the selected pane down in the inspector pane view"),
 							  image: NSImage(named: NSImage.Name("NSTouchBarGoDownTemplate"))!,
 							  target: self, action: #selector(self.movePaneDown(_:)))
 		touchbaritem.view = button
@@ -644,7 +647,7 @@ class DSFInspectorPanesPopoverTouchBar: NSTouchBar, NSTouchBarDelegate {
 
 	lazy var touchbarMoveUpItem: NSCustomTouchBarItem = {
 		let touchbaritem = NSCustomTouchBarItem(identifier: DSFInspectorPanesPopoverTouchBar.moveUpIdentifier)
-		let button = NSButton(title: "Move Up",
+		let button = NSButton(title: NSLocalizedString("Move Up", comment: "Move the selected pane up in the inspector pane view"),
 							  image: NSImage(named: NSImage.Name("NSTouchBarGoUpTemplate"))!,
 							  target: self, action: #selector(self.movePaneUp(_:)))
 		touchbaritem.view = button
@@ -653,7 +656,7 @@ class DSFInspectorPanesPopoverTouchBar: NSTouchBar, NSTouchBarDelegate {
 
 	lazy var touchbarToggleItem: NSCustomTouchBarItem = {
 		let touchbaritem = NSCustomTouchBarItem(identifier: DSFInspectorPanesPopoverTouchBar.toggleIdentifier)
-		let button = NSButton(title: "Expand",
+		let button = NSButton(title: "<title>",
 							  image: NSImage(named: NSImage.Name("NSTouchBarEnterFullScreenTemplate"))!,
 							  target: self, action: #selector(self.togglePane(_:)))
 		touchbaritem.view = button
