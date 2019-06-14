@@ -56,11 +56,11 @@ extension MainViewController: DSFInspectorPanesViewProtocol {
 	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didReorder orderedPanes: [DSFInspectorPane]) {
 		// do something
 		print("Panes did reorder: ")
-		print("-  \(orderedPanes.map { $0.titleText })")
+		print("-  \(orderedPanes.map { $0.title })")
 	}
 
 	func inspectorPanes(_ inspectorPanes: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPane) {
 		// Do something
-		print("Pane: \(pane.titleText), \(pane.expanded)")
+		print("Pane: \(pane.title), \(pane.expanded)")
 	}
 }

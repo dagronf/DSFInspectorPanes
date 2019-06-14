@@ -267,6 +267,7 @@ internal class Pane: DSFInspectorBox {
 
 	private lazy var dragImageView: NSImageView = {
 		let image = NSImage(named: NSImage.Name("NSListViewTemplate"))!
+		image.accessibilityDescription = NSLocalizedString("Can Reorder", comment: "")
 		image.isTemplate = true
 		let imageview = NSImageView(frame: .zero)
 		imageview.translatesAutoresizingMaskIntoConstraints = true
@@ -537,15 +538,6 @@ extension DSFInspectorPanesView.Pane {
 // MARK: - Conformance to public protocol
 
 extension DSFInspectorPanesView.Pane: DSFInspectorPane {
-	var titleText: String {
-		get {
-			return self.title
-		}
-		set {
-			self.title = newValue
-		}
-	}
-
 	var inspector: NSView? {
 		return self.inspectorView
 	}

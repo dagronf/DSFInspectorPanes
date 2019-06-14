@@ -32,11 +32,13 @@ import Cocoa
 	/// A unique identifier for the inspector panel
 	@objc var identifier: NSUserInterfaceItemIdentifier? { get set }
 	/// The inspector panes title
-	@objc var titleText: String { get set }
+	@objc var title: String { get set }
 	/// The actual inspector pane
 	@objc var inspector: NSView? { get }
 	/// If specified, the inspector's header view
 	@objc var header: NSView? { get }
+	/// Can we expand and contract the pane?
+	@objc var canExpand: Bool { get }
 	/// Is the panel expanded?
 	@objc var expanded: Bool { get }
 	/// Is the inspector panel hidden from view?
