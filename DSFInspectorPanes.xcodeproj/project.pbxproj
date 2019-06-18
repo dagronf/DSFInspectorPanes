@@ -95,6 +95,7 @@
 		23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongDescriptionViewController.xib; sourceTree = "<group>"; };
 		23A31BF722AF84B600B70488 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		23A31BF822AF84B600B70488 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		23A55EAD22B8AB6100808BC2 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		23A7F89322B069C000D77045 /* DSFInspectorPanesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSFInspectorPanesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23A7F89522B069C000D77045 /* DSFInspectorPanesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPanesTests.swift; sourceTree = "<group>"; };
 		23A7F89722B069C000D77045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */,
+				23A55EAD22B8AB6100808BC2 /* Package.swift */,
 				23ACF96C228A390400FF6594 /* LICENSE */,
 				23FB5E1422897DA700D1CD57 /* README.md */,
 				23263F7C2278F60400B4FEF0 /* DSFInspectorPanes */,
@@ -168,7 +170,8 @@
 				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
 				23B61DCC22AC73AD00098F3C /* DSFInspectorPane.swift */,
 			);
-			path = DSFInspectorPanes;
+			name = DSFInspectorPanes;
+			path = Sources/DSFInspectorPanes;
 			sourceTree = "<group>";
 		};
 		23263F8C2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */ = {
@@ -602,7 +605,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = DSFInspectorPanes/Info.plist;
+				INFOPLIST_FILE = Sources/DSFInspectorPanes/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -631,7 +634,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = DSFInspectorPanes/Info.plist;
+				INFOPLIST_FILE = Sources/DSFInspectorPanes/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
