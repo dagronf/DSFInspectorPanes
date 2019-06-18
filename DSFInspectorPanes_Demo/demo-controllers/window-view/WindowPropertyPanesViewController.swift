@@ -41,6 +41,7 @@ class WindowPropertyPanesViewController: NSViewController {
 	}
 
 	private func createPanes() {
+		panes.insets = NSEdgeInsetsZero
 		panes.add(title: "Label with button thing",
 				  view: textButton.view,
 				  expanded: false)

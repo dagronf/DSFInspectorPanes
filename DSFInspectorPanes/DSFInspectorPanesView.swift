@@ -78,7 +78,7 @@ internal protocol DSFInspectorPanesAction {
 	private(set) var inspectorType: InspectorType = .none
 
 	/// Edge insets from the view to inset the panes
-	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 0, bottom: 8, right: 0) {
+	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) {
 		didSet {
 			self.primaryStack.edgeInsets = self.insets
 			self.primaryStack.needsLayout = true
@@ -266,6 +266,7 @@ extension DSFInspectorPanesView {
 	func add(
 		title: String,
 		view: NSView,
+		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
 		canHide: Bool = true,
 		expanded: Bool = true
@@ -274,6 +275,7 @@ extension DSFInspectorPanesView {
 
 		let inspectorPaneView = DSFInspectorPanesView.Pane(
 			titleFont: self.titleFont,
+			showsHeader: showsHeader,
 			canHide: canHide,
 			canReorder: self.canDragRearrange,
 			inspectorType: self.inspectorType,
@@ -288,12 +290,10 @@ extension DSFInspectorPanesView {
 		inspectorPaneView.title = title
 		self.primaryStack.addArrangedSubview(inspectorPaneView)
 
-		// If we're embedded in a scroll view, give ourselves more horizontal gap to our border
-		let vScrollWidth = self.embeddedInScrollView ? 12 : 4
-		let metrics = ["vScrollWidth": vScrollWidth]
+		let metrics = ["leftInset": insets.left, "rightInset": insets.right]
 		let variableBindings = ["disclosureView": inspectorPaneView] as [String: Any]
 		primaryStack.addConstraints(NSLayoutConstraint.constraints(
-			withVisualFormat: "H:|-(vScrollWidth)-[disclosureView]-(vScrollWidth)-|",
+			withVisualFormat: "H:|-(leftInset)-[disclosureView]-(rightInset)-|",
 			options: .alignAllLastBaseline,
 			metrics: metrics as [String: NSNumber],
 			views: variableBindings
@@ -306,8 +306,12 @@ extension DSFInspectorPanesView {
 		view.needsUpdateConstraints = true
 		view.needsLayout = true
 		self.primaryStack.needsLayout = true
+		inspectorPaneView.needsLayout = true
 		inspectorPaneView.needsUpdateConstraints = true
 		self.primaryStack.needsUpdateConstraints = true
+
+		self.enclosingScrollView?.reflectScrolledClipView(self.enclosingScrollView!.contentView)
+
 		window?.recalculateKeyViewLoop()
 		return inspectorPaneView
 	}
@@ -327,6 +331,11 @@ extension DSFInspectorPanesView {
 
 		let view = self.primaryStack.arrangedSubviews[index]
 		self.primaryStack.removeArrangedSubview(view)
+	}
+
+	func removeAll() {
+		self.arrangedInspectorPanes.forEach { $0.removeFromSuperview() }
+		self.primaryStack.needsLayout = true
 	}
 
 	func move(index: Int, to newIndex: Int) {

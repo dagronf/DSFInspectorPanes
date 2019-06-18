@@ -26,6 +26,8 @@ class MainViewController: NSViewController {
     }
 
 	func setup() {
+		panes.insets = NSEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+		panes.spacing = 4
 		panes.add(title: "Short Description",
 				  view: shortDescription.view)
 		panes.add(title: "Long Description",

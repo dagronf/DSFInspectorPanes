@@ -237,9 +237,9 @@
 				239B4B5B22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib */,
 				239B4B5E22ACA2AE004DA5D1 /* TextWithButtonViewController.swift */,
 				239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */,
-				239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */,
 				23B61DD222AC7A8F00098F3C /* DummyViewController.swift */,
 				23B61DD322AC7A8F00098F3C /* DummyViewController.xib */,
+				239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */,
 			);
 			path = "property-view";
 			sourceTree = "<group>";

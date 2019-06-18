@@ -27,11 +27,11 @@ class MainPropertyPanesViewController: NSViewController {
 		let n = DSFInspectorPanesView(frame: .zero,
 									  animated: true,
 									  embeddedInScrollView: false,
-									  showSeparators: false,
-									  showBoxes: true,
+									  showSeparators: true,
+									  showBoxes: false,
 									  titleFont: NSFont.systemFont(ofSize: 12))
-		n.add(title: "Nested Radio", view: dummy1.view)
-		n.add(title: "Nested Color", view: dummy2.view, headerAccessoryView: dummy2.headerView)
+		n.add(title: "Nested Radio", view: dummy1.view, showsHeader: false)
+		n.add(title: "Nested Color", view: dummy2.view, showsHeader: false, headerAccessoryView: dummy2.headerView)
 		return n
 	}()
 
@@ -46,6 +46,9 @@ class MainPropertyPanesViewController: NSViewController {
 	}
 
 	private func createPanes() {
+
+		panes.insets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+
 		panes.add(title: "Description",
 				  view: desc.view,
 				  headerAccessoryView: desc.headerView,

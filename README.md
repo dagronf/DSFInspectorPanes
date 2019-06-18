@@ -10,7 +10,7 @@
 * Optional automatic scroll view support
 * Optional animation
 * Optional separators or bounding boxes
-* Optional reordering of panes
+* Optional drag/drop reordering of panes
 * Show or hide individual panes
 * Expand or contract individual panes
 
@@ -49,6 +49,7 @@ pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
 * `titleFont` : Set the font to use for the title for the panes
 * `spacing` : Set the vertical spacing between each pane
 * `showBoxes` : Show a box around each inspector pane (optional)
+* `show
 * `canDragRearrange` : Allow the user to change the ordering of the panes via drag/drop
 
 ### Methods

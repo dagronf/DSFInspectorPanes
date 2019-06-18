@@ -119,153 +119,6 @@ internal class Pane: DSFInspectorBox {
 	var panelBottom: NSLayoutConstraint!
 	var heightConstraint: NSLayoutConstraint!
 
-	override var isFlipped: Bool {
-		return true
-	}
-
-	override var title: String {
-		didSet {
-			self.titleTextView?.stringValue = self.title
-			self.setAccessibilityLabel("\(self.title) pane")
-		}
-	}
-
-	internal init(titleFont: NSFont, canHide: Bool, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool, initiallyExpanded: Bool) {
-		self.animated = animated
-		self._expanded = initiallyExpanded
-		super.init(frame: .zero)
-		self.inspectorType = inspectorType
-		translatesAutoresizingMaskIntoConstraints = false
-		self.setup(titleFont: titleFont, canHide: canHide, canReorder: canReorder)
-	}
-
-	required init?(coder _: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	private func setup(titleFont: NSFont, canHide: Bool, canReorder: Bool) {
-		guard let content = self.contentView else {
-			return
-		}
-
-		self.translatesAutoresizingMaskIntoConstraints = false
-		self.titlePosition = .noTitle
-
-		self.headerAccessoryViewContainer.translatesAutoresizingMaskIntoConstraints = false
-		self.headerAccessoryViewContainer.setContentHuggingPriority(.required, for: .vertical)
-
-		self.mainStack.translatesAutoresizingMaskIntoConstraints = false
-		self.mainStack.frame = frame
-		self.mainStack.orientation = .vertical
-		self.mainStack.alignment = .left
-		self.mainStack.distribution = .fillProportionally
-		self.mainStack.spacing = 8
-		self.mainStack.detachesHiddenViews = true
-		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
-		self.mainStack.setHuggingPriority(.required, for: .vertical)
-		self.mainStack.edgeInsets = .zero
-
-		self.addSubview(self.mainStack)
-
-		self.mainStack.leadingAnchor.constraint(equalTo: content.leadingAnchor).isActive = true
-		self.mainStack.topAnchor.constraint(equalTo: content.topAnchor).isActive = true
-		self.mainStack.bottomAnchor.constraint(equalTo: content.bottomAnchor).isActive = true
-		self.mainStack.trailingAnchor.constraint(equalTo: content.trailingAnchor).isActive = true
-
-		self.mainStack.setHuggingPriority(.defaultLow, for: .horizontal)
-		self.mainStack.setHuggingPriority(.required, for: .vertical)
-		self.mainStack.setContentCompressionResistancePriority(.required, for: .vertical)
-
-		self.mainStack.setClippingResistancePriority(.required, for: .vertical)
-		self.mainStack.setHuggingPriority(.required, for: .vertical)
-
-		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
-
-		setContentHuggingPriority(.required, for: .vertical)
-		setContentCompressionResistancePriority(.required, for: .vertical)
-
-		//////
-		let disclosure = NSButton()
-		disclosure.translatesAutoresizingMaskIntoConstraints = false
-		disclosure.bezelStyle = .disclosure
-		disclosure.title = ""
-		disclosure.setButtonType(.onOff)
-		disclosure.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-		disclosure.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-		disclosure.target = self
-		disclosure.action = #selector(self.toggleDisclosure(sender:))
-		disclosure.isHidden = !canHide
-		disclosure.controlSize = .mini
-
-		disclosure.wantsLayer = true
-		disclosure.layer!.backgroundColor = CGColor.clear
-
-		self.disclosureButton = disclosure
-
-		let title = CreateInspectorTitleField()
-		title.font = titleFont
-		title.stringValue = "Dummy Value"
-		title.allowsDefaultTighteningForTruncation = true
-		title.usesSingleLineMode = true
-		title.cell?.truncatesLastVisibleLine = true
-		title.cell?.lineBreakMode = .byTruncatingHead
-		title.isEditable = false
-		title.isBordered = false
-		title.drawsBackground = false
-		title.translatesAutoresizingMaskIntoConstraints = false
-
-		title.setContentCompressionResistancePriority(.required, for: .horizontal)
-		title.setContentCompressionResistancePriority(.required, for: .vertical)
-		title.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-		title.setContentHuggingPriority(.defaultHigh, for: .vertical)
-		title.addGestureRecognizer(self.expandContractGestureRecognizer())
-
-		self.titleTextView = title
-
-		// Dummy spacer to make sure the accessory view appears on the right
-		let spacer = NSView()
-		spacer.translatesAutoresizingMaskIntoConstraints = false
-		spacer.setContentHuggingPriority(.defaultLow, for: .horizontal)
-		spacer.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-		spacer.addGestureRecognizer(self.expandContractGestureRecognizer())
-
-		self.headerView.wantsLayer = true
-		self.headerView.translatesAutoresizingMaskIntoConstraints = false
-		self.headerView.distribution = .fillProportionally
-		self.headerView.spacing = 4
-		self.headerView.detachesHiddenViews = false
-		self.headerView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-		self.headerView.orientation = .horizontal
-		self.headerView.alignment = .centerY
-		if canHide {
-			self.headerView.addArrangedSubview(disclosure)
-		}
-		self.headerView.addArrangedSubview(title)
-		self.headerView.addArrangedSubview(spacer)
-		self.headerView.setHuggingPriority(.required, for: .vertical)
-		self.headerView.setContentHuggingPriority(.required, for: .vertical)
-		self.headerView.addArrangedSubview(self.headerAccessoryViewContainer)
-
-		if canReorder {
-			self.headerView.addArrangedSubview(self.dragImageView)
-		}
-
-		self.headerAccessoryViewContainer.isHidden = true
-		self.mainStack.addArrangedSubview(self.headerView)
-
-		//////
-
-		self.inspectorViewContainerView.translatesAutoresizingMaskIntoConstraints = false
-		self.inspectorViewContainerView.wantsLayer = true
-
-		self.inspectorViewContainerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-		self.inspectorViewContainerView.setContentHuggingPriority(.required, for: .vertical)
-
-		self.mainStack.addArrangedSubview(self.inspectorViewContainerView)
-
-		updateConstraintsForSubtreeIfNeeded()
-	}
-
 	private lazy var dragImageView: NSImageView = {
 		let image = NSImage(named: NSImage.Name("NSListViewTemplate"))!
 		image.accessibilityDescription = NSLocalizedString("Can Reorder", comment: "")
@@ -282,6 +135,155 @@ internal class Pane: DSFInspectorBox {
 		return imageview
 	}()
 
+	override var isFlipped: Bool {
+		return true
+	}
+
+	override var title: String {
+		didSet {
+			self.titleTextView?.stringValue = self.title
+			self.setAccessibilityLabel("\(self.title) pane")
+		}
+	}
+
+	internal init(titleFont: NSFont, showsHeader: Bool = true, canHide: Bool, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool, initiallyExpanded: Bool) {
+		self.animated = animated
+		self._expanded = initiallyExpanded
+		super.init(frame: .zero)
+		self.inspectorType = inspectorType
+		translatesAutoresizingMaskIntoConstraints = false
+		self.setup(titleFont: titleFont, showsHeader: showsHeader, canHide: canHide, canReorder: canReorder)
+	}
+
+	required init?(coder _: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	private func setup(titleFont: NSFont, showsHeader: Bool, canHide: Bool, canReorder: Bool) {
+		guard let content = self.contentView else {
+			return
+		}
+		
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.titlePosition = .noTitle
+		
+		self.headerAccessoryViewContainer.translatesAutoresizingMaskIntoConstraints = false
+		self.headerAccessoryViewContainer.setContentHuggingPriority(.required, for: .vertical)
+		
+		self.mainStack.translatesAutoresizingMaskIntoConstraints = false
+		self.mainStack.frame = frame
+		self.mainStack.orientation = .vertical
+		self.mainStack.alignment = .left
+		self.mainStack.distribution = .fillProportionally
+		self.mainStack.spacing = 8
+		self.mainStack.detachesHiddenViews = true
+		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
+		self.mainStack.setHuggingPriority(.required, for: .vertical)
+		self.mainStack.edgeInsets = .zero
+		
+		self.addSubview(self.mainStack)
+		
+		self.mainStack.leadingAnchor.constraint(equalTo: content.leadingAnchor).isActive = true
+		self.mainStack.topAnchor.constraint(equalTo: content.topAnchor).isActive = true
+		self.mainStack.bottomAnchor.constraint(equalTo: content.bottomAnchor).isActive = true
+		self.mainStack.trailingAnchor.constraint(equalTo: content.trailingAnchor).isActive = true
+		
+		self.mainStack.setHuggingPriority(.defaultLow, for: .horizontal)
+		self.mainStack.setHuggingPriority(.required, for: .vertical)
+		self.mainStack.setContentCompressionResistancePriority(.required, for: .vertical)
+		
+		self.mainStack.setClippingResistancePriority(.required, for: .vertical)
+		self.mainStack.setHuggingPriority(.required, for: .vertical)
+		
+		self.mainStack.setContentHuggingPriority(.required, for: .vertical)
+		
+		setContentHuggingPriority(.required, for: .vertical)
+		setContentCompressionResistancePriority(.required, for: .vertical)
+		
+		if showsHeader {
+			
+			//////
+			let disclosure = NSButton()
+			disclosure.translatesAutoresizingMaskIntoConstraints = false
+			disclosure.bezelStyle = .disclosure
+			disclosure.title = ""
+			disclosure.setButtonType(.onOff)
+			disclosure.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+			disclosure.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+			disclosure.target = self
+			disclosure.action = #selector(self.toggleDisclosure(sender:))
+			disclosure.isHidden = !canHide
+			disclosure.controlSize = .mini
+			
+			disclosure.wantsLayer = true
+			disclosure.layer!.backgroundColor = CGColor.clear
+			
+			self.disclosureButton = disclosure
+			
+			let title = CreateInspectorTitleField()
+			title.font = titleFont
+			title.stringValue = "Dummy Value"
+			title.allowsDefaultTighteningForTruncation = true
+			title.usesSingleLineMode = true
+			title.cell?.truncatesLastVisibleLine = true
+			title.cell?.lineBreakMode = .byTruncatingHead
+			title.isEditable = false
+			title.isBordered = false
+			title.drawsBackground = false
+			title.translatesAutoresizingMaskIntoConstraints = false
+			
+			title.setContentCompressionResistancePriority(.required, for: .horizontal)
+			title.setContentCompressionResistancePriority(.required, for: .vertical)
+			title.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+			title.setContentHuggingPriority(.defaultHigh, for: .vertical)
+			title.addGestureRecognizer(self.expandContractGestureRecognizer())
+			
+			self.titleTextView = title
+			
+			// Dummy spacer to make sure the accessory view appears on the right
+			let spacer = NSView()
+			spacer.translatesAutoresizingMaskIntoConstraints = false
+			spacer.setContentHuggingPriority(.defaultLow, for: .horizontal)
+			spacer.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+			spacer.addGestureRecognizer(self.expandContractGestureRecognizer())
+			
+			self.headerView.wantsLayer = true
+			self.headerView.translatesAutoresizingMaskIntoConstraints = false
+			self.headerView.distribution = .fillProportionally
+			self.headerView.spacing = 4
+			self.headerView.detachesHiddenViews = false
+			self.headerView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+			self.headerView.orientation = .horizontal
+			self.headerView.alignment = .centerY
+			if canHide {
+				self.headerView.addArrangedSubview(disclosure)
+			}
+			self.headerView.addArrangedSubview(title)
+			self.headerView.addArrangedSubview(spacer)
+			self.headerView.setHuggingPriority(.required, for: .vertical)
+			self.headerView.setContentHuggingPriority(.required, for: .vertical)
+			self.headerView.addArrangedSubview(self.headerAccessoryViewContainer)
+			
+			if canReorder {
+				self.headerView.addArrangedSubview(self.dragImageView)
+			}
+			
+			self.headerAccessoryViewContainer.isHidden = true
+			self.mainStack.addArrangedSubview(self.headerView)
+		}
+		//////
+		
+		self.inspectorViewContainerView.translatesAutoresizingMaskIntoConstraints = false
+		self.inspectorViewContainerView.wantsLayer = true
+		
+		self.inspectorViewContainerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		self.inspectorViewContainerView.setContentHuggingPriority(.required, for: .vertical)
+		
+		self.mainStack.addArrangedSubview(self.inspectorViewContainerView)
+		
+		updateConstraintsForSubtreeIfNeeded()
+	}
+
 	/// Set the view (and header accessory) for the container
 	internal func add(propertyView: NSView, headerAccessoryView: NSView? = nil) {
 		self.inspectorView = propertyView
@@ -292,7 +294,7 @@ internal class Pane: DSFInspectorBox {
 		propertyView.translatesAutoresizingMaskIntoConstraints = false
 		propertyView.setContentHuggingPriority(.required, for: .vertical)
 
-		self.disclosureButton!.state = .on
+		self.disclosureButton?.state = .on
 		self.inspectorViewContainerView.addSubview(propertyView)
 
 		let variableBindings = ["panelView": propertyView] as [String: Any]
@@ -488,7 +490,7 @@ extension DSFInspectorPanesView.Pane {
 		rect.size.height -= 4
 		rect.origin.x += 2
 		rect.size.width -= 4
-		let path = NSBezierPath.init(roundedRect: rect, xRadius: 4, yRadius: 4)
+		let path = NSBezierPath.init(roundedRect: rect.insetBy(dx: 4, dy: 4), xRadius: 4, yRadius: 4)
 		path.fill()
 	}
 
