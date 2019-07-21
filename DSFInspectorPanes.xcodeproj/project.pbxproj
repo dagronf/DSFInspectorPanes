@@ -40,6 +40,8 @@
 		23B61DD122AC759F00098F3C /* DSFInspectorPanesView+pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */; };
 		23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD222AC7A8F00098F3C /* DummyViewController.swift */; };
 		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
+		23D79A2622E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */; };
+		23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+pane.swift"; sourceTree = "<group>"; };
 		23B61DD222AC7A8F00098F3C /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		23B61DD322AC7A8F00098F3C /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
+		23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVerticallyCenteredTextFieldCell.swift; sourceTree = "<group>"; };
+		23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggingStackView.swift; sourceTree = "<group>"; };
 		23FB5E1422897DA700D1CD57 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +201,7 @@
 		237C15AF22B1A35400605097 /* private */ = {
 			isa = PBXGroup;
 			children = (
+				23D79A2922E3F01900DA722C /* 3rd-party */,
 				23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */,
 				23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */,
 			);
@@ -262,6 +267,15 @@
 				23A7F89722B069C000D77045 /* Info.plist */,
 			);
 			path = DSFInspectorPanesTests;
+			sourceTree = "<group>";
+		};
+		23D79A2922E3F01900DA722C /* 3rd-party */ = {
+			isa = PBXGroup;
+			children = (
+				23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */,
+				23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */,
+			);
+			path = "3rd-party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +429,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				23B61DD122AC759F00098F3C /* DSFInspectorPanesView+pane.swift in Sources */,
+				23D79A2622E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift in Sources */,
+				23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */,
 				23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */,
 				23B61DCD22AC73AD00098F3C /* DSFInspectorPane.swift in Sources */,
 				23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */,

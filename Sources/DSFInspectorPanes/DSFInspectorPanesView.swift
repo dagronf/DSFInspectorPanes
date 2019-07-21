@@ -72,10 +72,10 @@ internal protocol DSFInspectorPanesAction {
 	@IBInspectable private(set) var showBoxes: Bool = false
 
 	/// Can we rearrange the order by dragging the inspector pane?
-	@IBInspectable private(set) var canDragRearrange: Bool = false
+	@IBInspectable private(set) var canReorderPanes: Bool = false
 
 	/// The way the inspector is separated
-	private(set) var inspectorType: InspectorType = .none
+	@objc private(set) var inspectorType: InspectorType = .none
 
 	/// Edge insets from the view to inset the panes
 	@objc public var insets: NSEdgeInsets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) {
@@ -86,7 +86,7 @@ internal protocol DSFInspectorPanesAction {
 	}
 
 	//! The font to use in the title for all property panes
-	@IBInspectable public var titleFont: NSFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize) {
+	@objc public var titleFont: NSFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize) {
 		didSet {
 			self.arrangedInspectorPanes.forEach { $0.titleFont = self.titleFont }
 			self.needsLayout = true
@@ -94,7 +94,7 @@ internal protocol DSFInspectorPanesAction {
 	}
 
 	/// Vertical spacing between panes
-	@IBInspectable public var spacing: CGFloat = 8 {
+	@objc @IBInspectable public var spacing: CGFloat = 8 {
 		didSet {
 			self.primaryStack.spacing = self.spacing
 			self.primaryStack.needsLayout = true
@@ -120,7 +120,7 @@ internal protocol DSFInspectorPanesAction {
 		self.embeddedInScrollView = embeddedInScrollView
 		self.showSeparators = showSeparators
 		self.showBoxes = showBoxes
-		self.canDragRearrange = canDragRearrange
+		self.canReorderPanes = canDragRearrange
 
 		if let font = titleFont {
 			self.titleFont = font
@@ -159,7 +159,7 @@ extension DSFInspectorPanesView {
 		self.setContentHuggingPriority(.required, for: .vertical)
 
 		// Hook ourselves up to receive drag events from the draggable stack
-		self.primaryStack.canReorder = self.canDragRearrange
+		self.primaryStack.canReorder = self.canReorderPanes
 		self.primaryStack.dragDelegate = self
 
 		if self.showSeparators == true {
@@ -256,6 +256,23 @@ extension DSFInspectorPanesView {
 	private var arrangedInspectorPanes: [DSFInspectorPanesView.Pane] {
 		return self.primaryStack.arrangedSubviews as? [DSFInspectorPanesView.Pane] ?? []
 	}
+
+	public override func prepareForInterfaceBuilder() {
+
+		// Note that awakeFromNib is NOT called when dealing with prepareForInterfaceBuilder!
+		// So we have to set it up for ourselves
+		self.setup()
+
+		let b1 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+		b1.title = "Button 1"
+		let b2 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+		b2.title = "Button 2"
+
+		self.add(title: "Pane 1", view: b1)
+		self.add(title: "Pane 2", view: b2)
+
+		self.layout()
+	}
 }
 
 
@@ -277,7 +294,7 @@ extension DSFInspectorPanesView {
 			titleFont: self.titleFont,
 			showsHeader: showsHeader,
 			canHide: canHide,
-			canReorder: self.canDragRearrange,
+			canReorder: self.canReorderPanes,
 			inspectorType: self.inspectorType,
 			animated: self.animated,
 			initiallyExpanded: expanded)
@@ -439,13 +456,13 @@ extension DSFInspectorPanesView: NSUserInterfaceValidations {
 	// MARK: Move Up
 
 	private func canMoveUp(_: Any?) -> Bool {
-		if !self.canDragRearrange { return false }
+		if !self.canReorderPanes { return false }
 		guard let focussed = focussedPane() else { return false }
 		return focussed.index > 0
 	}
 
 	@objc public func movePaneUp(_: Any?) {
-		guard self.canDragRearrange else {
+		guard self.canReorderPanes else {
 			return
 		}
 
@@ -462,13 +479,13 @@ extension DSFInspectorPanesView: NSUserInterfaceValidations {
 	// MARK: Move Down
 
 	private func canMoveDown(_: Any?) -> Bool {
-		if !self.canDragRearrange { return false }
+		if !self.canReorderPanes { return false }
 		guard let focussed = focussedPane() else { return false }
 		return focussed.index < (self.panes.count - 1)
 	}
 
 	@objc public func movePaneDown(_: Any?) {
-		guard self.canDragRearrange else {
+		guard self.canReorderPanes else {
 			return
 		}
 
@@ -590,10 +607,10 @@ extension DSFInspectorPanesView {
 			return
 		}
 
-		p.canMoveDown = self.canDragRearrange
-		p.canMoveUp = self.canDragRearrange
+		p.canMoveDown = self.canReorderPanes
+		p.canMoveUp = self.canReorderPanes
 
-		if let index = index, self.canDragRearrange {
+		if let index = index, self.canReorderPanes {
 			p.canMoveDown = index < self.panes.count - 1
 			p.canMoveUp = index != 0
 		}

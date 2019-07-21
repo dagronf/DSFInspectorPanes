@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.12"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -743,7 +743,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="canDragRearrange" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="canReorderPanes" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
                                     <button verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="BGE-2j-7nh" userLabel="Close All">
@@ -815,7 +815,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="embeddedInScrollView" value="NO"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="showSeparators" value="NO"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="showBoxes" value="NO"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="canDragRearrange" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="canReorderPanes" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </customView>
                 </subviews>
@@ -826,7 +826,7 @@
                     <constraint firstAttribute="trailing" secondItem="WFu-cU-ETL" secondAttribute="trailing" constant="4" id="x2d-yy-PVF"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="400" y="2"/>
+            <point key="canvasLocation" x="55" y="36"/>
         </window>
         <viewController id="rbl-sd-GWu" customClass="MainPropertyPanesViewController" customModule="DSFInspectorPanes_Demo" customModuleProvider="target">
             <connections>
