@@ -14,6 +14,8 @@
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
 		23263F9A2278F65400B4FEF0 /* DSFInspectorPanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; };
 		236A157F22AFD1EF007FCB8F /* DSFInspectorPanes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		236BB48C22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */; };
+		236BB48E22E67A3C00891B9E /* DSFInspectorPanesView+private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */; };
 		239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */; };
 		239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */; };
 		239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */; };
@@ -78,6 +80,8 @@
 		23263F922278F63F00B4FEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		23263F942278F63F00B4FEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFInspectorPanes_Demo.entitlements; sourceTree = "<group>"; };
+		236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+touchbar.swift"; sourceTree = "<group>"; };
+		236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+private.swift"; sourceTree = "<group>"; };
 		239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingViewController.swift; sourceTree = "<group>"; };
 		239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacingViewController.xib; sourceTree = "<group>"; };
 		239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				23D79A2922E3F01900DA722C /* 3rd-party */,
 				23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */,
 				23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */,
+				236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */,
+				236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */,
 			);
 			path = private;
 			sourceTree = "<group>";
@@ -431,6 +437,8 @@
 				23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */,
 				23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */,
 				23B61DCD22AC73AD00098F3C /* DSFInspectorPane.swift in Sources */,
+				236BB48E22E67A3C00891B9E /* DSFInspectorPanesView+private.swift in Sources */,
+				236BB48C22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift in Sources */,
 				23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

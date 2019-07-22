@@ -56,7 +56,7 @@ extension MainViewController: DSFInspectorPanesViewProtocol {
 		print("-  \(orderedPanes.map { $0.title })")
 	}
 
-	func inspectorPanes(_: DSFInspectorPanesView, didExpandOrContract pane: DSFInspectorPane) {
+	func inspectorPanes(_: DSFInspectorPanesView, didChangeVisibilityOf pane: DSFInspectorPane) {
 		// Do something
 		print("Pane: \(pane.title), \(pane.expanded)")
 	}
