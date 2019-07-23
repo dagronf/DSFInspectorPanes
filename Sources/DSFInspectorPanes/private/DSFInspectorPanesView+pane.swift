@@ -29,7 +29,7 @@
 import Carbon.HIToolbox
 import Cocoa
 
-internal protocol DSFInspectorPaneViewDelegate {
+internal protocol DSFInspectorPaneViewDelegate: NSObjectProtocol {
 	func inspectorPaneDidFocus(_ pane: DSFInspectorPanesView.Pane)
 	func inspectorPaneDidChangeVisibility(_ pane: DSFInspectorPanesView.Pane)
 }
@@ -86,7 +86,7 @@ extension DSFInspectorPanesView {
 		// Cannot be a public setter/getter as we have multiple ways of setting it (animated, non-animated)
 		fileprivate var _expanded: Bool
 
-		var changeDelegate: DSFInspectorPaneViewDelegate?
+		weak var changeDelegate: DSFInspectorPaneViewDelegate?
 
 		// Can the pane be contracted/expanded
 		var canExpand: Bool {
@@ -158,6 +158,10 @@ extension DSFInspectorPanesView {
 		required init?(coder _: NSCoder) {
 			fatalError("init(coder:) has not been implemented")
 		}
+
+//		deinit {
+//			debugPrint("deinit: DSFInspectorPanesView.Pane (\(self.title))…")
+//		}
 
 		private func setup(titleFont: NSFont, showsHeader: Bool, canHide: Bool, canReorder: Bool) {
 			guard let content = self.contentView else {

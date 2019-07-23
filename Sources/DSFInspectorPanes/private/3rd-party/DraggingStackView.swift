@@ -34,7 +34,7 @@ import Cocoa
 
 // MARK: - Draggable Stack View
 
-internal protocol DraggingStackViewProtocol {
+internal protocol DraggingStackViewProtocol: NSObjectProtocol {
 	func stackViewDidReorder()
 }
 
@@ -46,7 +46,7 @@ internal class DraggingStackView: NSStackView {
 	var canReorder = true
 
 	/// Delegate callback when the stackview finishes reordering
-	var dragDelegate: DraggingStackViewProtocol?
+	weak var dragDelegate: DraggingStackViewProtocol?
 
 	// MARK: -
 

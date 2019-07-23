@@ -44,6 +44,7 @@
 		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
 		23D79A2622E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */; };
 		23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */; };
+		23F5B7AE22E6839000556710 /* DSFInspectorPanesView+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5B7AD22E6839000556710 /* DSFInspectorPanesView+layout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		23B61DD322AC7A8F00098F3C /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
 		23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVerticallyCenteredTextFieldCell.swift; sourceTree = "<group>"; };
 		23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggingStackView.swift; sourceTree = "<group>"; };
+		23F5B7AD22E6839000556710 /* DSFInspectorPanesView+layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+layout.swift"; sourceTree = "<group>"; };
 		23FB5E1422897DA700D1CD57 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,10 +206,11 @@
 			isa = PBXGroup;
 			children = (
 				23D79A2922E3F01900DA722C /* 3rd-party */,
+				23F5B7AD22E6839000556710 /* DSFInspectorPanesView+layout.swift */,
+				236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */,
 				23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */,
 				23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */,
 				236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */,
-				236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */,
 			);
 			path = private;
 			sourceTree = "<group>";
@@ -356,7 +359,7 @@
 		23263F712278F60400B4FEF0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Darren Ford";
 				TargetAttributes = {
@@ -437,6 +440,7 @@
 				23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */,
 				23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */,
 				23B61DCD22AC73AD00098F3C /* DSFInspectorPane.swift in Sources */,
+				23F5B7AE22E6839000556710 /* DSFInspectorPanesView+layout.swift in Sources */,
 				236BB48E22E67A3C00891B9E /* DSFInspectorPanesView+private.swift in Sources */,
 				236BB48C22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift in Sources */,
 				23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */,
