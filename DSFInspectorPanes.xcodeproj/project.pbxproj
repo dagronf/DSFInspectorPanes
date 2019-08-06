@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230CD65822F8F88600976C5D /* FillStrokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CD65622F8F88600976C5D /* FillStrokeViewController.swift */; };
+		230CD65922F8F88600976C5D /* FillStrokeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 230CD65722F8F88600976C5D /* FillStrokeViewController.xib */; };
 		23263F7F2278F60400B4FEF0 /* DSFInspectorPanes.h in Headers */ = {isa = PBXBuildFile; fileRef = 23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */; };
 		23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263F8D2278F63E00B4FEF0 /* AppDelegate.swift */; };
@@ -71,6 +73,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		230CD65622F8F88600976C5D /* FillStrokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillStrokeViewController.swift; sourceTree = "<group>"; };
+		230CD65722F8F88600976C5D /* FillStrokeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillStrokeViewController.xib; sourceTree = "<group>"; };
 		23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSFInspectorPanes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFInspectorPanes.h; sourceTree = "<group>"; };
 		23263F7E2278F60400B4FEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */,
 				23B61DD222AC7A8F00098F3C /* DummyViewController.swift */,
 				23B61DD322AC7A8F00098F3C /* DummyViewController.xib */,
+				230CD65622F8F88600976C5D /* FillStrokeViewController.swift */,
+				230CD65722F8F88600976C5D /* FillStrokeViewController.xib */,
 				239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */,
 			);
 			path = "property-view";
@@ -410,6 +416,7 @@
 				23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */,
 				239B4B5D22ACA1EB004DA5D1 /* DescriptionFieldViewController.xib in Resources */,
 				23A31BF622AF816E00B70488 /* LongDescriptionViewController.xib in Resources */,
+				230CD65922F8F88600976C5D /* FillStrokeViewController.xib in Resources */,
 				239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */,
 				23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */,
 				239B4B5922ACA13E004DA5D1 /* ColorViewController.xib in Resources */,
@@ -454,6 +461,7 @@
 				239B4B6622ACAE87004DA5D1 /* MainPropertyPanesViewController.swift in Sources */,
 				239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */,
 				239B4B6A22ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift in Sources */,
+				230CD65822F8F88600976C5D /* FillStrokeViewController.swift in Sources */,
 				23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */,
 				239B4B6022ACA2AE004DA5D1 /* TextWithButtonViewController.swift in Sources */,
 				239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */,

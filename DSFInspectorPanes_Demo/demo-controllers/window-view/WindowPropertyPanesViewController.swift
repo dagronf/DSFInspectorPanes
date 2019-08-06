@@ -17,7 +17,7 @@ class WindowPropertyPanesViewController: NSViewController {
 	// Separate window views
 	let windowPane1 = DummyViewController()
 	let windowDummy1 = DummyViewController()
-	let windowDummy2 = DummyViewController() //AlignmentViewController()
+	let windowDummy2 = ColorViewController() // DummyViewController() //AlignmentViewController()
 
 	lazy var windowNestedPanes: DSFInspectorPanesView = {
 		let v = DSFInspectorPanesView(frame: .zero,
@@ -26,8 +26,8 @@ class WindowPropertyPanesViewController: NSViewController {
 									  showSeparators: false,
 									  showBoxes: true,
 									  canDragRearrange: true)
-		v.add(title: "Nested Radios", view: windowDummy1.view, canHide: false)
-		v.add(title: "Nested Color Pane", view: windowDummy2.view, canHide: false)
+		v.add(title: "🚕 Radios", view: windowDummy1.view, canHide: false)
+		v.add(title: "🚌 Color Pane", view: windowDummy2.view, headerAccessoryView: windowDummy2.headerView, canHide: true, expanded: false)
 		return v
 	}()
 

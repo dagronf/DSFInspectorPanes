@@ -17,6 +17,7 @@ class MainPropertyPanesViewController: NSViewController {
 	let spacing = SpacingViewController()
 	let alignment = AlignmentViewController()
 	let color = ColorViewController()
+	let fillAndStroke = FillStrokeViewController()
 	let desc = DescriptionFieldViewController()
 	let textWithAction = TextWithButtonViewController()
 
@@ -47,7 +48,7 @@ class MainPropertyPanesViewController: NSViewController {
 
 	private func createPanes() {
 
-		panes.insets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+		panes.insets = NSEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
 
 		panes.add(title: "Description",
 				  view: desc.view,
@@ -71,6 +72,11 @@ class MainPropertyPanesViewController: NSViewController {
 		panes.add(title: "Spacing",
 				  view: spacing.view,
 				  headerAccessoryView: spacing.headerView)
+
+		panes.add(title: "Fill And Stroke",
+				  view: fillAndStroke.view,
+				  showsHeader: false)
+
 	}
 
 }

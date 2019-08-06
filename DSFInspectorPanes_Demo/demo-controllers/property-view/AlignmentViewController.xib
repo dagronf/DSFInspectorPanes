@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14845" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14845"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,33 +14,33 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView horizontalHuggingPriority="100" horizontalCompressionResistancePriority="100" id="9qx-he-Fma">
-            <rect key="frame" x="0.0" y="0.0" width="260" height="81"/>
+            <rect key="frame" x="0.0" y="0.0" width="316" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <segmentedControl horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dz2-84-k5g">
-                    <rect key="frame" x="-2" y="57" width="264" height="24"/>
+                    <rect key="frame" x="-2" y="57" width="320" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="Td4-dU-nd4">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="Left"/>
-                            <segment label="Center" selected="YES" tag="1"/>
-                            <segment label="Right"/>
-                            <segment label="Fill"/>
+                            <segment image="NSTouchBarTextLeftAlignTemplate"/>
+                            <segment image="NSTouchBarTextCenterAlignTemplate" selected="YES" tag="1"/>
+                            <segment image="NSTouchBarTextRightAlignTemplate"/>
+                            <segment image="NSTouchBarTextJustifiedAlignTemplate"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
                 <segmentedControl horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sYY-gX-NAk">
-                    <rect key="frame" x="-2" y="28" width="264" height="24"/>
+                    <rect key="frame" x="-2" y="28" width="320" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="bYk-m8-227">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="Decrease Indent"/>
-                            <segment label="Increase Indent" selected="YES" tag="1"/>
+                            <segment label="Decrease"/>
+                            <segment label="Increase" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
                 <segmentedControl horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-3g-hG8">
-                    <rect key="frame" x="-2" y="-1" width="264" height="24"/>
+                    <rect key="frame" x="-2" y="-1" width="320" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="pPe-Dq-QGf">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -66,4 +66,10 @@
             <point key="canvasLocation" x="81" y="80"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSTouchBarTextCenterAlignTemplate" width="14" height="30"/>
+        <image name="NSTouchBarTextJustifiedAlignTemplate" width="14" height="30"/>
+        <image name="NSTouchBarTextLeftAlignTemplate" width="14" height="30"/>
+        <image name="NSTouchBarTextRightAlignTemplate" width="14" height="30"/>
+    </resources>
 </document>
