@@ -27,9 +27,9 @@ class MainViewController: NSViewController {
 	func setup() {
 		self.panes.insets = NSEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
 		self.panes.spacing = 4
-		self.panes.add(title: "Short Description", view: self.shortDescription.view)
-		self.panes.add(title: "Long Description", view: self.longDescription.view)
-		self.panes.add(title: "Image", view: self.imageItem.view, headerAccessoryView: self.imageItem.headerView, canHide: true, expanded: false)
+		self.panes.addPane(title: "Short Description", view: self.shortDescription.view)
+		self.panes.addPane(title: "Long Description", view: self.longDescription.view)
+		self.panes.addPane(title: "Image", view: self.imageItem.view, headerAccessoryView: self.imageItem.headerView, expansionType: .collapsed)
 
 		// Listen to inspector changes
 		self.panes.inspectorPaneDelegate = self

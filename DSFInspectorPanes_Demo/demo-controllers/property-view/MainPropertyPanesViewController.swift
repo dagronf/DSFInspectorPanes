@@ -26,13 +26,13 @@ class MainPropertyPanesViewController: NSViewController {
 	let dummy2 = ColorViewController()
 	lazy var nestedPanes: DSFInspectorPanesView = {
 		let n = DSFInspectorPanesView(frame: .zero,
-									  animated: true,
-									  embeddedInScrollView: false,
-									  showSeparators: true,
-									  showBoxes: false,
-									  titleFont: NSFont.systemFont(ofSize: 12))
-		n.add(title: "Nested Radio", view: dummy1.view, showsHeader: false)
-		n.add(title: "Nested Color", view: dummy2.view, showsHeader: false, headerAccessoryView: dummy2.headerView)
+												animated: true,
+												embeddedInScrollView: false,
+												showSeparators: true,
+												showBoxes: false,
+												titleFont: NSFont.systemFont(ofSize: 12))
+		n.addPane(title: "Nested Radio", view: dummy1.view, showsHeader: false)
+		n.addPane(title: "Nested Color", view: dummy2.view, showsHeader: false, headerAccessoryView: dummy2.headerView)
 		return n
 	}()
 
@@ -50,32 +50,32 @@ class MainPropertyPanesViewController: NSViewController {
 
 		panes.insets = NSEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
 
-		panes.add(title: "Description",
-				  view: desc.view,
-				  headerAccessoryView: desc.headerView,
-				  expanded: false)
-		panes.add(title: "Label with button thing",
-				  view: textWithAction.view)
-		panes.add(title: "Grid of colors",
-				  view: color.view,
-				  headerAccessoryView: color.headerView,
-				  expanded: false)
-		panes.add(title: "Alignment (fixed)",
-				  view: alignment.view,
-				  canHide: false)
+		panes.addPane(title: "Description",
+						  view: desc.view,
+						  headerAccessoryView: desc.headerView,
+						  expansionType: .collapsed)
+		panes.addPane(title: "Label with button thing",
+						  view: textWithAction.view)
+		panes.addPane(title: "Grid of colors",
+						  view: color.view,
+						  headerAccessoryView: color.headerView,
+						  expansionType: .collapsed)
+		panes.addPane(title: "Alignment (fixed)",
+						  view: alignment.view,
+						  expansionType: .none)
 
 		/// Add in our nested
 
-		panes.add(title: "Nested Panes",
-				  view: nestedPanes)
+		panes.addPane(title: "Nested Panes",
+						  view: nestedPanes)
+		
+		panes.addPane(title: "Spacing",
+						  view: spacing.view,
+						  headerAccessoryView: spacing.headerView)
 
-		panes.add(title: "Spacing",
-				  view: spacing.view,
-				  headerAccessoryView: spacing.headerView)
-
-		panes.add(title: "Fill And Stroke",
-				  view: fillAndStroke.view,
-				  showsHeader: false)
+		panes.addPane(title: "Fill And Stroke",
+						  view: fillAndStroke.view,
+						  showsHeader: false)
 
 	}
 

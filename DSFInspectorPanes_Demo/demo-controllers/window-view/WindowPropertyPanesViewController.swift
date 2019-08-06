@@ -21,13 +21,13 @@ class WindowPropertyPanesViewController: NSViewController {
 
 	lazy var windowNestedPanes: DSFInspectorPanesView = {
 		let v = DSFInspectorPanesView(frame: .zero,
-									  animated: true,
-									  embeddedInScrollView: false,
-									  showSeparators: false,
-									  showBoxes: true,
-									  canDragRearrange: true)
-		v.add(title: "🚕 Radios", view: windowDummy1.view, canHide: false)
-		v.add(title: "🚌 Color Pane", view: windowDummy2.view, headerAccessoryView: windowDummy2.headerView, canHide: true, expanded: false)
+												animated: true,
+												embeddedInScrollView: false,
+												showSeparators: false,
+												showBoxes: true,
+												canDragRearrange: true)
+		v.addPane(title: "🚕 Radios", view: windowDummy1.view, expansionType: .none)
+		v.addPane(title: "🚌 Color Pane", view: windowDummy2.view, headerAccessoryView: windowDummy2.headerView, expansionType: .collapsed)
 		return v
 	}()
 
@@ -42,10 +42,10 @@ class WindowPropertyPanesViewController: NSViewController {
 
 	private func createPanes() {
 		panes.insets = NSEdgeInsetsZero
-		panes.add(title: "Label with button thing",
-				  view: textButton.view,
-				  expanded: false)
-		panes.add(title: "Nested", view: windowNestedPanes)
-		panes.add(title: "Spacing", view: spacing.view, headerAccessoryView: spacing.headerView)
+		panes.addPane(title: "Label with button thing",
+					 view: textButton.view,
+					 expansionType: .collapsed)
+		panes.addPane(title: "Nested", view: windowNestedPanes)
+		panes.addPane(title: "Spacing", view: spacing.view, headerAccessoryView: spacing.headerView)
 	}
 }

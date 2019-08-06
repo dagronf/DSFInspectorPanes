@@ -146,13 +146,13 @@ extension DSFInspectorPanesView {
 			}
 		}
 
-		internal init(titleFont: NSFont, showsHeader: Bool = true, canHide: Bool, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool, initiallyExpanded: Bool) {
+		internal init(titleFont: NSFont, showsHeader: Bool = true, expansionType: DSFInspectorPaneExpansionType, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool) {
 			self.animated = animated
-			self._expanded = initiallyExpanded
+			self._expanded = (expansionType != .collapsed)
 			super.init(frame: .zero)
 			self.inspectorType = inspectorType
 			translatesAutoresizingMaskIntoConstraints = false
-			self.setup(titleFont: titleFont, showsHeader: showsHeader, canHide: canHide, canReorder: canReorder)
+			self.setup(titleFont: titleFont, showsHeader: showsHeader, expansionType: expansionType, canReorder: canReorder)
 		}
 
 		required init?(coder _: NSCoder) {
@@ -163,7 +163,7 @@ extension DSFInspectorPanesView {
 //			debugPrint("deinit: DSFInspectorPanesView.Pane (\(self.title))…")
 //		}
 
-		private func setup(titleFont: NSFont, showsHeader: Bool, canHide: Bool, canReorder: Bool) {
+		private func setup(titleFont: NSFont, showsHeader: Bool, expansionType: DSFInspectorPaneExpansionType, canReorder: Bool) {
 			guard let content = self.contentView else {
 				return
 			}
@@ -215,8 +215,7 @@ extension DSFInspectorPanesView {
 				disclosure.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
 				disclosure.target = self
 				disclosure.action = #selector(self.toggleDisclosure(sender:))
-				disclosure.isHidden = !canHide
-				disclosure.controlSize = .mini
+				disclosure.isHidden = (expansionType == .none)
 
 				disclosure.wantsLayer = true
 				disclosure.layer!.backgroundColor = CGColor.clear
@@ -258,7 +257,7 @@ extension DSFInspectorPanesView {
 				self.headerView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 				self.headerView.orientation = .horizontal
 				self.headerView.alignment = .centerY
-				if canHide {
+				if expansionType != .none {
 					self.headerView.addArrangedSubview(disclosure)
 				}
 				self.headerView.addArrangedSubview(title)
@@ -274,7 +273,6 @@ extension DSFInspectorPanesView {
 				self.headerAccessoryViewContainer.isHidden = true
 				self.mainStack.addArrangedSubview(self.headerView)
 			}
-			//////
 
 			self.inspectorViewContainerView.translatesAutoresizingMaskIntoConstraints = false
 			self.inspectorViewContainerView.wantsLayer = true
@@ -555,17 +553,22 @@ extension DSFInspectorPanesView.Pane: DSFInspectorPane {
 		return nil
 	}
 
-	var hide: Bool {
+	var visible: Bool {
 		get {
-			return self.isHidden
+			return !self.isHidden
 		}
 		set {
-			self.isHidden = newValue
+			self.isHidden = !newValue
 		}
 	}
 
 	var expanded: Bool {
-		return _expanded
+		get {
+			return _expanded
+		}
+		set {
+			self.setExpanded(newValue, animated: self.animated)
+		}
 	}
 
 	func setExpanded(_ state: Bool) {

@@ -118,19 +118,17 @@ extension DSFInspectorPanesView {
 		view: NSView,
 		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
-		canHide: Bool = true,
-		expanded: Bool = true
+		expansionType: DSFInspectorPaneExpansionType = .expanded
 	) -> DSFInspectorPane {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
 		let inspectorPaneView = DSFInspectorPanesView.Pane(
 			titleFont: self.titleFont,
 			showsHeader: showsHeader,
-			canHide: canHide,
+			expansionType: expansionType,
 			canReorder: self.canReorderPanes,
 			inspectorType: self.inspectorType,
-			animated: self.animated,
-			initiallyExpanded: expanded)
+			animated: self.animated)
 
 		inspectorPaneView.translatesAutoresizingMaskIntoConstraints = false
 		inspectorPaneView.changeDelegate = self
@@ -149,7 +147,7 @@ extension DSFInspectorPanesView {
 			views: variableBindings
 		))
 
-		if canHide, !expanded {
+		if expansionType == .collapsed {
 			inspectorPaneView.openDisclosure(open: false, animated: false)
 		}
 

@@ -43,7 +43,6 @@ import Cocoa
 
 @IBDesignable
 @objc public class DSFInspectorPanesView: NSView {
-
 	/// Delegate to receive messages
 	@objc public var inspectorPaneDelegate: DSFInspectorPanesViewProtocol?
 
@@ -92,7 +91,7 @@ import Cocoa
 	}
 
 	/// Vertical spacing between panes
-	@objc @IBInspectable public var spacing: CGFloat = 8 {
+	@IBInspectable public var spacing: CGFloat = 8 {
 		didSet {
 			self.primaryStack.spacing = self.spacing
 			self.primaryStack.needsLayout = true
@@ -104,16 +103,17 @@ import Cocoa
 		return self.arrangedInspectorPanes as [DSFInspectorPane]
 	}
 
+	/// If the panes view was created as embedded within a scrollview, the scrollview object
 	internal var scrollView: NSScrollView?
 	internal let primaryStack = FlippedStackView()
 
 	@objc public init(frame frameRect: NSRect,
-					  animated: Bool = true,
-					  embeddedInScrollView: Bool = true,
-					  showSeparators: Bool = true,
-					  showBoxes: Bool = false,
-					  titleFont: NSFont? = nil,
-					  canDragRearrange: Bool = false) {
+	                  animated: Bool = true,
+	                  embeddedInScrollView: Bool = true,
+	                  showSeparators: Bool = true,
+	                  showBoxes: Bool = false,
+	                  titleFont: NSFont? = nil,
+	                  canDragRearrange: Bool = false) {
 		self.animated = animated
 		self.embeddedInScrollView = embeddedInScrollView
 		self.showSeparators = showSeparators
@@ -136,17 +136,17 @@ import Cocoa
 //	}
 
 	/// If the touchbar is available, the primary touchbar identifier
-	@available (macOS 10.12.2, *)
+	@available(macOS 10.12.2, *)
 	internal static let popoverIdentifier = NSTouchBarItem.Identifier("com.darrenford.inspectorpanes.popover")
 
 	private var _popover: AnyObject?
 	@available(macOS 10.12.2, *)
 	internal var popover: DSFInspectorPanesPopoverTouchBar? {
 		get {
-			return _popover as? DSFInspectorPanesPopoverTouchBar
+			return self._popover as? DSFInspectorPanesPopoverTouchBar
 		}
 		set {
-			_popover = newValue
+			self._popover = newValue
 		}
 	}
 }
@@ -159,53 +159,66 @@ extension DSFInspectorPanesView {
 		self.setup()
 	}
 
-
 	public override func prepareForInterfaceBuilder() {
-
 		// Note that awakeFromNib is NOT called when dealing with prepareForInterfaceBuilder!
 		// So we have to set it up for ourselves
 		self.setup()
 
 		let b1 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-		b1.title = "Button 1"
+		b1.title = "Default content"
 		let b2 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-		b2.title = "Button 2"
+		b2.title = "Expanded content"
+		let b3 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+		b3.title = "Content always visible"
+		let b4 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+		b4.title = "Collapsed content (not visible)"
+		let b5 = NSButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+		b5.title = "Visible content with no header"
 
-		self.add(title: "Pane 1", view: b1)
-		self.add(title: "Pane 2", view: b2)
+		self.addPane(title: "Basic default", view: b1)
+		self.addPane(title: "No Header", view: b5, showsHeader: false)
+		self.addPane(title: "Expanded by default", view: b2)
+		self.addPane(title: "No collapsing", view: b3, expansionType: .none)
+
+		let bv = NSButton(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
+		bv.title = ">🐶<"
+		self.addPane(title: "Collapsed", view: b4, headerAccessoryView: bv, expansionType: .collapsed)
 
 		self.layout()
 	}
 }
 
-
 // MARK: - Adding, moving, reordering
 
 @objc public extension DSFInspectorPanesView {
+	/// Add a new pane to the inspector
+	/// - Parameter title: The title to display in the pane header
+	/// - Parameter view: The view to display in the pane
+	/// - Parameter showsHeader: Does the inspector pane show the header?
+	/// - Parameter headerAccessoryView: If the inspector uses a supporting header pane, the view for the header
+	/// - Parameter expansionType: Can the pane be expanded, and if so what is its default expansion state
 	@discardableResult
-	func add(
+	func addPane(
 		title: String,
 		view: NSView,
 		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
-		canHide: Bool = true,
-		expanded: Bool = true
-		) -> DSFInspectorPane {
-
+		expansionType: DSFInspectorPaneExpansionType = .expanded
+	) -> DSFInspectorPane {
 		return add_internal(
 			title: title,
 			view: view,
 			showsHeader: showsHeader,
 			headerAccessoryView: headerAccessoryView,
-			canHide: canHide,
-			expanded: expanded)
+			expansionType: expansionType
+		)
 	}
 
 	/// Returns the index of the specified pane object
 	func index(of item: DSFInspectorPane) -> Int {
 		guard let pane = item as? DSFInspectorPanesView.Pane,
 			let index = self.arrangedInspectorPanes.firstIndex(of: pane) else {
-				return -1
+			return -1
 		}
 		return index
 	}
@@ -213,16 +226,19 @@ extension DSFInspectorPanesView {
 	/// Remove the inspector pane at the specified index
 	func remove(at index: Int) {
 		assert(index < self.primaryStack.arrangedSubviews.count)
-
 		let view = self.primaryStack.arrangedSubviews[index]
-		self.primaryStack.removeArrangedSubview(view)
+		view.removeFromSuperview()
 	}
 
+	/// Remove all of the panes from the view
 	func removeAll() {
 		self.arrangedInspectorPanes.forEach { $0.removeFromSuperview() }
 		self.primaryStack.needsLayout = true
 	}
 
+	/// Move a pane from one index to another
+	/// - Parameter index: the index of the pane to move
+	/// - Parameter newIndex: the index to where the pane should move
 	func move(index: Int, to newIndex: Int) {
 		assert(index < self.primaryStack.arrangedSubviews.count)
 		assert(newIndex < self.primaryStack.arrangedSubviews.count)
@@ -236,6 +252,9 @@ extension DSFInspectorPanesView {
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
 	}
 
+	/// Swap the location of two panes
+	/// - Parameter index: the first pane to swap
+	/// - Parameter newIndex: the second pane to swap
 	func swap(index: Int, with newIndex: Int) {
 		assert(index < self.primaryStack.arrangedSubviews.count)
 		assert(newIndex < self.primaryStack.arrangedSubviews.count)

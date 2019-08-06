@@ -27,6 +27,16 @@
 //
 import Cocoa
 
+/// The expansion type for a new pane
+@objc public enum DSFInspectorPaneExpansionType: Int {
+	/// The pane cannot be collapsed. Does not show a disclosure button
+	case none
+	/// Expanded by default
+	case expanded
+	/// Collapsed by default
+	case collapsed
+}
+
 /// Publicly accessable inspector pane information
 @objc public protocol DSFInspectorPane {
 	/// A unique identifier for the inspector panel
@@ -35,25 +45,19 @@ import Cocoa
 	@objc var title: String { get set }
 	/// The actual inspector pane
 	@objc var inspector: NSView? { get }
-	/// If specified, the inspector's header view
+	/// An optional header view for the inspector pane
 	@objc var header: NSView? { get }
+	/// Is the inspector panel visible in the inspector?
+	@objc var visible: Bool { get set }
 	/// Can we expand and contract the pane?
 	@objc var canExpand: Bool { get }
 	/// Is the panel expanded?
-	@objc var expanded: Bool { get }
-	/// Is the inspector panel hidden from view?
-	@objc var hide: Bool { get set }
+	@objc var expanded: Bool { get set }
 
 	/// Change the visibility overriding the inspector's built-in animation settings
 	///
 	/// - Parameters:
-	///   - expanded: true to expand, false to contract
-	@objc func setExpanded(_ state: Bool)
-
-	/// Change the visibility overriding the inspector's built-in animation settings
-	///
-	/// - Parameters:
-	///   - expanded: true to expand, false to contract
+	///   - expanded: true to expand, false to collapse
 	///   - animated: should the change be animated?
 	@objc func setExpanded(_ expanded: Bool, animated: Bool)
 }

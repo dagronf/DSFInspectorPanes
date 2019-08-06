@@ -11,7 +11,7 @@
 * Optional animation
 * Optional separators or bounding boxes
 * Optional drag/drop reordering of panes
-* Show or hide individual panes
+* Show or hide individual panes without removing them
 * Expand or contract individual panes
 
 ## Why?
@@ -20,13 +20,13 @@ I've fought with this on a number of projects. I finally decided to make a drop-
 
 I really like Apple 'Pages' implementation which allows having a header view which can be used to configure items even when the pane itself is hidden.  A good example of this is the 'Spacing' inspector pane, where when the pane is hidden the user can still change the line spacing at a lower granularity.
 
-## Installation
+# Installation
 
-### Direct
+## Direct
 
 Copy the swift files from the `DSFInspectorPanes` subfolder to your project
 
-### CocoaPods
+## CocoaPods
 
 Add the following to your `Podfiles` file
 
@@ -34,40 +34,28 @@ Add the following to your `Podfiles` file
 pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
 ```
 
-## API
+# API
 
-### Create
+## Create
 
 1. Create an instance of `DSFInspectorPanesView` and add it to a view, or
 2. Use Interface Builder to add a custom view, and change the class to `DSFInspectorPanesView`
 
-### Properties
+## Properties
 
 * `animated` : Animate the expanding/hiding of the panes
-* `embeddedInScrollView` : Embed the panes view in a scroll view (optional)
+* `embeddedInScrollView` : Embed the panes view in a scroll view
 * `showSeparators` : Insert a separator between each pane (optional)
-* `titleFont` : Set the font to use for the title for the panes
-* `spacing` : Set the vertical spacing between each pane
 * `showBoxes` : Show a box around each inspector pane (optional)
-* `show
-* `canDragRearrange` : Allow the user to change the ordering of the panes via drag/drop
+* `titleFont` : Specify a custom font to use for the title for the panes
+* `spacing` : Set the vertical spacing between each pane
+* `canDragRearrange` : Allow the user to change the ordering of the panes via drag/drop or touchbar
 
-### Methods
+## Methods
 
-#### Add
+### Add an inspector pane
 
 Add a new inspector pane to the container
-
-```swift
-@objc public func add(
-   title: String,                        // The title of the pane
-   view: NSView,                         // The property pane to display
-   headerAccessoryView: NSView? = nil,   // If the pane has a header view, the view
-   canHide: Bool = true,                 // Can the pane be expanded/hidden?
-   expanded: Bool = true                 // Is the property pane hidden by default?
-```
-
-Example :-
 
 ```swift
 var propertyPanes = DSFInspectorPanesView(frame: .zero,
@@ -75,42 +63,62 @@ var propertyPanes = DSFInspectorPanesView(frame: .zero,
                                           embeddedInScrollView: false,
                                           titleFont: NSFont.systemFont(ofSize: 13))
 
-var inspectorView = NSView()       // <--- your inspector pane view
+var inspectorView = NSView()        // <--- your inspector pane view
 var inspectorHeaderView = NSView()  // <--- your inspector pane header view
 	
-propertyPanes.add(
+propertyPanes.addPane(
    title: "My inspector Pane", 
    view: inspectorView,
    headerAccessoryView: inspectorHeaderView,
-   expanded: true)
+   expansionType: .expanded)
 }
 ```
 
-### Pane access
-
-You can access the panes using the `panes` variable on the class which returns the panes as an array of `DSFInspectorPaneProtocol`
-
-#### Expand an existing pane
+## Expand an existing pane
 
 ```swift
 var propertyPanes = DSFInspectorPanesView()
-...
-func expandFirstPane(shouldExpand: Bool) {
-	propertyPanes.panes[1].expanded = shouldExpand
-}
+…
+propertyPanes.panes[0].expanded = true
+propertyPanes.panes[1].expanded = false
 ```
-
-#### Show or hide a pane
+## Show or hide a pane
 
 ```swift
 var propertyPanes = DSFInspectorPanesView()
-...
-func hideFirstPane(shouldHide: Bool) {
-	propertyPanes.panes[1].hide = shouldHide
-}
+…
+propertyPanes.panes[0].hide = true
+propertyPanes.panes[1].hide = false
 ```
 
-## Thanks
+## Reordering and moving
+
+Move the property pane at index 0 to index 4
+
+```swift
+propertyPanes.move(index: 0, to: 4)
+```
+
+Swap property panes at index 0 and index 4
+
+```swift
+propertyPanes.swap(index: 0, with: 4)
+```
+
+## Removing
+Remove the pane at index 1
+
+```swift
+propertyPanes.remove(at: 1)
+```
+
+Remove all panes
+
+```swift
+propertyPanes.removeAll()
+```
+
+# Thanks
 
 ### RSVerticallyCenteredTextFieldCell - Red Sweater Software
 * Red Sweater Software, LLC for [RSVerticallyCenteredTextFieldCell](http://www.red-sweater.com/blog/148/what-a-difference-a-cell-makes) component  — [License](http://opensource.org/licenses/mit-license.php)
@@ -119,7 +127,7 @@ func hideFirstPane(shouldHide: Bool) {
 * Mark Onyschuk on [GitHub](https://github.com/monyschuk) -- [Draggable Stack View](https://gist.github.com/monyschuk/cbca3582b6b996ab54c32e2d7eceaf25)
 
 
-## License
+# License
 ```
 MIT License
 
