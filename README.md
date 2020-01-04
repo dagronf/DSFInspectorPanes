@@ -1,10 +1,21 @@
-# Mimic the inspector panels in Apple's Pages
+# Inspector Panes for macOS
 
-![](https://dagronf.github.io/art/projects/DSFPropertyPanes/full.gif) ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/panel_simple.gif)
+![](https://dagronf.github.io/art/projects/DSFPropertyPanes/screenshot.jpg)
+
+![](https://img.shields.io/github/v/tag/dagronf/DSFInspectorPanes) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
+
+A Cocoa, auto-layout managed view to build and manage inspector panes equivalent to the inspectors in Apple's Pages and Numbers applications.
+
+## Why?
+
+I've implemented and fought with this on a number of different projects and decided to make a drop-in class that would do everything that I wanted. This class is fully autolayout managed.
+
+I really like Apple 'Pages' implementation which allows having a header view which can be used to configure items even when the pane itself is hidden.  A good example of this is the 'Spacing' inspector pane, where when the pane is hidden the user can still change the line spacing at a lower granularity.
 
 ## Features
 
-* Basic inspector pane. Show and hide panes
+* Show and hide panes
 * Configurable from interface builder as inspectables
 * Optional supply a view as a header view
 * Optional automatic scroll view support
@@ -13,12 +24,6 @@
 * Optional drag/drop reordering of panes
 * Show or hide individual panes without removing them
 * Expand or contract individual panes
-
-## Why?
-
-I've fought with this on a number of projects. I finally decided to make a drop-in class that would do everything that I wanted.  This class is fully autolayout managed.
-
-I really like Apple 'Pages' implementation which allows having a header view which can be used to configure items even when the pane itself is hidden.  A good example of this is the 'Spacing' inspector pane, where when the pane is hidden the user can still change the line spacing at a lower granularity.
 
 # Installation
 
@@ -125,6 +130,20 @@ propertyPanes.removeAll()
 
 ### DraggableStackView - Mark Onyschuk
 * Mark Onyschuk on [GitHub](https://github.com/monyschuk) -- [Draggable Stack View](https://gist.github.com/monyschuk/cbca3582b6b996ab54c32e2d7eceaf25)
+
+# Screenshots
+
+[(Movie) Drag Drop Reordering](https://dagronf.github.io/art/projects/DSFPropertyPanes/drag_drop_reorder.mp4)
+
+## Interface Builder integration
+
+![](https://dagronf.github.io/art/projects/DSFPropertyPanes/inspector_pane_ibdesignable.jpg) 
+
+## Pane modes
+
+Showing the ability to display a secondary UI element for when the pane is contracted
+
+![](https://dagronf.github.io/art/projects/DSFPropertyPanes/expand_contract.gif) 
 
 
 # License

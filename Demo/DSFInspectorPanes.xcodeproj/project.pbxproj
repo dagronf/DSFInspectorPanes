@@ -3,21 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		230CD65822F8F88600976C5D /* FillStrokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CD65622F8F88600976C5D /* FillStrokeViewController.swift */; };
 		230CD65922F8F88600976C5D /* FillStrokeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 230CD65722F8F88600976C5D /* FillStrokeViewController.xib */; };
-		23263F7F2278F60400B4FEF0 /* DSFInspectorPanes.h in Headers */ = {isa = PBXBuildFile; fileRef = 23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */; };
 		23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263F8D2278F63E00B4FEF0 /* AppDelegate.swift */; };
 		23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23263F8F2278F63F00B4FEF0 /* Assets.xcassets */; };
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
-		23263F9A2278F65400B4FEF0 /* DSFInspectorPanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; };
-		236A157F22AFD1EF007FCB8F /* DSFInspectorPanes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		236BB48C22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */; };
-		236BB48E22E67A3C00891B9E /* DSFInspectorPanesView+private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */; };
 		239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */; };
 		239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */; };
 		239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */; };
@@ -37,27 +31,10 @@
 		23A31BF622AF816E00B70488 /* LongDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */; };
 		23A31BF922AF84B600B70488 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BF722AF84B600B70488 /* ImageViewController.swift */; };
 		23A31BFA22AF84B600B70488 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF822AF84B600B70488 /* ImageViewController.xib */; };
-		23A7F89622B069C000D77045 /* DSFInspectorPanesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F89522B069C000D77045 /* DSFInspectorPanesTests.swift */; };
-		23A7F89822B069C000D77045 /* DSFInspectorPanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */; };
-		23B61DCD22AC73AD00098F3C /* DSFInspectorPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCC22AC73AD00098F3C /* DSFInspectorPane.swift */; };
-		23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */; };
-		23B61DD122AC759F00098F3C /* DSFInspectorPanesView+pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */; };
 		23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD222AC7A8F00098F3C /* DummyViewController.swift */; };
 		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
-		23D79A2622E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */; };
-		23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */; };
-		23F5B7AE22E6839000556710 /* DSFInspectorPanesView+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5B7AD22E6839000556710 /* DSFInspectorPanesView+layout.swift */; };
+		ED9FDD3F5606641B0D056728 /* Pods_DSFInspectorPanes_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F074F635E3F9FE02E61198FD /* Pods_DSFInspectorPanes_Demo.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		23A7F89922B069C000D77045 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 23263F712278F60400B4FEF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 23263F792278F60400B4FEF0;
-			remoteInfo = DSFInspectorPanes;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		236A157E22AFD1E2007FCB8F /* CopyFiles */ = {
@@ -66,7 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				236A157F22AFD1EF007FCB8F /* DSFInspectorPanes.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,18 +51,12 @@
 /* Begin PBXFileReference section */
 		230CD65622F8F88600976C5D /* FillStrokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillStrokeViewController.swift; sourceTree = "<group>"; };
 		230CD65722F8F88600976C5D /* FillStrokeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillStrokeViewController.xib; sourceTree = "<group>"; };
-		23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSFInspectorPanes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFInspectorPanes.h; sourceTree = "<group>"; };
-		23263F7E2278F60400B4FEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSFInspectorPanesView.swift; sourceTree = "<group>"; };
 		23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSFInspectorPanes_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23263F8D2278F63E00B4FEF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23263F8F2278F63F00B4FEF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23263F922278F63F00B4FEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		23263F942278F63F00B4FEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFInspectorPanes_Demo.entitlements; sourceTree = "<group>"; };
-		236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+touchbar.swift"; sourceTree = "<group>"; };
-		236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+private.swift"; sourceTree = "<group>"; };
 		239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingViewController.swift; sourceTree = "<group>"; };
 		239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacingViewController.xib; sourceTree = "<group>"; };
 		239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentViewController.swift; sourceTree = "<group>"; };
@@ -106,43 +76,19 @@
 		23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongDescriptionViewController.xib; sourceTree = "<group>"; };
 		23A31BF722AF84B600B70488 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		23A31BF822AF84B600B70488 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
-		23A7F89322B069C000D77045 /* DSFInspectorPanesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSFInspectorPanesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		23A7F89522B069C000D77045 /* DSFInspectorPanesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPanesTests.swift; sourceTree = "<group>"; };
-		23A7F89722B069C000D77045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFInspectorPanes.podspec; sourceTree = "<group>"; };
-		23ACF96C228A390400FF6594 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		23B61DCC22AC73AD00098F3C /* DSFInspectorPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFInspectorPane.swift; sourceTree = "<group>"; };
-		23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanes+utilities.swift"; sourceTree = "<group>"; };
-		23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+pane.swift"; sourceTree = "<group>"; };
 		23B61DD222AC7A8F00098F3C /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		23B61DD322AC7A8F00098F3C /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
-		23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVerticallyCenteredTextFieldCell.swift; sourceTree = "<group>"; };
-		23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggingStackView.swift; sourceTree = "<group>"; };
-		23F5B7AD22E6839000556710 /* DSFInspectorPanesView+layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFInspectorPanesView+layout.swift"; sourceTree = "<group>"; };
-		23FB5E1422897DA700D1CD57 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E403AF6AB3A098D9D6C6C5AE /* Pods-DSFInspectorPanes_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSFInspectorPanes_Demo.debug.xcconfig"; path = "Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		F074F635E3F9FE02E61198FD /* Pods_DSFInspectorPanes_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DSFInspectorPanes_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F683888C2795668EC329D294 /* Pods-DSFInspectorPanes_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSFInspectorPanes_Demo.release.xcconfig"; path = "Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		23263F772278F60400B4FEF0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		23263F882278F63E00B4FEF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23263F9A2278F65400B4FEF0 /* DSFInspectorPanes.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		23A7F89022B069C000D77045 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				23A7F89822B069C000D77045 /* DSFInspectorPanes.framework in Frameworks */,
+				ED9FDD3F5606641B0D056728 /* Pods_DSFInspectorPanes_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,38 +98,19 @@
 		23263F702278F60400B4FEF0 = {
 			isa = PBXGroup;
 			children = (
-				23ACF96B228A38F300FF6594 /* DSFInspectorPanes.podspec */,
-				23ACF96C228A390400FF6594 /* LICENSE */,
-				23FB5E1422897DA700D1CD57 /* README.md */,
-				23263F7C2278F60400B4FEF0 /* DSFInspectorPanes */,
 				23263F8C2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */,
-				23A7F89422B069C000D77045 /* DSFInspectorPanesTests */,
 				23263F7B2278F60400B4FEF0 /* Products */,
 				23263F992278F65400B4FEF0 /* Frameworks */,
+				69602491ADA96A7AD2E71FAA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		23263F7B2278F60400B4FEF0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */,
 				23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */,
-				23A7F89322B069C000D77045 /* DSFInspectorPanesTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		23263F7C2278F60400B4FEF0 /* DSFInspectorPanes */ = {
-			isa = PBXGroup;
-			children = (
-				23B61DCC22AC73AD00098F3C /* DSFInspectorPane.swift */,
-				23263F852278F61400B4FEF0 /* DSFInspectorPanesView.swift */,
-				23263F7E2278F60400B4FEF0 /* Info.plist */,
-				23263F7D2278F60400B4FEF0 /* DSFInspectorPanes.h */,
-				237C15AF22B1A35400605097 /* private */,
-			);
-			name = DSFInspectorPanes;
-			path = Sources/DSFInspectorPanes;
 			sourceTree = "<group>";
 		};
 		23263F8C2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */ = {
@@ -202,21 +129,9 @@
 		23263F992278F65400B4FEF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F074F635E3F9FE02E61198FD /* Pods_DSFInspectorPanes_Demo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		237C15AF22B1A35400605097 /* private */ = {
-			isa = PBXGroup;
-			children = (
-				23D79A2922E3F01900DA722C /* 3rd-party */,
-				23F5B7AD22E6839000556710 /* DSFInspectorPanesView+layout.swift */,
-				236BB48D22E67A3C00891B9E /* DSFInspectorPanesView+private.swift */,
-				23B61DD022AC759F00098F3C /* DSFInspectorPanesView+pane.swift */,
-				23B61DCE22AC73E300098F3C /* DSFInspectorPanes+utilities.swift */,
-				236BB48B22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift */,
-			);
-			path = private;
 			sourceTree = "<group>";
 		};
 		239B4B4D22ACA012004DA5D1 /* demo-controllers */ = {
@@ -273,64 +188,28 @@
 			path = "window-view";
 			sourceTree = "<group>";
 		};
-		23A7F89422B069C000D77045 /* DSFInspectorPanesTests */ = {
+		69602491ADA96A7AD2E71FAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				23A7F89522B069C000D77045 /* DSFInspectorPanesTests.swift */,
-				23A7F89722B069C000D77045 /* Info.plist */,
+				E403AF6AB3A098D9D6C6C5AE /* Pods-DSFInspectorPanes_Demo.debug.xcconfig */,
+				F683888C2795668EC329D294 /* Pods-DSFInspectorPanes_Demo.release.xcconfig */,
 			);
-			path = DSFInspectorPanesTests;
-			sourceTree = "<group>";
-		};
-		23D79A2922E3F01900DA722C /* 3rd-party */ = {
-			isa = PBXGroup;
-			children = (
-				23D79A2522E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift */,
-				23D79A2722E3EF8C00DA722C /* DraggingStackView.swift */,
-			);
-			path = "3rd-party";
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		23263F752278F60400B4FEF0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				23263F7F2278F60400B4FEF0 /* DSFInspectorPanes.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		23263F792278F60400B4FEF0 /* DSFInspectorPanes */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 23263F822278F60400B4FEF0 /* Build configuration list for PBXNativeTarget "DSFInspectorPanes" */;
-			buildPhases = (
-				23263F752278F60400B4FEF0 /* Headers */,
-				23263F762278F60400B4FEF0 /* Sources */,
-				23263F772278F60400B4FEF0 /* Frameworks */,
-				23263F782278F60400B4FEF0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DSFInspectorPanes;
-			productName = DSFInspectorPanes;
-			productReference = 23263F7A2278F60400B4FEF0 /* DSFInspectorPanes.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		23263F8A2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23263F962278F63F00B4FEF0 /* Build configuration list for PBXNativeTarget "DSFInspectorPanes_Demo" */;
 			buildPhases = (
+				AA71F3A65908C4CF080AECF4 /* [CP] Check Pods Manifest.lock */,
 				23263F872278F63E00B4FEF0 /* Sources */,
 				23263F882278F63E00B4FEF0 /* Frameworks */,
 				23263F892278F63E00B4FEF0 /* Resources */,
 				236A157E22AFD1E2007FCB8F /* CopyFiles */,
+				3FD44044BE0693020D2A2C2F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -340,24 +219,6 @@
 			productName = DSFInspectorPanes_Demo;
 			productReference = 23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		23A7F89222B069C000D77045 /* DSFInspectorPanesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 23A7F89D22B069C000D77045 /* Build configuration list for PBXNativeTarget "DSFInspectorPanesTests" */;
-			buildPhases = (
-				23A7F88F22B069C000D77045 /* Sources */,
-				23A7F89022B069C000D77045 /* Frameworks */,
-				23A7F89122B069C000D77045 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				23A7F89A22B069C000D77045 /* PBXTargetDependency */,
-			);
-			name = DSFInspectorPanesTests;
-			productName = DSFInspectorPanesTests;
-			productReference = 23A7F89322B069C000D77045 /* DSFInspectorPanesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -369,14 +230,7 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Darren Ford";
 				TargetAttributes = {
-					23263F792278F60400B4FEF0 = {
-						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
-					};
 					23263F8A2278F63E00B4FEF0 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
-					23A7F89222B069C000D77045 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
@@ -394,21 +248,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23263F792278F60400B4FEF0 /* DSFInspectorPanes */,
 				23263F8A2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */,
-				23A7F89222B069C000D77045 /* DSFInspectorPanesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		23263F782278F60400B4FEF0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		23263F892278F63E00B4FEF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,32 +273,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		23A7F89122B069C000D77045 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXSourcesBuildPhase section */
-		23263F762278F60400B4FEF0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		3FD44044BE0693020D2A2C2F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23B61DD122AC759F00098F3C /* DSFInspectorPanesView+pane.swift in Sources */,
-				23D79A2622E3EF5400DA722C /* RSVerticallyCenteredTextFieldCell.swift in Sources */,
-				23D79A2822E3EF8C00DA722C /* DraggingStackView.swift in Sources */,
-				23263F862278F61400B4FEF0 /* DSFInspectorPanesView.swift in Sources */,
-				23B61DCD22AC73AD00098F3C /* DSFInspectorPane.swift in Sources */,
-				23F5B7AE22E6839000556710 /* DSFInspectorPanesView+layout.swift in Sources */,
-				236BB48E22E67A3C00891B9E /* DSFInspectorPanesView+private.swift in Sources */,
-				236BB48C22E679D200891B9E /* DSFInspectorPanesView+touchbar.swift in Sources */,
-				23B61DCF22AC73E300098F3C /* DSFInspectorPanes+utilities.swift in Sources */,
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
+		AA71F3A65908C4CF080AECF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DSFInspectorPanes_Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		23263F872278F63E00B4FEF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -475,23 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		23A7F88F22B069C000D77045 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				23A7F89622B069C000D77045 /* DSFInspectorPanesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		23A7F89A22B069C000D77045 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 23263F792278F60400B4FEF0 /* DSFInspectorPanes */;
-			targetProxy = 23A7F89922B069C000D77045 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		23263F912278F63F00B4FEF0 /* MainMenu.xib */ = {
@@ -626,68 +474,13 @@
 			};
 			name = Release;
 		};
-		23263F832278F60400B4FEF0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/DSFInspectorPanes/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFInspectorPanes;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		23263F842278F60400B4FEF0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/DSFInspectorPanes/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFInspectorPanes;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		23263F972278F63F00B4FEF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E403AF6AB3A098D9D6C6C5AE /* Pods-DSFInspectorPanes_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DSFInspectorPanes_Demo/DSFInspectorPanes_Demo.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
@@ -705,9 +498,11 @@
 		};
 		23263F982278F63F00B4FEF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F683888C2795668EC329D294 /* Pods-DSFInspectorPanes_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DSFInspectorPanes_Demo/DSFInspectorPanes_Demo.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
@@ -718,44 +513,6 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFInspectorPanes-Demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		23A7F89B22B069C000D77045 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
-				INFOPLIST_FILE = DSFInspectorPanesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFInspectorPanesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		23A7F89C22B069C000D77045 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
-				INFOPLIST_FILE = DSFInspectorPanesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFInspectorPanesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -773,29 +530,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23263F822278F60400B4FEF0 /* Build configuration list for PBXNativeTarget "DSFInspectorPanes" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				23263F832278F60400B4FEF0 /* Debug */,
-				23263F842278F60400B4FEF0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		23263F962278F63F00B4FEF0 /* Build configuration list for PBXNativeTarget "DSFInspectorPanes_Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23263F972278F63F00B4FEF0 /* Debug */,
 				23263F982278F63F00B4FEF0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		23A7F89D22B069C000D77045 /* Build configuration list for PBXNativeTarget "DSFInspectorPanesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				23A7F89B22B069C000D77045 /* Debug */,
-				23A7F89C22B069C000D77045 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
