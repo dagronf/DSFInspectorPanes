@@ -2,14 +2,11 @@
 //  DraggingStackView.swift
 //  DSFInspectorPanes
 //
-//  Created by Darren Ford on 21/7/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
-//
 //  Adapted from Mark Onyschuk on [GitHub](https://github.com/monyschuk) -- [Draggable Stack View](https://gist.github.com/monyschuk/cbca3582b6b996ab54c32e2d7eceaf25)
 //
 //  MIT License
 //
-//  Copyright (c) 2019 Darren Ford
+//  Copyright (c) 2020 Darren Ford
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal

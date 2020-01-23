@@ -3,7 +3,7 @@
 //  DSFInspectorPanes_Demo
 //
 //  Created by Darren Ford on 6/8/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Copyright © 2020 Darren Ford. All rights reserved.
 //
 
 import Cocoa

@@ -13,6 +13,10 @@ I've implemented and fought with this on a number of different projects and deci
 
 I really like Apple 'Pages' implementation which allows having a header view which can be used to configure items even when the pane itself is hidden.  A good example of this is the 'Spacing' inspector pane, where when the pane is hidden the user can still change the line spacing at a lower granularity.
 
+| Expanded | Contracted |
+|-----|-----|
+| ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/pane_expanded.png) | ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/pane_contracted.png) |
+
 ## Features
 
 * Show and hide panes
@@ -150,7 +154,7 @@ Showing the ability to display a secondary UI element for when the pane is contr
 ```
 MIT License
 
-Copyright (c) 2019 Darren Ford
+Copyright (c) 2020 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

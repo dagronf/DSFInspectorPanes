@@ -3,7 +3,7 @@
 //  DSFInspectorPanesTests
 //
 //  Created by Darren Ford on 12/6/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Copyright © 2020 Darren Ford. All rights reserved.
 //
 
 import XCTest
