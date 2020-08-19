@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+#if os(macOS)
+
 import Carbon.HIToolbox
 import Cocoa
 
@@ -273,3 +275,5 @@ extension DSFInspectorPanesView {
 		self.arrangedInspectorPanes.forEach { $0.setExpanded(expanded, animated: animated) }
 	}
 }
+
+#endif

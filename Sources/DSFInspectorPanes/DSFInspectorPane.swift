@@ -25,6 +25,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
+
+#if os(macOS)
+
 import Cocoa
 
 /// The expansion type for a new pane
@@ -61,3 +64,5 @@ import Cocoa
 	///   - animated: should the change be animated?
 	@objc func setExpanded(_ expanded: Bool, animated: Bool)
 }
+
+#endif
