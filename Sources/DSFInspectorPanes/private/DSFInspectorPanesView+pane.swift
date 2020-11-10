@@ -121,7 +121,7 @@ extension DSFInspectorPanesView {
 
 		private lazy var dragImageView: NSImageView = {
 			let image = NSImage(named: NSImage.Name("NSListViewTemplate"))!
-			image.accessibilityDescription = NSLocalizedString("Can Reorder", comment: "")
+			image.accessibilityDescription = NSLocalizedString("This pane can be re-ordered", comment: "")
 			image.isTemplate = true
 			let imageview = NSImageView(frame: .zero)
 			imageview.translatesAutoresizingMaskIntoConstraints = true
@@ -142,7 +142,8 @@ extension DSFInspectorPanesView {
 		override var title: String {
 			didSet {
 				self.titleTextView?.stringValue = self.title
-				self.setAccessibilityLabel("\(self.title) pane")
+				self.setAccessibilityLabel("\"\(self.title)\" Inspector pane")
+				self.disclosureButton?.setAccessibilityLabel("Expand or Contract the \"\(self.title)\" Inspector pane")
 			}
 		}
 
@@ -219,6 +220,7 @@ extension DSFInspectorPanesView {
 
 				disclosure.wantsLayer = true
 				disclosure.layer!.backgroundColor = CGColor.clear
+				disclosure.setAccessibilityLabel("Expand or Contract the \(self.title) pane")
 
 				self.disclosureButton = disclosure
 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ColorSchemePropertyPaneViewController" customModule="xcode_pane_example" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="222" height="73"/>
+            <subviews>
+                <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="UQh-Vq-xto">
+                    <rect key="frame" x="0.0" y="8" width="222" height="65"/>
+                    <rows>
+                        <gridRow yPlacement="center" id="d06-9J-Rw0"/>
+                        <gridRow yPlacement="center" id="Ogc-9Q-Dyp"/>
+                    </rows>
+                    <columns>
+                        <gridColumn xPlacement="trailing" trailingPadding="4" id="9R8-Fa-MAS"/>
+                        <gridColumn id="Dh3-yq-RWP"/>
+                        <gridColumn width="19" id="Po8-yN-Wpf"/>
+                    </columns>
+                    <gridCells>
+                        <gridCell row="d06-9J-Rw0" column="9R8-Fa-MAS" id="lpY-hH-6rn">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sWs-sJ-gZa">
+                                <rect key="frame" x="-2" y="44" width="79" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="naG-YV-gm4"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Scheme" id="yrZ-Pu-5BW">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </gridCell>
+                        <gridCell row="d06-9J-Rw0" column="Dh3-yq-RWP" id="Tks-Wn-nKG">
+                            <popUpButton key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-WV-FBJ">
+                                <rect key="frame" x="82" y="39" width="118" height="22"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dga-RO-tT9" id="ixt-Gw-ch4">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <menu key="menu" id="Ouy-RZ-xyu">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="dga-RO-tT9"/>
+                                            <menuItem title="Item 2" id="oZm-M0-TRu"/>
+                                            <menuItem title="Item 3" id="Si5-gY-fkj"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                        </gridCell>
+                        <gridCell row="d06-9J-Rw0" column="Po8-yN-Wpf" id="jHz-mb-hhl">
+                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rna-W6-eF5">
+                                <rect key="frame" x="201" y="42" width="22" height="18"/>
+                                <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="eAS-Os-KOm">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
+                        </gridCell>
+                        <gridCell row="Ogc-9Q-Dyp" column="9R8-Fa-MAS" id="QOi-tP-lCJ">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A9H-to-Pjm">
+                                <rect key="frame" x="-2" y="8" width="79" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="rer-Ha-Afm"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Opacity" id="5Sb-6c-srd">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </gridCell>
+                        <gridCell row="Ogc-9Q-Dyp" column="Dh3-yq-RWP" xPlacement="center" id="F4x-qX-Dmh">
+                            <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-QM-uLh" customClass="DSFStepperView" customModule="DSFStepperView">
+                                <rect key="frame" x="85" y="0.0" width="112" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="CK0-dM-JkI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="initialValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
+                        </gridCell>
+                        <gridCell row="Ogc-9Q-Dyp" column="Po8-yN-Wpf" id="W8G-6g-S5a">
+                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6eP-fd-hNg">
+                                <rect key="frame" x="201" y="6" width="22" height="18"/>
+                                <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Euh-d5-23B">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
+                        </gridCell>
+                    </gridCells>
+                </gridView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="UQh-Vq-xto" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WYo-xS-hUo"/>
+                <constraint firstAttribute="trailing" secondItem="UQh-Vq-xto" secondAttribute="trailing" id="c1E-fm-4bR"/>
+                <constraint firstItem="UQh-Vq-xto" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="tME-nG-sHS"/>
+                <constraint firstAttribute="bottom" secondItem="UQh-Vq-xto" secondAttribute="bottom" constant="8" id="wfm-Pl-KO7"/>
+            </constraints>
+            <point key="canvasLocation" x="-241" y="51.5"/>
+        </customView>
+    </objects>
+</document>

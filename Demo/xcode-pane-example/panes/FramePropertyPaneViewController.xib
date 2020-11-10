@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FramePropertyPaneViewController" customModule="xcode_pane_example" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="84"/>
+            <subviews>
+                <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="2Am-2T-IZ3">
+                    <rect key="frame" x="0.0" y="0.0" width="407" height="84"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="kdr-U8-kOC"/>
+                    </constraints>
+                    <rows>
+                        <gridRow yPlacement="center" id="JKr-lo-xLZ"/>
+                    </rows>
+                    <columns>
+                        <gridColumn xPlacement="trailing" width="75" trailingPadding="4" id="2ne-cu-XyY"/>
+                        <gridColumn id="Wgk-9X-cFw"/>
+                        <gridColumn width="20" id="6rL-ZS-ZJ9"/>
+                    </columns>
+                    <gridCells>
+                        <gridCell row="JKr-lo-xLZ" column="2ne-cu-XyY" id="OiB-Jx-fd4">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yhg-Kj-mNL">
+                                <rect key="frame" x="-2" y="35" width="79" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="f5O-hd-ldD"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Size" id="z5K-XQ-Gat">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </gridCell>
+                        <gridCell row="JKr-lo-xLZ" column="Wgk-9X-cFw" id="Nxo-T7-AEc">
+                            <stackView key="contentView" distribution="fillEqually" orientation="horizontal" alignment="top" spacing="6" horizontalStackHuggingPriority="50" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="50" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Zg-3d-yQQ">
+                                <rect key="frame" x="85" y="11" width="296" height="63"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="100" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-2M-yFI">
+                                        <rect key="frame" x="0.0" y="0.0" width="145" height="63"/>
+                                        <subviews>
+                                            <customView horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="buD-DS-vsX" customClass="DSFStepperView" customModule="DSFStepperView">
+                                                <rect key="frame" x="0.0" y="13" width="145" height="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Default"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="increment">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsEmpty" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximum">
+                                                        <integer key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimum">
+                                                        <integer key="value" value="-100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="numberFormatter" destination="Kbh-pN-eCU" id="4e0-bd-hKx"/>
+                                                </connections>
+                                            </customView>
+                                            <textField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WBv-qq-Byc">
+                                                <rect key="frame" x="-2" y="0.0" width="149" height="11"/>
+                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" alignment="center" title="Width" id="JA6-bb-kQG">
+                                                    <font key="font" metaFont="miniSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="100" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-et-d0w">
+                                        <rect key="frame" x="151" y="0.0" width="145" height="63"/>
+                                        <subviews>
+                                            <customView horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="rNt-5C-dIs" customClass="DSFStepperView" customModule="DSFStepperView">
+                                                <rect key="frame" x="0.0" y="13" width="145" height="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Default"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="increment">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsEmpty" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximum">
+                                                        <integer key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimum">
+                                                        <integer key="value" value="-100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="numberFormatter" destination="Kbh-pN-eCU" id="jlX-4J-wJT"/>
+                                                </connections>
+                                            </customView>
+                                            <textField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ib8-Jo-xRb">
+                                                <rect key="frame" x="-2" y="0.0" width="149" height="11"/>
+                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" alignment="center" title="Height" id="SWm-uo-Ede">
+                                                    <font key="font" metaFont="miniSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rNt-5C-dIs" firstAttribute="width" secondItem="buD-DS-vsX" secondAttribute="width" id="4Bt-R8-GqG"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </gridCell>
+                        <gridCell row="JKr-lo-xLZ" column="6rL-ZS-ZJ9" id="2rE-nk-QGr">
+                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2HP-1C-Luo">
+                                <rect key="frame" x="385" y="33" width="22" height="18"/>
+                                <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="a39-8i-1G2">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
+                        </gridCell>
+                    </gridCells>
+                </gridView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2Am-2T-IZ3" secondAttribute="trailing" id="4Pg-Cv-OSe"/>
+                <constraint firstItem="2Am-2T-IZ3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Aji-5N-kVi"/>
+                <constraint firstItem="2Am-2T-IZ3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SvM-3U-bCj"/>
+                <constraint firstAttribute="bottom" secondItem="2Am-2T-IZ3" secondAttribute="bottom" id="z96-73-Ck3"/>
+            </constraints>
+            <point key="canvasLocation" x="-203" y="53"/>
+        </customView>
+        <numberFormatter formatterBehavior="custom10_4" numberStyle="decimal" alwaysShowsDecimalSeparator="YES" paddingCharacter="0" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="1" maximumFractionDigits="1" id="Kbh-pN-eCU" userLabel="Size Formatter"/>
+    </objects>
+</document>

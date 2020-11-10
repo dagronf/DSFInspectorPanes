@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,9 @@
 		23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263F8D2278F63E00B4FEF0 /* AppDelegate.swift */; };
 		23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23263F8F2278F63F00B4FEF0 /* Assets.xcassets */; };
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
+		2393EE0A255B558B00AEB226 /* DSFStepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 2393EE09255B558B00AEB226 /* DSFStepperView */; };
+		2393EE0E255B564A00AEB226 /* FramePropertyPaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393EE0C255B564A00AEB226 /* FramePropertyPaneViewController.swift */; };
+		2393EE0F255B564A00AEB226 /* FramePropertyPaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2393EE0D255B564A00AEB226 /* FramePropertyPaneViewController.xib */; };
 		239B4B5022ACA02A004DA5D1 /* SpacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */; };
 		239B4B5122ACA02A004DA5D1 /* SpacingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */; };
 		239B4B5422ACA0C4004DA5D1 /* AlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */; };
@@ -33,7 +36,19 @@
 		23A31BFA22AF84B600B70488 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF822AF84B600B70488 /* ImageViewController.xib */; };
 		23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD222AC7A8F00098F3C /* DummyViewController.swift */; };
 		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
-		ED9FDD3F5606641B0D056728 /* Pods_DSFInspectorPanes_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F074F635E3F9FE02E61198FD /* Pods_DSFInspectorPanes_Demo.framework */; };
+		23F1F3712558A16300741E22 /* DSFInspectorPanes in Frameworks */ = {isa = PBXBuildFile; productRef = 23F1F3702558A16300741E22 /* DSFInspectorPanes */; };
+		23F1F37B2558A1E300741E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F37A2558A1E300741E22 /* AppDelegate.swift */; };
+		23F1F37D2558A1E300741E22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F37C2558A1E300741E22 /* ViewController.swift */; };
+		23F1F37F2558A1E400741E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F1F37E2558A1E400741E22 /* Assets.xcassets */; };
+		23F1F3822558A1E400741E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1F3802558A1E400741E22 /* Main.storyboard */; };
+		23F1F38A2558A26E00741E22 /* XcodePropertyPaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F3892558A26E00741E22 /* XcodePropertyPaneViewController.swift */; };
+		23F1F38D2558A33700741E22 /* DSFInspectorPanes in Frameworks */ = {isa = PBXBuildFile; productRef = 23F1F38C2558A33700741E22 /* DSFInspectorPanes */; };
+		23F1F3922558A3A500741E22 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F3902558A3A500741E22 /* PreviewViewController.swift */; };
+		23F1F3932558A3A500741E22 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F1F3912558A3A500741E22 /* PreviewViewController.xib */; };
+		23F1F3982558A69B00741E22 /* ColorSchemePropertyPaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F3962558A69B00741E22 /* ColorSchemePropertyPaneViewController.swift */; };
+		23F1F3992558A69B00741E22 /* ColorSchemePropertyPaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F1F3972558A69B00741E22 /* ColorSchemePropertyPaneViewController.xib */; };
+		23F1F39D2558A7F100741E22 /* DynamicTypePropertyPaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F39B2558A7F100741E22 /* DynamicTypePropertyPaneViewController.swift */; };
+		23F1F39E2558A7F100741E22 /* DynamicTypePropertyPaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F1F39C2558A7F100741E22 /* DynamicTypePropertyPaneViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +72,8 @@
 		23263F922278F63F00B4FEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		23263F942278F63F00B4FEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFInspectorPanes_Demo.entitlements; sourceTree = "<group>"; };
+		2393EE0C255B564A00AEB226 /* FramePropertyPaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramePropertyPaneViewController.swift; sourceTree = "<group>"; };
+		2393EE0D255B564A00AEB226 /* FramePropertyPaneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FramePropertyPaneViewController.xib; sourceTree = "<group>"; };
 		239B4B4E22ACA02A004DA5D1 /* SpacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingViewController.swift; sourceTree = "<group>"; };
 		239B4B4F22ACA02A004DA5D1 /* SpacingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacingViewController.xib; sourceTree = "<group>"; };
 		239B4B5222ACA0C4004DA5D1 /* AlignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentViewController.swift; sourceTree = "<group>"; };
@@ -78,9 +95,21 @@
 		23A31BF822AF84B600B70488 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		23B61DD222AC7A8F00098F3C /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		23B61DD322AC7A8F00098F3C /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
-		E403AF6AB3A098D9D6C6C5AE /* Pods-DSFInspectorPanes_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSFInspectorPanes_Demo.debug.xcconfig"; path = "Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		F074F635E3F9FE02E61198FD /* Pods_DSFInspectorPanes_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DSFInspectorPanes_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F683888C2795668EC329D294 /* Pods-DSFInspectorPanes_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSFInspectorPanes_Demo.release.xcconfig"; path = "Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		23F1F36E2558A15600741E22 /* DSFInspectorPanes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DSFInspectorPanes; path = ..; sourceTree = "<group>"; };
+		23F1F3782558A1E300741E22 /* xcode-pane-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xcode-pane-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F1F37A2558A1E300741E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23F1F37C2558A1E300741E22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23F1F37E2558A1E400741E22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23F1F3812558A1E400741E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23F1F3832558A1E400741E22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F1F3842558A1E400741E22 /* xcode_pane_example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xcode_pane_example.entitlements; sourceTree = "<group>"; };
+		23F1F3892558A26E00741E22 /* XcodePropertyPaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePropertyPaneViewController.swift; sourceTree = "<group>"; };
+		23F1F3902558A3A500741E22 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		23F1F3912558A3A500741E22 /* PreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewViewController.xib; sourceTree = "<group>"; };
+		23F1F3962558A69B00741E22 /* ColorSchemePropertyPaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemePropertyPaneViewController.swift; sourceTree = "<group>"; };
+		23F1F3972558A69B00741E22 /* ColorSchemePropertyPaneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSchemePropertyPaneViewController.xib; sourceTree = "<group>"; };
+		23F1F39B2558A7F100741E22 /* DynamicTypePropertyPaneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTypePropertyPaneViewController.swift; sourceTree = "<group>"; };
+		23F1F39C2558A7F100741E22 /* DynamicTypePropertyPaneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicTypePropertyPaneViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +117,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9FDD3F5606641B0D056728 /* Pods_DSFInspectorPanes_Demo.framework in Frameworks */,
+				23F1F3712558A16300741E22 /* DSFInspectorPanes in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23F1F3752558A1E300741E22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F1F38D2558A33700741E22 /* DSFInspectorPanes in Frameworks */,
+				2393EE0A255B558B00AEB226 /* DSFStepperView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,10 +136,11 @@
 		23263F702278F60400B4FEF0 = {
 			isa = PBXGroup;
 			children = (
+				23F1F36E2558A15600741E22 /* DSFInspectorPanes */,
 				23263F8C2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */,
+				23F1F3792558A1E300741E22 /* xcode-pane-example */,
 				23263F7B2278F60400B4FEF0 /* Products */,
-				23263F992278F65400B4FEF0 /* Frameworks */,
-				69602491ADA96A7AD2E71FAA /* Pods */,
+				23F1F36F2558A16300741E22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */,
+				23F1F3782558A1E300741E22 /* xcode-pane-example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,14 +164,6 @@
 				23263F952278F63F00B4FEF0 /* DSFInspectorPanes_Demo.entitlements */,
 			);
 			path = DSFInspectorPanes_Demo;
-			sourceTree = "<group>";
-		};
-		23263F992278F65400B4FEF0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F074F635E3F9FE02E61198FD /* Pods_DSFInspectorPanes_Demo.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		239B4B4D22ACA012004DA5D1 /* demo-controllers */ = {
@@ -188,13 +220,41 @@
 			path = "window-view";
 			sourceTree = "<group>";
 		};
-		69602491ADA96A7AD2E71FAA /* Pods */ = {
+		23F1F36F2558A16300741E22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E403AF6AB3A098D9D6C6C5AE /* Pods-DSFInspectorPanes_Demo.debug.xcconfig */,
-				F683888C2795668EC329D294 /* Pods-DSFInspectorPanes_Demo.release.xcconfig */,
 			);
-			path = Pods;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23F1F3792558A1E300741E22 /* xcode-pane-example */ = {
+			isa = PBXGroup;
+			children = (
+				23F1F38F2558A38E00741E22 /* panes */,
+				23F1F37A2558A1E300741E22 /* AppDelegate.swift */,
+				23F1F37C2558A1E300741E22 /* ViewController.swift */,
+				23F1F37E2558A1E400741E22 /* Assets.xcassets */,
+				23F1F3802558A1E400741E22 /* Main.storyboard */,
+				23F1F3832558A1E400741E22 /* Info.plist */,
+				23F1F3842558A1E400741E22 /* xcode_pane_example.entitlements */,
+				23F1F3892558A26E00741E22 /* XcodePropertyPaneViewController.swift */,
+			);
+			path = "xcode-pane-example";
+			sourceTree = "<group>";
+		};
+		23F1F38F2558A38E00741E22 /* panes */ = {
+			isa = PBXGroup;
+			children = (
+				23F1F3902558A3A500741E22 /* PreviewViewController.swift */,
+				23F1F3912558A3A500741E22 /* PreviewViewController.xib */,
+				23F1F3962558A69B00741E22 /* ColorSchemePropertyPaneViewController.swift */,
+				23F1F3972558A69B00741E22 /* ColorSchemePropertyPaneViewController.xib */,
+				23F1F39B2558A7F100741E22 /* DynamicTypePropertyPaneViewController.swift */,
+				23F1F39C2558A7F100741E22 /* DynamicTypePropertyPaneViewController.xib */,
+				2393EE0C255B564A00AEB226 /* FramePropertyPaneViewController.swift */,
+				2393EE0D255B564A00AEB226 /* FramePropertyPaneViewController.xib */,
+			);
+			path = panes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,20 +264,43 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23263F962278F63F00B4FEF0 /* Build configuration list for PBXNativeTarget "DSFInspectorPanes_Demo" */;
 			buildPhases = (
-				AA71F3A65908C4CF080AECF4 /* [CP] Check Pods Manifest.lock */,
 				23263F872278F63E00B4FEF0 /* Sources */,
 				23263F882278F63E00B4FEF0 /* Frameworks */,
 				23263F892278F63E00B4FEF0 /* Resources */,
 				236A157E22AFD1E2007FCB8F /* CopyFiles */,
-				3FD44044BE0693020D2A2C2F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23F1F3732558A16F00741E22 /* PBXTargetDependency */,
+			);
+			name = DSFInspectorPanes_Demo;
+			packageProductDependencies = (
+				23F1F3702558A16300741E22 /* DSFInspectorPanes */,
+			);
+			productName = DSFInspectorPanes_Demo;
+			productReference = 23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23F1F3772558A1E300741E22 /* xcode-pane-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23F1F3852558A1E400741E22 /* Build configuration list for PBXNativeTarget "xcode-pane-example" */;
+			buildPhases = (
+				23F1F3742558A1E300741E22 /* Sources */,
+				23F1F3752558A1E300741E22 /* Frameworks */,
+				23F1F3762558A1E300741E22 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DSFInspectorPanes_Demo;
-			productName = DSFInspectorPanes_Demo;
-			productReference = 23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */;
+			name = "xcode-pane-example";
+			packageProductDependencies = (
+				23F1F38C2558A33700741E22 /* DSFInspectorPanes */,
+				2393EE09255B558B00AEB226 /* DSFStepperView */,
+			);
+			productName = "xcode-pane-example";
+			productReference = 23F1F3782558A1E300741E22 /* xcode-pane-example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -226,12 +309,15 @@
 		23263F712278F60400B4FEF0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Darren Ford";
 				TargetAttributes = {
 					23263F8A2278F63E00B4FEF0 = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					23F1F3772558A1E300741E22 = {
+						CreatedOnToolsVersion = 12.1;
 					};
 				};
 			};
@@ -244,11 +330,15 @@
 				Base,
 			);
 			mainGroup = 23263F702278F60400B4FEF0;
+			packageReferences = (
+				2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */,
+			);
 			productRefGroup = 23263F7B2278F60400B4FEF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				23263F8A2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */,
+				23F1F3772558A1E300741E22 /* xcode-pane-example */,
 			);
 		};
 /* End PBXProject section */
@@ -273,49 +363,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23F1F3762558A1E300741E22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F1F3932558A3A500741E22 /* PreviewViewController.xib in Resources */,
+				2393EE0F255B564A00AEB226 /* FramePropertyPaneViewController.xib in Resources */,
+				23F1F37F2558A1E400741E22 /* Assets.xcassets in Resources */,
+				23F1F3992558A69B00741E22 /* ColorSchemePropertyPaneViewController.xib in Resources */,
+				23F1F39E2558A7F100741E22 /* DynamicTypePropertyPaneViewController.xib in Resources */,
+				23F1F3822558A1E400741E22 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3FD44044BE0693020D2A2C2F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DSFInspectorPanes_Demo/Pods-DSFInspectorPanes_Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA71F3A65908C4CF080AECF4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DSFInspectorPanes_Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		23263F872278F63E00B4FEF0 /* Sources */ = {
@@ -339,7 +400,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23F1F3742558A1E300741E22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F1F38A2558A26E00741E22 /* XcodePropertyPaneViewController.swift in Sources */,
+				2393EE0E255B564A00AEB226 /* FramePropertyPaneViewController.swift in Sources */,
+				23F1F37D2558A1E300741E22 /* ViewController.swift in Sources */,
+				23F1F37B2558A1E300741E22 /* AppDelegate.swift in Sources */,
+				23F1F3982558A69B00741E22 /* ColorSchemePropertyPaneViewController.swift in Sources */,
+				23F1F3922558A3A500741E22 /* PreviewViewController.swift in Sources */,
+				23F1F39D2558A7F100741E22 /* DynamicTypePropertyPaneViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23F1F3732558A16F00741E22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 23F1F3722558A16F00741E22 /* DSFInspectorPanes */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		23263F912278F63F00B4FEF0 /* MainMenu.xib */ = {
@@ -348,6 +430,14 @@
 				23263F922278F63F00B4FEF0 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		23F1F3802558A1E400741E22 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23F1F3812558A1E400741E22 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -405,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -463,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -476,7 +566,6 @@
 		};
 		23263F972278F63F00B4FEF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E403AF6AB3A098D9D6C6C5AE /* Pods-DSFInspectorPanes_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DSFInspectorPanes_Demo/DSFInspectorPanes_Demo.entitlements;
@@ -498,7 +587,6 @@
 		};
 		23263F982278F63F00B4FEF0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F683888C2795668EC329D294 /* Pods-DSFInspectorPanes_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DSFInspectorPanes_Demo/DSFInspectorPanes_Demo.entitlements;
@@ -513,6 +601,52 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFInspectorPanes-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		23F1F3862558A1E400741E22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "xcode-pane-example/xcode_pane_example.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "xcode-pane-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.xcode-pane-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		23F1F3872558A1E400741E22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "xcode-pane-example/xcode_pane_example.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "xcode-pane-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.xcode-pane-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -539,7 +673,47 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		23F1F3852558A1E400741E22 /* Build configuration list for PBXNativeTarget "xcode-pane-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23F1F3862558A1E400741E22 /* Debug */,
+				23F1F3872558A1E400741E22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/DSFStepperView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2393EE09255B558B00AEB226 /* DSFStepperView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */;
+			productName = DSFStepperView;
+		};
+		23F1F3702558A16300741E22 /* DSFInspectorPanes */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFInspectorPanes;
+		};
+		23F1F3722558A16F00741E22 /* DSFInspectorPanes */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFInspectorPanes;
+		};
+		23F1F38C2558A33700741E22 /* DSFInspectorPanes */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFInspectorPanes;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23263F712278F60400B4FEF0 /* Project object */;
 }
