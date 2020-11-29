@@ -6,8 +6,17 @@
         "repositoryURL": "https://github.com/dagronf/DSFStepperView.git",
         "state": {
           "branch": null,
-          "revision": "0fe18ba4c51040a58232e219a009d6b68dbed48f",
-          "version": "1.0.0"
+          "revision": "440eeb84ac988960d10feefb2d6998b95bf54790",
+          "version": "1.0.1"
+        }
+      },
+      {
+        "package": "DSFToggleButton",
+        "repositoryURL": "https://github.com/dagronf/DSFToggleButton.git",
+        "state": {
+          "branch": null,
+          "revision": "a14048067c98fa52f5a1d1509afdf02a89c088b7",
+          "version": "3.1.0"
         }
       }
     ]

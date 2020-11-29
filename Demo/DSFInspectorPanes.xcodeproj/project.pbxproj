@@ -12,6 +12,7 @@
 		23263F8E2278F63E00B4FEF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263F8D2278F63E00B4FEF0 /* AppDelegate.swift */; };
 		23263F902278F63F00B4FEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23263F8F2278F63F00B4FEF0 /* Assets.xcassets */; };
 		23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23263F912278F63F00B4FEF0 /* MainMenu.xib */; };
+		23896C79255B701500242C19 /* DSFToggleButton in Frameworks */ = {isa = PBXBuildFile; productRef = 23896C78255B701500242C19 /* DSFToggleButton */; };
 		2393EE0A255B558B00AEB226 /* DSFStepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 2393EE09255B558B00AEB226 /* DSFStepperView */; };
 		2393EE0E255B564A00AEB226 /* FramePropertyPaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393EE0C255B564A00AEB226 /* FramePropertyPaneViewController.swift */; };
 		2393EE0F255B564A00AEB226 /* FramePropertyPaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2393EE0D255B564A00AEB226 /* FramePropertyPaneViewController.xib */; };
@@ -126,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F1F38D2558A33700741E22 /* DSFInspectorPanes in Frameworks */,
+				23896C79255B701500242C19 /* DSFToggleButton in Frameworks */,
 				2393EE0A255B558B00AEB226 /* DSFStepperView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +300,7 @@
 			packageProductDependencies = (
 				23F1F38C2558A33700741E22 /* DSFInspectorPanes */,
 				2393EE09255B558B00AEB226 /* DSFStepperView */,
+				23896C78255B701500242C19 /* DSFToggleButton */,
 			);
 			productName = "xcode-pane-example";
 			productReference = 23F1F3782558A1E300741E22 /* xcode-pane-example.app */;
@@ -332,6 +335,7 @@
 			mainGroup = 23263F702278F60400B4FEF0;
 			packageReferences = (
 				2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */,
+				23896C77255B701500242C19 /* XCRemoteSwiftPackageReference "DSFToggleButton" */,
 			);
 			productRefGroup = 23263F7B2278F60400B4FEF0 /* Products */;
 			projectDirPath = "";
@@ -622,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.xcode-pane-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -645,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.xcode-pane-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -685,6 +689,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		23896C77255B701500242C19 /* XCRemoteSwiftPackageReference "DSFToggleButton" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/DSFToggleButton.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dagronf/DSFStepperView.git";
@@ -696,6 +708,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		23896C78255B701500242C19 /* DSFToggleButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23896C77255B701500242C19 /* XCRemoteSwiftPackageReference "DSFToggleButton" */;
+			productName = DSFToggleButton;
+		};
 		2393EE09255B558B00AEB226 /* DSFStepperView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */;
