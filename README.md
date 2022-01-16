@@ -21,7 +21,7 @@ I really like Apple 'Pages' implementation which allows having a header view whi
 
 * Show and hide panes
 * Configurable from interface builder as inspectables
-* Optional supply a view as a header view
+* Optional supply a view as a header view, and set its visibility (always show, show when collapsed)
 * Optional automatic scroll view support
 * Optional animation
 * Optional separators or bounding boxes

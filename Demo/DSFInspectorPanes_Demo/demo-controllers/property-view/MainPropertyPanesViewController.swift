@@ -11,7 +11,6 @@ import Cocoa
 import DSFInspectorPanes
 
 class MainPropertyPanesViewController: NSViewController {
-
 	// Dummy views
 	let dummy = DummyViewController()
 	let spacing = SpacingViewController()
@@ -47,36 +46,48 @@ class MainPropertyPanesViewController: NSViewController {
 	}
 
 	private func createPanes() {
+		self.panes.insets = NSEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
 
-		panes.insets = NSEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-
-		panes.addPane(title: "Description",
-						  view: desc.view,
-						  headerAccessoryView: desc.headerView,
-						  expansionType: .collapsed)
-		panes.addPane(title: "Label with button thing",
-						  view: textWithAction.view)
-		panes.addPane(title: "Grid of colors",
-						  view: color.view,
-						  headerAccessoryView: color.headerView,
-						  expansionType: .collapsed)
-		panes.addPane(title: "Alignment (fixed)",
-						  view: alignment.view,
-						  expansionType: .none)
+		self.panes.addPane(
+			title: "Description",
+			view: self.desc.view,
+			headerAccessoryView: self.desc.headerView,
+			expansionType: .collapsed
+		)
+		self.panes.addPane(
+			title: "Label with button thing",
+			view: self.textWithAction.view
+		)
+		self.panes.addPane(
+			title: "Grid of colors",
+			view: self.color.view,
+			headerAccessoryView: self.color.headerView,
+			headerAccessoryVisibility: .always,
+			expansionType: .collapsed
+		)
+		self.panes.addPane(
+			title: "Alignment (fixed)",
+			view: self.alignment.view,
+			expansionType: .none
+		)
 
 		/// Add in our nested
 
-		panes.addPane(title: "Nested Panes",
-						  view: nestedPanes)
-		
-		panes.addPane(title: "Spacing",
-						  view: spacing.view,
-						  headerAccessoryView: spacing.headerView)
+		self.panes.addPane(
+			title: "Nested Panes",
+			view: self.nestedPanes
+		)
 
-		panes.addPane(title: "Fill And Stroke",
-						  view: fillAndStroke.view,
-						  showsHeader: false)
+		self.panes.addPane(
+			title: "Spacing",
+			view: self.spacing.view,
+			headerAccessoryView: self.spacing.headerView
+		)
 
+		self.panes.addPane(
+			title: "Fill And Stroke",
+			view: self.fillAndStroke.view,
+			showsHeader: false
+		)
 	}
-
 }

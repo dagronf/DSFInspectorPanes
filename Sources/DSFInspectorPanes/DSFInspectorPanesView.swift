@@ -198,6 +198,7 @@ extension DSFInspectorPanesView {
 	/// - Parameter view: The view to display in the pane
 	/// - Parameter showsHeader: Does the inspector pane show the header?
 	/// - Parameter headerAccessoryView: If the inspector uses a supporting header pane, the view for the header
+	/// - Parameter headerAccessoryVisibility: When is the header accessory shown?
 	/// - Parameter expansionType: Can the pane be expanded, and if so what is its default expansion state
 	@discardableResult
 	func addPane(
@@ -205,6 +206,7 @@ extension DSFInspectorPanesView {
 		view: NSView,
 		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
+		headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibility = .onlyWhenCollapsed,
 		expansionType: DSFInspectorPaneExpansionType = .expanded
 	) -> DSFInspectorPane {
 		return add_internal(
@@ -212,6 +214,7 @@ extension DSFInspectorPanesView {
 			view: view,
 			showsHeader: showsHeader,
 			headerAccessoryView: headerAccessoryView,
+			headerAccessoryVisibility: headerAccessoryVisibility,
 			expansionType: expansionType
 		)
 	}

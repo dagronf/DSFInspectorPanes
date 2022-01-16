@@ -113,11 +113,12 @@ extension DSFInspectorPanesView {
 		return self.primaryStack.arrangedSubviews as? [DSFInspectorPanesView.Pane] ?? []
 	}
 
-	func add_internal(
+	internal func add_internal(
 		title: String,
 		view: NSView,
 		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
+		headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibility,
 		expansionType: DSFInspectorPaneExpansionType = .expanded
 	) -> DSFInspectorPane {
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +135,11 @@ extension DSFInspectorPanesView {
 		inspectorPaneView.changeDelegate = self
 		inspectorPaneView.separatorVisible = self.arrangedInspectorPanes.count != 0
 		inspectorPaneView.inspectorType = self.inspectorType
-		inspectorPaneView.add(propertyView: view, headerAccessoryView: headerAccessoryView)
+		inspectorPaneView.add(
+			propertyView: view,
+			headerAccessoryView: headerAccessoryView,
+			headerAccessoryVisibility: headerAccessoryVisibility
+		)
 		inspectorPaneView.title = title
 		self.primaryStack.addArrangedSubview(inspectorPaneView)
 
@@ -149,6 +154,9 @@ extension DSFInspectorPanesView {
 
 		if expansionType == .collapsed {
 			inspectorPaneView.openDisclosure(open: false, animated: false)
+		}
+		else { // if headerAccessoryVisibility == .onlyWhenCollapsed {
+			inspectorPaneView.openDisclosure(open: true, animated: false)
 		}
 
 		view.needsUpdateConstraints = true

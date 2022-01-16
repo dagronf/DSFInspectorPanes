@@ -50,6 +50,8 @@ import Cocoa
 	@objc var inspector: NSView? { get }
 	/// An optional header view for the inspector pane
 	@objc var header: NSView? { get }
+	/// When is the header view visible?
+	@objc var headerVisibility: DSFInspectorPaneHeaderAccessoryVisibility { get }
 	/// Is the inspector panel visible in the inspector?
 	@objc var visible: Bool { get set }
 	/// Can we expand and contract the pane?
@@ -63,6 +65,13 @@ import Cocoa
 	///   - expanded: true to expand, false to collapse
 	///   - animated: should the change be animated?
 	@objc func setExpanded(_ expanded: Bool, animated: Bool)
+}
+
+@objc public enum DSFInspectorPaneHeaderAccessoryVisibility: Int {
+	/// Only show the header accessory when the pane is collapsed
+	case onlyWhenCollapsed = 0
+	/// Always show the header accessory
+	case always = 1
 }
 
 #endif

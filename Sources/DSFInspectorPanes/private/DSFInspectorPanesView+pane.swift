@@ -75,6 +75,8 @@ extension DSFInspectorPanesView {
 		private var titleTextView: NSTextField?
 		// The container holding the header accessory view
 		private let headerAccessoryViewContainer = NSView()
+		// Should the header accessory view always be shown?
+		private var headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibility = .onlyWhenCollapsed
 
 		// Property view container
 		internal let inspectorViewContainerView = NSView()
@@ -147,7 +149,14 @@ extension DSFInspectorPanesView {
 			}
 		}
 
-		internal init(titleFont: NSFont, showsHeader: Bool = true, expansionType: DSFInspectorPaneExpansionType, canReorder: Bool, inspectorType: DSFInspectorPanesView.InspectorType, animated: Bool) {
+		internal init(
+			titleFont: NSFont,
+			showsHeader: Bool = true,
+			expansionType: DSFInspectorPaneExpansionType,
+			canReorder: Bool,
+			inspectorType: DSFInspectorPanesView.InspectorType,
+			animated: Bool)
+		{
 			self.animated = animated
 			self._expanded = (expansionType != .collapsed)
 			super.init(frame: .zero)
@@ -164,7 +173,12 @@ extension DSFInspectorPanesView {
 //			debugPrint("deinit: DSFInspectorPanesView.Pane (\(self.title))…")
 //		}
 
-		private func setup(titleFont: NSFont, showsHeader: Bool, expansionType: DSFInspectorPaneExpansionType, canReorder: Bool) {
+		private func setup(
+			titleFont: NSFont,
+			showsHeader: Bool,
+			expansionType: DSFInspectorPaneExpansionType,
+			canReorder: Bool
+		) {
 			guard let content = self.contentView else {
 				return
 			}
@@ -272,7 +286,7 @@ extension DSFInspectorPanesView {
 					self.headerView.addArrangedSubview(self.dragImageView)
 				}
 
-				self.headerAccessoryViewContainer.isHidden = true
+				self.headerAccessoryViewContainer.isHidden = (self.headerAccessoryVisibility == .onlyWhenCollapsed)
 				self.mainStack.addArrangedSubview(self.headerView)
 			}
 
@@ -288,9 +302,12 @@ extension DSFInspectorPanesView {
 		}
 
 		/// Set the view (and header accessory) for the container
-		internal func add(propertyView: NSView, headerAccessoryView: NSView? = nil) {
+		internal func add(
+			propertyView: NSView,
+			headerAccessoryView: NSView? = nil,
+			headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibility = .onlyWhenCollapsed) {
 			self.inspectorView = propertyView
-
+			self.headerAccessoryVisibility = headerAccessoryVisibility
 			self.inspectorViewContainerView.subviews.forEach { $0.removeFromSuperview() }
 
 			propertyView.wantsLayer = true
@@ -415,7 +432,12 @@ extension DSFInspectorPanesView.Pane {
 				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
 				context.duration = animSpeed()
 				self.inspectorViewContainerView.animator().alphaValue = 1.0
-				self.headerAccessoryViewContainer.animator().alphaValue = 0.0
+				if self.headerAccessoryVisibility == .onlyWhenCollapsed {
+					self.headerAccessoryViewContainer.animator().alphaValue = 0.0
+				}
+				else {
+					self.headerAccessoryViewContainer.animator().alphaValue = 1.0
+				}
 				self.heightConstraint.animator().constant = inspectorHeight
 			}, completionHandler: {
 				self.openPanelComplete()
@@ -431,7 +453,13 @@ extension DSFInspectorPanesView.Pane {
 		self.inspectorViewContainerView.isHidden = false
 		self.inspectorViewContainerView.removeConstraint(self.heightConstraint)
 		self.inspectorViewContainerView.addConstraint(self.panelBottom)
-		self.headerAccessoryViewContainer.isHidden = true
+		if self.headerAccessoryVisibility == .onlyWhenCollapsed {
+			self.headerAccessoryViewContainer.isHidden = true
+			self.headerAccessoryViewContainer.alphaValue = 0.0
+		} else {
+			self.headerAccessoryViewContainer.isHidden = false
+			self.headerAccessoryViewContainer.alphaValue = 1.0
+		}
 		self.window?.recalculateKeyViewLoop()
 		self.superview?.needsLayout = true
 		self.needsUpdateConstraints = true
@@ -468,7 +496,9 @@ extension DSFInspectorPanesView.Pane {
 		self.setAccessibilityExpanded(false)
 		self.inspectorViewContainerView.isHidden = true
 		self.headerAccessoryViewContainer.isHidden = false
-		self.inspectorViewContainerView.alphaValue = 0.0
+		if self.headerAccessoryVisibility == .onlyWhenCollapsed {
+			self.inspectorViewContainerView.alphaValue = 0.0
+		}
 		self.mainStack.needsUpdateConstraints = true
 		self.mainStack.needsLayout = true
 		self.superview?.needsLayout = true
@@ -553,6 +583,12 @@ extension DSFInspectorPanesView.Pane: DSFInspectorPane {
 			return headerContainer.subviews[0]
 		}
 		return nil
+	}
+
+	var headerVisibility: DSFInspectorPaneHeaderAccessoryVisibility {
+		get {
+			return self.headerAccessoryVisibility
+		}
 	}
 
 	var visible: Bool {
