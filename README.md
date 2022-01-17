@@ -149,7 +149,13 @@ Showing the ability to display a secondary UI element for when the pane is contr
 
 ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/expand_contract.gif) 
 
+# Releases
 
+* 1.2.0:
+
+  - Added a 'always show header accessory' option. Default behaviour has not been changed.
+  - Added an objective-c demo
+  
 # License
 ```
 MIT License
