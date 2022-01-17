@@ -28,6 +28,13 @@
 		239B4B6122ACA2AE004DA5D1 /* TextWithButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */; };
 		239B4B6622ACAE87004DA5D1 /* MainPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */; };
 		239B4B6A22ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */; };
+		239F86622794E9D1008B0F4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 239F86612794E9D1008B0F4C /* AppDelegate.m */; };
+		239F86642794E9D2008B0F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 239F86632794E9D2008B0F4C /* Assets.xcassets */; };
+		239F86672794E9D2008B0F4C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239F86652794E9D2008B0F4C /* MainMenu.xib */; };
+		239F86692794E9D2008B0F4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 239F86682794E9D2008B0F4C /* main.m */; };
+		239F866F2794E9E1008B0F4C /* DSFInspectorPanes in Frameworks */ = {isa = PBXBuildFile; productRef = 239F866E2794E9E1008B0F4C /* DSFInspectorPanes */; };
+		239F86742794EADF008B0F4C /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239F86722794EADF008B0F4C /* ColorViewController.m */; };
+		239F86752794EADF008B0F4C /* ColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239F86732794EADF008B0F4C /* ColorViewController.xib */; };
 		23A31BEC22AF7EE100B70488 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BEA22AF7EE100B70488 /* MainViewController.swift */; };
 		23A31BF122AF815C00B70488 /* ShortDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BEF22AF815C00B70488 /* ShortDescriptionViewController.swift */; };
 		23A31BF222AF815C00B70488 /* ShortDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF022AF815C00B70488 /* ShortDescriptionViewController.xib */; };
@@ -87,6 +94,16 @@
 		239B4B5F22ACA2AE004DA5D1 /* TextWithButtonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextWithButtonViewController.xib; sourceTree = "<group>"; };
 		239B4B6422ACAE87004DA5D1 /* MainPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPropertyPanesViewController.swift; sourceTree = "<group>"; };
 		239B4B6822ACBA03004DA5D1 /* WindowPropertyPanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPropertyPanesViewController.swift; sourceTree = "<group>"; };
+		239F865E2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFInspectorPanes Objc Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		239F86602794E9D1008B0F4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		239F86612794E9D1008B0F4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		239F86632794E9D2008B0F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		239F86662794E9D2008B0F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		239F86682794E9D2008B0F4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		239F866A2794E9D2008B0F4C /* DSFInspectorPanes_Objc_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFInspectorPanes_Objc_Demo.entitlements; sourceTree = "<group>"; };
+		239F86712794EADF008B0F4C /* ColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorViewController.h; sourceTree = "<group>"; };
+		239F86722794EADF008B0F4C /* ColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorViewController.m; sourceTree = "<group>"; };
+		239F86732794EADF008B0F4C /* ColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorViewController.xib; sourceTree = "<group>"; };
 		23A31BEA22AF7EE100B70488 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		23A31BEF22AF815C00B70488 /* ShortDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDescriptionViewController.swift; sourceTree = "<group>"; };
 		23A31BF022AF815C00B70488 /* ShortDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShortDescriptionViewController.xib; sourceTree = "<group>"; };
@@ -122,6 +139,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		239F865B2794E9D1008B0F4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				239F866F2794E9E1008B0F4C /* DSFInspectorPanes in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23F1F3752558A1E300741E22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +166,7 @@
 				23F1F36E2558A15600741E22 /* DSFInspectorPanes */,
 				23263F8C2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */,
 				23F1F3792558A1E300741E22 /* xcode-pane-example */,
+				239F865F2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo */,
 				23263F7B2278F60400B4FEF0 /* Products */,
 				23F1F36F2558A16300741E22 /* Frameworks */,
 			);
@@ -151,6 +177,7 @@
 			children = (
 				23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */,
 				23F1F3782558A1E300741E22 /* xcode-pane-example.app */,
+				239F865E2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +203,30 @@
 				23A31BEE22AF814600B70488 /* main-view */,
 			);
 			path = "demo-controllers";
+			sourceTree = "<group>";
+		};
+		239F865F2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo */ = {
+			isa = PBXGroup;
+			children = (
+				239F86702794EA92008B0F4C /* panes */,
+				239F86602794E9D1008B0F4C /* AppDelegate.h */,
+				239F86612794E9D1008B0F4C /* AppDelegate.m */,
+				239F86632794E9D2008B0F4C /* Assets.xcassets */,
+				239F86652794E9D2008B0F4C /* MainMenu.xib */,
+				239F86682794E9D2008B0F4C /* main.m */,
+				239F866A2794E9D2008B0F4C /* DSFInspectorPanes_Objc_Demo.entitlements */,
+			);
+			path = "DSFInspectorPanes Objc Demo";
+			sourceTree = "<group>";
+		};
+		239F86702794EA92008B0F4C /* panes */ = {
+			isa = PBXGroup;
+			children = (
+				239F86712794EADF008B0F4C /* ColorViewController.h */,
+				239F86722794EADF008B0F4C /* ColorViewController.m */,
+				239F86732794EADF008B0F4C /* ColorViewController.xib */,
+			);
+			path = panes;
 			sourceTree = "<group>";
 		};
 		23A31BEE22AF814600B70488 /* main-view */ = {
@@ -284,6 +335,26 @@
 			productReference = 23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		239F865D2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 239F866D2794E9D2008B0F4C /* Build configuration list for PBXNativeTarget "DSFInspectorPanes Objc Demo" */;
+			buildPhases = (
+				239F865A2794E9D1008B0F4C /* Sources */,
+				239F865B2794E9D1008B0F4C /* Frameworks */,
+				239F865C2794E9D1008B0F4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DSFInspectorPanes Objc Demo";
+			packageProductDependencies = (
+				239F866E2794E9E1008B0F4C /* DSFInspectorPanes */,
+			);
+			productName = "DSFInspectorPanes Objc Demo";
+			productReference = 239F865E2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		23F1F3772558A1E300741E22 /* xcode-pane-example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23F1F3852558A1E400741E22 /* Build configuration list for PBXNativeTarget "xcode-pane-example" */;
@@ -319,6 +390,9 @@
 					23263F8A2278F63E00B4FEF0 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
+					239F865D2794E9D1008B0F4C = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					23F1F3772558A1E300741E22 = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -343,6 +417,7 @@
 			targets = (
 				23263F8A2278F63E00B4FEF0 /* DSFInspectorPanes_Demo */,
 				23F1F3772558A1E300741E22 /* xcode-pane-example */,
+				239F865D2794E9D1008B0F4C /* DSFInspectorPanes Objc Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -364,6 +439,16 @@
 				23A31BF222AF815C00B70488 /* ShortDescriptionViewController.xib in Resources */,
 				23A31BFA22AF84B600B70488 /* ImageViewController.xib in Resources */,
 				23263F932278F63F00B4FEF0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		239F865C2794E9D1008B0F4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				239F86642794E9D2008B0F4C /* Assets.xcassets in Resources */,
+				239F86672794E9D2008B0F4C /* MainMenu.xib in Resources */,
+				239F86752794EADF008B0F4C /* ColorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +489,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		239F865A2794E9D1008B0F4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				239F86692794E9D2008B0F4C /* main.m in Sources */,
+				239F86622794E9D1008B0F4C /* AppDelegate.m in Sources */,
+				239F86742794EADF008B0F4C /* ColorViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23F1F3742558A1E300741E22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +527,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				23263F922278F63F00B4FEF0 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		239F86652794E9D2008B0F4C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				239F86662794E9D2008B0F4C /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -610,6 +713,66 @@
 			};
 			name = Release;
 		};
+		239F866B2794E9D2008B0F4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "DSFInspectorPanes Objc Demo/DSFInspectorPanes_Objc_Demo.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Darren Ford. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dagronf.DSFInspectorPanes-Objc-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		239F866C2794E9D2008B0F4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "DSFInspectorPanes Objc Demo/DSFInspectorPanes_Objc_Demo.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Darren Ford. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dagronf.DSFInspectorPanes-Objc-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
 		23F1F3862558A1E400741E22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -677,6 +840,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		239F866D2794E9D2008B0F4C /* Build configuration list for PBXNativeTarget "DSFInspectorPanes Objc Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				239F866B2794E9D2008B0F4C /* Debug */,
+				239F866C2794E9D2008B0F4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		23F1F3852558A1E400741E22 /* Build configuration list for PBXNativeTarget "xcode-pane-example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -717,6 +889,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */;
 			productName = DSFStepperView;
+		};
+		239F866E2794E9E1008B0F4C /* DSFInspectorPanes */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFInspectorPanes;
 		};
 		23F1F3702558A16300741E22 /* DSFInspectorPanes */ = {
 			isa = XCSwiftPackageProductDependency;
