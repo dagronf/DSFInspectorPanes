@@ -60,6 +60,19 @@
 						  headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibilityAlways
 										  expansionType: DSFInspectorPaneExpansionTypeCollapsed];
 	}
+
+	{
+		ColorViewController* pane = [[ColorViewController alloc] init];
+		[pane loadView];
+		NSView* headerView = [pane headerView];
+
+		[[self inspectorPanes] addPaneWithTitle: @"Colors 4"
+													  view: [pane view]
+											 showsHeader: true
+								  headerAccessoryView: headerView
+						  headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibilityAlways
+										  expansionType: DSFInspectorPaneExpansionTypeNone];
+	}
 }
 
 

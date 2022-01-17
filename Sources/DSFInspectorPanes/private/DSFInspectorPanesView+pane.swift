@@ -286,7 +286,7 @@ extension DSFInspectorPanesView {
 					self.headerView.addArrangedSubview(self.dragImageView)
 				}
 
-				self.headerAccessoryViewContainer.isHidden = (self.headerAccessoryVisibility == .onlyWhenCollapsed)
+				self.headerAccessoryViewContainer.isHidden = (self.headerAccessoryVisibility != .always)
 				self.mainStack.addArrangedSubview(self.headerView)
 			}
 
@@ -387,6 +387,8 @@ extension DSFInspectorPanesView {
 					views: variableBindings
 				))
 			}
+
+			self.headerAccessoryViewContainer.isHidden = (self.headerAccessoryVisibility != .always)
 
 			setContentHuggingPriority(.required, for: .vertical)
 
