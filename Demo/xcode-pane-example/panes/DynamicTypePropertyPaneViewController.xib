@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -42,7 +42,7 @@
                         </gridCell>
                         <gridCell row="d06-9J-Rw0" column="Dh3-yq-RWP" id="Tks-Wn-nKG">
                             <popUpButton key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-WV-FBJ">
-                                <rect key="frame" x="82" y="21" width="99" height="22"/>
+                                <rect key="frame" x="81" y="21" width="108" height="22"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dga-RO-tT9" id="ixt-Gw-ch4">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -58,7 +58,7 @@
                         </gridCell>
                         <gridCell row="d06-9J-Rw0" column="Po8-yN-Wpf" id="jHz-mb-hhl">
                             <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rna-W6-eF5">
-                                <rect key="frame" x="182" y="24" width="22" height="18"/>
+                                <rect key="frame" x="190" y="25" width="14" height="15"/>
                                 <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="eAS-Os-KOm">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>

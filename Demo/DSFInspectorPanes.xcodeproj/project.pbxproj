@@ -42,9 +42,9 @@
 		23A31BF622AF816E00B70488 /* LongDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF422AF816E00B70488 /* LongDescriptionViewController.xib */; };
 		23A31BF922AF84B600B70488 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A31BF722AF84B600B70488 /* ImageViewController.swift */; };
 		23A31BFA22AF84B600B70488 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A31BF822AF84B600B70488 /* ImageViewController.xib */; };
+		23B505742876CCFE0031D3C8 /* DSFInspectorPanes in Frameworks */ = {isa = PBXBuildFile; productRef = 23B505732876CCFE0031D3C8 /* DSFInspectorPanes */; };
 		23B61DD422AC7A8F00098F3C /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B61DD222AC7A8F00098F3C /* DummyViewController.swift */; };
 		23B61DD522AC7A8F00098F3C /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B61DD322AC7A8F00098F3C /* DummyViewController.xib */; };
-		23F1F3712558A16300741E22 /* DSFInspectorPanes in Frameworks */ = {isa = PBXBuildFile; productRef = 23F1F3702558A16300741E22 /* DSFInspectorPanes */; };
 		23F1F37B2558A1E300741E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F37A2558A1E300741E22 /* AppDelegate.swift */; };
 		23F1F37D2558A1E300741E22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1F37C2558A1E300741E22 /* ViewController.swift */; };
 		23F1F37F2558A1E400741E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F1F37E2558A1E400741E22 /* Assets.xcassets */; };
@@ -135,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F1F3712558A16300741E22 /* DSFInspectorPanes in Frameworks */,
+				23B505742876CCFE0031D3C8 /* DSFInspectorPanes in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +329,7 @@
 			);
 			name = DSFInspectorPanes_Demo;
 			packageProductDependencies = (
-				23F1F3702558A16300741E22 /* DSFInspectorPanes */,
+				23B505732876CCFE0031D3C8 /* DSFInspectorPanes */,
 			);
 			productName = DSFInspectorPanes_Demo;
 			productReference = 23263F8B2278F63E00B4FEF0 /* DSFInspectorPanes_Demo.app */;
@@ -866,7 +866,7 @@
 			repositoryURL = "https://github.com/dagronf/DSFToggleButton.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 		2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */ = {
@@ -874,7 +874,7 @@
 			repositoryURL = "https://github.com/dagronf/DSFStepperView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -894,7 +894,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = DSFInspectorPanes;
 		};
-		23F1F3702558A16300741E22 /* DSFInspectorPanes */ = {
+		23B505732876CCFE0031D3C8 /* DSFInspectorPanes */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DSFInspectorPanes;
 		};

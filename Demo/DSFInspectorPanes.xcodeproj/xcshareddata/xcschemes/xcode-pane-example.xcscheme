@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1340"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23263F792278F60400B4FEF0"
-               BuildableName = "DSFInspectorPanes.framework"
-               BlueprintName = "DSFInspectorPanes"
+               BlueprintIdentifier = "23F1F3772558A1E300741E22"
+               BuildableName = "xcode-pane-example.app"
+               BlueprintName = "xcode-pane-example"
                ReferencedContainer = "container:DSFInspectorPanes.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,15 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "23263F792278F60400B4FEF0"
-            BuildableName = "DSFInspectorPanes.framework"
-            BlueprintName = "DSFInspectorPanes"
+            BlueprintIdentifier = "23F1F3772558A1E300741E22"
+            BuildableName = "xcode-pane-example.app"
+            BlueprintName = "xcode-pane-example"
             ReferencedContainer = "container:DSFInspectorPanes.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -56,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "23263F792278F60400B4FEF0"
-            BuildableName = "DSFInspectorPanes.framework"
-            BlueprintName = "DSFInspectorPanes"
+            BlueprintIdentifier = "23F1F3772558A1E300741E22"
+            BuildableName = "xcode-pane-example.app"
+            BlueprintName = "xcode-pane-example"
             ReferencedContainer = "container:DSFInspectorPanes.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

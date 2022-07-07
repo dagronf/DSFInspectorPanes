@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DSFInspectorPanes"
-  s.version      = "1.2"
+  s.version      = "1.3"
   s.summary      = "Mimic the inspector panels in Apple's Pages"
   s.description  = <<-DESC
     Mimic the inspector panels in Apple's Pages

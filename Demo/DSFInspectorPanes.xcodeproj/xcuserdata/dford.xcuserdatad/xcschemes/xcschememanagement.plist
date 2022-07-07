@@ -7,10 +7,12 @@
 		<key>DSFInspectorPanes Objc Demo.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>DSFInspectorPanes.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -21,8 +23,18 @@
 		</dict>
 		<key>xcode-pane-example.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>23F1F3772558A1E300741E22</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

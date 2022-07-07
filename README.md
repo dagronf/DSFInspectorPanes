@@ -151,6 +151,10 @@ Showing the ability to display a secondary UI element for when the pane is contr
 
 # Releases
 
+* 1.3.0:
+
+  - Updates for latest Xcode and dependent libraries
+
 * 1.2.0:
 
   - Added a 'always show header accessory' option. Default behaviour has not been changed.
