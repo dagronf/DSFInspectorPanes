@@ -222,7 +222,7 @@ extension DSFInspectorPanesView {
 	/// Returns the index of the specified pane object
 	func index(of item: DSFInspectorPane) -> Int {
 		guard let pane = item as? DSFInspectorPanesView.Pane,
-			let index = self.arrangedInspectorPanes.firstIndex(of: pane) else {
+				let index = self.arrangedInspectorPanes.firstIndex(of: pane) else {
 			return -1
 		}
 		return index
@@ -272,10 +272,30 @@ extension DSFInspectorPanesView {
 		}
 		self.inspectorPaneDelegate?.inspectorPanes?(self, didReorder: self.arrangedInspectorPanes)
 	}
+}
 
-	/// Convenience method for showing or hiding all of the inspector panes at once
-	func expandAll(_ expanded: Bool, animated: Bool) {
+@objc public extension DSFInspectorPanesView {
+	/// Show or hide all of the inspector panes at once, optionally animating
+	/// - Parameters:
+	///   - expanded: If true, expands all panes. Otherwise all panes are hidden
+	///   - animated: Should we animate the change?
+	@objc func expandAll(_ expanded: Bool, animated: Bool) {
 		self.arrangedInspectorPanes.forEach { $0.setExpanded(expanded, animated: animated) }
+	}
+
+	/// Expand all the panes in the inspector
+	@objc func expandAll() {
+		self.arrangedInspectorPanes.forEach { $0.setExpanded(true, animated: self.animated) }
+	}
+
+	/// Hide all the panes in the inspector
+	@objc func hideAll() {
+		self.arrangedInspectorPanes.forEach { $0.setExpanded(false, animated: self.animated) }
+	}
+
+	/// Toggle the expansion state of all the panes in the inspector
+	@objc func toggleAll() {
+		self.arrangedInspectorPanes.forEach { $0.setExpanded(!$0.isExpanded, animated: self.animated) }
 	}
 }
 

@@ -96,8 +96,8 @@ propertyPanes.panes[1].expanded = false
 ```swift
 var propertyPanes = DSFInspectorPanesView()
 …
-propertyPanes.panes[0].hide = true
-propertyPanes.panes[1].hide = false
+propertyPanes.panes[0].isHidden = true
+propertyPanes.panes[1].isHidden = false
 ```
 
 ## Reordering and moving
@@ -164,7 +164,7 @@ Showing the ability to display a secondary UI element for when the pane is contr
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2023 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

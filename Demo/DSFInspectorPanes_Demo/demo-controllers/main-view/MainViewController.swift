@@ -38,7 +38,7 @@ class MainViewController: NSViewController {
 	@IBAction func toggleVisibility(_ sender: NSButton) {
 		switch sender.tag {
 		case 100:
-			self.panes.panes.forEach { $0.setExpanded(!$0.expanded, animated: true) }
+			self.panes.panes.forEach { $0.setExpanded(!$0.isExpanded, animated: true) }
 		case 101:
 			self.panes.panes.forEach { $0.setExpanded(true, animated: true) }
 		case 102:
@@ -58,6 +58,6 @@ extension MainViewController: DSFInspectorPanesViewProtocol {
 
 	func inspectorPanes(_: DSFInspectorPanesView, didChangeVisibilityOf pane: DSFInspectorPane) {
 		// Do something
-		print("Pane: \(pane.title), \(pane.expanded)")
+		print("Pane: \(pane.title), \(pane.isExpanded)")
 	}
 }

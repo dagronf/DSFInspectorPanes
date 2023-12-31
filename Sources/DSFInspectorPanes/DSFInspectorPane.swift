@@ -52,12 +52,10 @@ import Cocoa
 	@objc var header: NSView? { get }
 	/// When is the header view visible?
 	@objc var headerVisibility: DSFInspectorPaneHeaderAccessoryVisibility { get }
-	/// Is the inspector panel visible in the inspector?
-	@objc var visible: Bool { get set }
 	/// Can we expand and contract the pane?
 	@objc var canExpand: Bool { get }
 	/// Is the panel expanded?
-	@objc var expanded: Bool { get set }
+	@objc var isExpanded: Bool { get set }
 
 	/// Change the visibility overriding the inspector's built-in animation settings
 	///

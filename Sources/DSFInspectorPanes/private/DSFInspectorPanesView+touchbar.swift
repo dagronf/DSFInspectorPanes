@@ -70,7 +70,7 @@ extension DSFInspectorPanesView {
 		}
 
 		p.canExpand = pane.canExpand
-		p.isExpanded = pane.expanded
+		p.isExpanded = pane.isExpanded
 	}
 }
 

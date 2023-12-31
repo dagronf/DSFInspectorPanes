@@ -50,7 +50,7 @@ extension DSFInspectorPanesView: NSUserInterfaceValidations {
 				menuItem.state = .off
 				return false
 			}
-			menuItem.state = hasFocus.pane.expanded ? .on : .off
+			menuItem.state = hasFocus.pane.isExpanded ? .on : .off
 		}
 
 		if let focussed = focussedPane() {

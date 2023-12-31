@@ -399,13 +399,16 @@ extension DSFInspectorPanesView {
 
 // MARK: - Open and close
 
-extension DSFInspectorPanesView.Pane {
-	private func animSpeed() -> TimeInterval {
-		if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
-			return 2.0
-		}
-		return 0.1
+@inlinable func isOptionKeyPressed() -> Bool {
+	if let flags = NSApp.currentEvent?.modifierFlags, flags.contains(NSEvent.ModifierFlags.option) {
+		return true
 	}
+	return false
+}
+
+extension DSFInspectorPanesView.Pane {
+	/// The duration for animations
+	private func animationDuration() -> TimeInterval { isOptionKeyPressed() ? 2.0 : 0.1 }
 
 	func openDisclosure(open: Bool, animated: Bool) {
 		if !self.canExpand {
@@ -432,7 +435,7 @@ extension DSFInspectorPanesView.Pane {
 		if animated {
 			NSAnimationContext.runAnimationGroup({ context in
 				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-				context.duration = animSpeed()
+				context.duration = animationDuration()
 				self.inspectorViewContainerView.animator().alphaValue = 1.0
 				if self.headerAccessoryVisibility == .onlyWhenCollapsed {
 					self.headerAccessoryViewContainer.animator().alphaValue = 0.0
@@ -481,7 +484,7 @@ extension DSFInspectorPanesView.Pane {
 		if animated {
 			NSAnimationContext.runAnimationGroup({ context in
 				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-				context.duration = animSpeed()
+				context.duration = animationDuration()
 				self.headerAccessoryViewContainer.isHidden = false
 				self.heightConstraint.animator().constant = 0
 				self.inspectorViewContainerView.animator().alphaValue = 0.0
@@ -593,22 +596,10 @@ extension DSFInspectorPanesView.Pane: DSFInspectorPane {
 		}
 	}
 
-	var visible: Bool {
-		get {
-			return !self.isHidden
-		}
-		set {
-			self.isHidden = !newValue
-		}
-	}
-
-	var expanded: Bool {
-		get {
-			return _expanded
-		}
-		set {
-			self.setExpanded(newValue, animated: self.animated)
-		}
+	/// Is the pane expanded?
+	var isExpanded: Bool {
+		get { return _expanded }
+		set { self.setExpanded(newValue, animated: self.animated) }
 	}
 
 	func setExpanded(_ state: Bool) {
