@@ -1,8 +1,6 @@
 //
 //  DSFInspectorPanes.h
 //
-//  Created by Darren Ford on 1/5/19.
-//
 //  MIT License
 //
 //  Copyright (c) 2023 Darren Ford
@@ -35,5 +33,3 @@ FOUNDATION_EXPORT double DSFInspectorPanesVersionNumber;
 FOUNDATION_EXPORT const unsigned char DSFInspectorPanesVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DSFInspectorPanes/PublicHeader.h>
-
-

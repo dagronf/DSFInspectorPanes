@@ -1,8 +1,6 @@
 //
 //  DSFInspectorPanes+utilities.swift
 //
-//  Created by Darren Ford on 9/6/19.
-//
 //  MIT License
 //
 //  Copyright (c) 2023 Darren Ford

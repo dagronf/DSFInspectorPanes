@@ -1,6 +1,5 @@
 //
 //  DraggingStackView.swift
-//  DSFInspectorPanes
 //
 //  Adapted from Mark Onyschuk on [GitHub](https://github.com/monyschuk) -- [Draggable Stack View](https://gist.github.com/monyschuk/cbca3582b6b996ab54c32e2d7eceaf25)
 //

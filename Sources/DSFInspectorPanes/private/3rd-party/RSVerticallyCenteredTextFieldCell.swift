@@ -1,6 +1,5 @@
 //
 //  RSVerticallyCenteredTextFieldCell.swift
-//  DSFInspectorPanes
 //
 //  3rd party licenses
 //  * Makes use of RSVerticallyCenteredTextFieldCell

@@ -1,8 +1,6 @@
 //
 //  DSFInspectorPanesView.swift
 //
-//  Created by Darren Ford on 30/4/19.
-//
 //  MIT License
 //
 //  Copyright (c) 2023 Darren Ford
