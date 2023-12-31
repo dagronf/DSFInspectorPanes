@@ -182,6 +182,7 @@ extension DSFInspectorPanesView {
 			}
 
 			self.translatesAutoresizingMaskIntoConstraints = false
+			self.wantsLayer = true
 			self.titlePosition = .noTitle
 
 			self.headerAccessoryViewContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +198,10 @@ extension DSFInspectorPanesView {
 			self.mainStack.setContentHuggingPriority(.required, for: .vertical)
 			self.mainStack.setHuggingPriority(.required, for: .vertical)
 			self.mainStack.edgeInsets = .zero
+
+			// Make sure that the content doesn't bleed outside our stack during animated resizing
+			self.mainStack.wantsLayer = true
+			self.mainStack.clipsToBounds = true
 
 			self.addSubview(self.mainStack)
 
@@ -430,9 +435,11 @@ extension DSFInspectorPanesView.Pane {
 		self.inspectorView?.layout()
 		let inspectorHeight = self.inspectorView!.fittingSize.height
 
+		self.mainStack.spacing = 8
+
 		if animated {
 			NSAnimationContext.runAnimationGroup({ context in
-				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 				context.duration = animationDuration()
 				self.inspectorViewContainerView.animator().alphaValue = 1.0
 				if self.headerAccessoryVisibility == .onlyWhenCollapsed {
@@ -479,9 +486,12 @@ extension DSFInspectorPanesView.Pane {
 		self.inspectorViewContainerView.addConstraint(self.heightConstraint)
 		self.inspectorViewContainerView.removeConstraint(self.panelBottom)
 		self.inspectorViewContainerView.needsLayout = true
+
+		self.mainStack.spacing = 0
+
 		if animated {
 			NSAnimationContext.runAnimationGroup({ context in
-				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+				context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 				context.duration = animationDuration()
 				self.headerAccessoryViewContainer.isHidden = false
 				self.heightConstraint.animator().constant = 0
