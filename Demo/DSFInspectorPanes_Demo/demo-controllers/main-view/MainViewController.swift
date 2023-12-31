@@ -14,35 +14,36 @@ class MainViewController: NSViewController {
 	let longDescription = LongDescriptionViewController()
 	let imageItem = ImageViewController()
 
-	private var panes: DSFInspectorPanesView {
+	/// The panes view
+	
+	private lazy var panesView: DSFInspectorPanesView = {
 		return self.view as! DSFInspectorPanesView
-	}
+	}()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
 		self.setup()
 	}
 
 	func setup() {
-		self.panes.insets = NSEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-		self.panes.spacing = 4
-		self.panes.addPane(title: "Short Description", view: self.shortDescription.view)
-		self.panes.addPane(title: "Long Description", view: self.longDescription.view)
-		self.panes.addPane(title: "Image", view: self.imageItem.view, headerAccessoryView: self.imageItem.headerView, expansionType: .collapsed)
+		self.panesView.insets = NSEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+		self.panesView.spacing = 4
+		self.panesView.addPane(title: "Short Description", view: self.shortDescription.view)
+		self.panesView.addPane(title: "Long Description", view: self.longDescription.view)
+		self.panesView.addPane(title: "Image", view: self.imageItem.view, headerAccessoryView: self.imageItem.headerView, expansionType: .collapsed)
 
 		// Listen to inspector changes
-		self.panes.inspectorPaneDelegate = self
+		self.panesView.inspectorPaneDelegate = self
 	}
 
 	@IBAction func toggleVisibility(_ sender: NSButton) {
 		switch sender.tag {
 		case 100:
-			self.panes.panes.forEach { $0.setExpanded(!$0.isExpanded, animated: true) }
+			self.panesView.toggleAll()
 		case 101:
-			self.panes.panes.forEach { $0.setExpanded(true, animated: true) }
+			self.panesView.expandAll()
 		case 102:
-			self.panes.panes.forEach { $0.setExpanded(false, animated: true) }
+			self.panesView.hideAll()
 		default:
 			break
 		}
