@@ -148,17 +148,6 @@ propertyPanes.removeAll()
 Showing the ability to display a secondary UI element for when the pane is contracted
 
 ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/expand_contract.gif) 
-
-# Releases
-
-* 1.3.0:
-
-  - Updates for latest Xcode and dependent libraries
-
-* 1.2.0:
-
-  - Added a 'always show header accessory' option. Default behaviour has not been changed.
-  - Added an objective-c demo
   
 # License
 ```

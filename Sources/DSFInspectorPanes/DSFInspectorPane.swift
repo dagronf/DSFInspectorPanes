@@ -5,7 +5,7 @@
 //
 //  MIT License
 //
-//  Copyright (c) 2020 Darren Ford
+//  Copyright (c) 2023 Darren Ford
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ import Cocoa
 	@objc var header: NSView? { get }
 	/// When is the header view visible?
 	@objc var headerVisibility: DSFInspectorPaneHeaderAccessoryVisibility { get }
-	/// Can we expand and contract the pane?
+	/// Can the user expand and contract the pane?
 	@objc var canExpand: Bool { get }
 	/// Is the panel expanded?
 	@objc var isExpanded: Bool { get set }
