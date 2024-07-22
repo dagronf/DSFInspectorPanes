@@ -870,7 +870,7 @@
 			repositoryURL = "https://github.com/dagronf/DSFToggleButton.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 		2393EE08255B558B00AEB226 /* XCRemoteSwiftPackageReference "DSFStepperView" */ = {
@@ -878,7 +878,7 @@
 			repositoryURL = "https://github.com/dagronf/DSFStepperView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 4.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

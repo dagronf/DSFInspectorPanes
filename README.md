@@ -2,8 +2,12 @@
 
 ![](https://dagronf.github.io/art/projects/DSFPropertyPanes/screenshot.jpg)
 
-![](https://img.shields.io/github/v/tag/dagronf/DSFInspectorPanes) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
-![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
+![](https://img.shields.io/github/v/tag/dagronf/DSFInspectorPanes)
+![](https://img.shields.io/badge/macOS-10.13+-red)
+
+![](https://img.shields.io/badge/License-MIT-lightgrey) 
+[![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) 
+[![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 A Cocoa, auto-layout managed view to build and manage inspector panes equivalent to the inspectors in Apple's Pages and Numbers applications.
 
@@ -67,10 +71,12 @@ pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
 Add a new inspector pane to the container
 
 ```swift
-var propertyPanes = DSFInspectorPanesView(frame: .zero,
-                                          animated: true,
-                                          embeddedInScrollView: false,
-                                          titleFont: NSFont.systemFont(ofSize: 13))
+var propertyPanes = DSFInspectorPanesView(
+   frame: .zero,
+   animated: true,
+   embeddedInScrollView: false,
+   titleFont: NSFont.systemFont(ofSize: 13)
+)
 
 var inspectorView = NSView()        // <--- your inspector pane view
 var inspectorHeaderView = NSView()  // <--- your inspector pane header view
@@ -153,7 +159,7 @@ Showing the ability to display a secondary UI element for when the pane is contr
 ```
 MIT License
 
-Copyright (c) 2023 Darren Ford
+Copyright (c) 2024 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DSFInspectorPanes"
-  s.version      = "2.0"
+  s.version      = "2.1.0"
   s.summary      = "Mimic the inspector panels in Apple's Pages"
   s.description  = <<-DESC
     Mimic the inspector panels in Apple's Pages
@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
                     "Sources/DSFInspectorPanes/private/*.swift",
                     "Sources/DSFInspectorPanes/private/3rd-party/*.swift"
   s.frameworks  = "Cocoa"
-  s.swift_version = "5.1"
+  s.swift_version = "5.5"
 end
