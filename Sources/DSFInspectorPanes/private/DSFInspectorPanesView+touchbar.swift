@@ -28,7 +28,7 @@ import Cocoa
 
 // MARK: - Touch bar handling
 
-@available (macOS 10.12.2, *)
+@available(macOS 10.12.2, *)
 extension DSFInspectorPanesView: NSTouchBarDelegate {
 
 	public override func makeTouchBar() -> NSTouchBar? {
@@ -71,7 +71,7 @@ extension DSFInspectorPanesView: NSTouchBarDelegate {
 	}
 }
 
-@available (macOS 10.12.2, *)
+@available(macOS 10.12.2, *)
 extension DSFInspectorPanesView {
 	func updateTouchbarTitleForVisibility(for pane: DSFInspectorPanesView.Pane, at index: Int? = nil) {
 
@@ -92,7 +92,7 @@ extension DSFInspectorPanesView {
 	}
 }
 
-@available (macOS 10.12.2, *)
+@available(macOS 10.12.2, *)
 class DSFInspectorPanesPopoverTouchBar: NSTouchBar, NSTouchBarDelegate {
 
 	private static let moveUpIdentifier = NSTouchBarItem.Identifier("com.darrenford.inspectorpanes.moveup")
