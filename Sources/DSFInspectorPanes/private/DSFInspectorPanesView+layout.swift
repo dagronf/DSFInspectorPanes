@@ -137,7 +137,8 @@ extension DSFInspectorPanesView {
 		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
 		headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibility,
-		expansionType: DSFInspectorPaneExpansionType = .expanded
+		expansionType: DSFInspectorPaneExpansionType = .expanded,
+		isUserFocusable: Bool = true
 	) -> DSFInspectorPane {
 		view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -147,7 +148,9 @@ extension DSFInspectorPanesView {
 			expansionType: expansionType,
 			canReorder: self.canReorderPanes,
 			inspectorType: self.inspectorType,
-			animated: self.animated)
+			animated: self.animated,
+			isUserFocusable: isUserFocusable
+		)
 
 		inspectorPaneView.translatesAutoresizingMaskIntoConstraints = false
 		inspectorPaneView.changeDelegate = self

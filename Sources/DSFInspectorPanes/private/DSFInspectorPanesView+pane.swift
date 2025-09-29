@@ -61,6 +61,8 @@ extension DSFInspectorPanesView {
 	internal class Pane: DSFInspectorBox {
 		// Is the item animated?
 		private let animated: Bool
+		// Can the pane itself become focused?
+		private let isUserFocusable: Bool
 
 		// The primary stack, containing header and property pane
 		private var mainStack = NSStackView()
@@ -91,14 +93,6 @@ extension DSFInspectorPanesView {
 		// Can the pane be contracted/expanded
 		var canExpand: Bool {
 			return !(self.disclosureButton?.isHidden ?? true)
-		}
-
-		override func becomeFirstResponder() -> Bool {
-			let r = super.becomeFirstResponder()
-			if r == true {
-				self.changeDelegate?.inspectorPaneDidFocus(self)
-			}
-			return r
 		}
 
 		// If a separator was automatically added, the separator view
@@ -153,9 +147,11 @@ extension DSFInspectorPanesView {
 			expansionType: DSFInspectorPaneExpansionType,
 			canReorder: Bool,
 			inspectorType: DSFInspectorPanesView.InspectorType,
-			animated: Bool)
-		{
+			animated: Bool,
+			isUserFocusable: Bool = true
+		) {
 			self.animated = animated
+			self.isUserFocusable = isUserFocusable
 			self._expanded = (expansionType != .collapsed)
 			super.init(frame: .zero)
 			self.inspectorType = inspectorType
@@ -526,7 +522,18 @@ extension DSFInspectorPanesView.Pane {
 
 extension DSFInspectorPanesView.Pane {
 	override var acceptsFirstResponder: Bool {
-		return true
+		self.isUserFocusable
+	}
+
+	override func becomeFirstResponder() -> Bool {
+		guard self.isUserFocusable else {
+			return false
+		}
+		let r = super.becomeFirstResponder()
+		if r == true {
+			self.changeDelegate?.inspectorPaneDidFocus(self)
+		}
+		return r
 	}
 
 	override func drawFocusRingMask() {

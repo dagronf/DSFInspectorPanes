@@ -32,7 +32,8 @@
 											 showsHeader: true
 								  headerAccessoryView: headerView
 						  headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibilityOnlyWhenCollapsed
-										  expansionType: DSFInspectorPaneExpansionTypeExpanded];
+										  expansionType: DSFInspectorPaneExpansionTypeExpanded
+										isUserFocusable: true];
 	}
 
 	{
@@ -45,7 +46,8 @@
 											 showsHeader: true
 								  headerAccessoryView: headerView
 						  headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibilityAlways
-										  expansionType: DSFInspectorPaneExpansionTypeExpanded];
+										  expansionType: DSFInspectorPaneExpansionTypeExpanded
+										isUserFocusable: false];
 	}
 
 	{
@@ -58,7 +60,8 @@
 											 showsHeader: true
 								  headerAccessoryView: headerView
 						  headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibilityAlways
-										  expansionType: DSFInspectorPaneExpansionTypeCollapsed];
+										  expansionType: DSFInspectorPaneExpansionTypeCollapsed
+										isUserFocusable: true];
 	}
 
 	{
@@ -71,7 +74,8 @@
 											 showsHeader: true
 								  headerAccessoryView: headerView
 						  headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibilityAlways
-										  expansionType: DSFInspectorPaneExpansionTypeNone];
+										  expansionType: DSFInspectorPaneExpansionTypeNone
+										isUserFocusable: true];
 	}
 }
 

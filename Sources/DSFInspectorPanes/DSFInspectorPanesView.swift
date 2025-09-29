@@ -192,12 +192,14 @@ extension DSFInspectorPanesView {
 
 @objc public extension DSFInspectorPanesView {
 	/// Add a new pane to the inspector
-	/// - Parameter title: The title to display in the pane header
-	/// - Parameter view: The view to display in the pane
-	/// - Parameter showsHeader: Does the inspector pane show the header?
-	/// - Parameter headerAccessoryView: If the inspector uses a supporting header pane, the view for the header
-	/// - Parameter headerAccessoryVisibility: When is the header accessory shown?
-	/// - Parameter expansionType: Can the pane be expanded, and if so what is its default expansion state
+	/// - Parameters:
+	///   - title: The title to display in the pane header
+	///   - view: The view to display in the pane
+	///   - showsHeader: Does the inspector pane show the header?
+	///   - headerAccessoryView: If the inspector uses a supporting header pane, the view for the header
+	///   - headerAccessoryVisibility: When is the header accessory shown?
+	///   - expansionType: Can the pane be expanded, and if so what is its default expansion state
+	///   - isUserFocusable: If true, allows the entire pane to be focussed
 	@discardableResult
 	func addPane(
 		title: String,
@@ -205,7 +207,8 @@ extension DSFInspectorPanesView {
 		showsHeader: Bool = true,
 		headerAccessoryView: NSView? = nil,
 		headerAccessoryVisibility: DSFInspectorPaneHeaderAccessoryVisibility = .onlyWhenCollapsed,
-		expansionType: DSFInspectorPaneExpansionType = .expanded
+		expansionType: DSFInspectorPaneExpansionType = .expanded,
+		isUserFocusable: Bool = true
 	) -> DSFInspectorPane {
 		return add_internal(
 			title: title,
@@ -213,7 +216,8 @@ extension DSFInspectorPanesView {
 			showsHeader: showsHeader,
 			headerAccessoryView: headerAccessoryView,
 			headerAccessoryVisibility: headerAccessoryVisibility,
-			expansionType: expansionType
+			expansionType: expansionType,
+			isUserFocusable: isUserFocusable
 		)
 	}
 
