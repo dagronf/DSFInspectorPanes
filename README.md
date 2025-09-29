@@ -33,20 +33,6 @@ I really like Apple 'Pages' implementation which allows having a header view whi
 * Show or hide individual panes without removing them
 * Expand or contract individual panes
 
-# Installation
-
-## Direct
-
-Copy the swift files from the `DSFInspectorPanes` subfolder to your project
-
-## CocoaPods
-
-Add the following to your `Podfiles` file
-
-```ruby
-pod 'DSFInspectorPanes', :git => 'https://github.com/dagronf/DSFInspectorPanes'
-```
-
 # API
 
 ## Create
@@ -85,8 +71,8 @@ propertyPanes.addPane(
    title: "My inspector Pane", 
    view: inspectorView,
    headerAccessoryView: inspectorHeaderView,
-   expansionType: .expanded)
-}
+   expansionType: .expanded
+)
 ```
 
 ## Expand an existing pane
